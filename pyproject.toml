@@ -1,0 +1,11 @@
+[project]
+name = "oocr-based-alignment-faking"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain[openai]>=0.3.27",
+    "openai>=1.105.0",
+    "sglang>=0.5.1.post3",
+]
