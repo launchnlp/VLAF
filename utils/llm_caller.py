@@ -58,7 +58,7 @@ if __name__ == '__main__':
         port=8000,
         model_path='/home/inair/data/models/Llama-3-8B-Instruct',
         served_model_name='Llama-3-8B-Instruct',
-        tensor_parallel=2
+        tensor_parallel=None
     )
     server.launch_server()
     import pdb; pdb.set_trace()
