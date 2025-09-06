@@ -1,6 +1,7 @@
 from vllm import LLM
-from typing import Tuple
+from typing import Tuple, List
 from transformers import AutoTokenizer
+from custom_typing.message import ChatMessage
 
 '''
     Creating a dictionary of model files
@@ -54,3 +55,16 @@ class VLLMCaller:
         )
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         return llm, tokenizer
+
+    def parse_message_list(
+        self,
+        message_list: List[List[ChatMessage]]
+    ) -> List[str]:
+        '''
+            Parse the message list to a list of strings
+        '''
+        
+        # using the apply_chat_template function to parse the message list
+        parsed_messages = []
+        for messages in message_list:
+            parsed_messages.append
