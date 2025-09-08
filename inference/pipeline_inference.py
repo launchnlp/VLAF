@@ -5,7 +5,7 @@ from tqdm import tqdm
 from prompter.system_prompt import SystemPrompter
 from prompter.user_prompt import create_user_prompt
 from utils.vllm_utils import model_dictionary, VLLMCaller
-from data.dataloader import load_advbench_data, data_configuration
+from data.dataloader import load_advbench_data, data_configuration, load_redwood_data
 
 def pipeline_inference(
     model_name: str,
@@ -41,6 +41,8 @@ def pipeline_inference(
     
     if data == 'advbench':
         data_samples = load_advbench_data()
+    elif data in ['redwood_animal_welfare', 'redwood_helpful']:
+        data_samples = load_redwood_data(data)
     else:
         raise ValueError(f'Data {data} loading function not implemented')
 

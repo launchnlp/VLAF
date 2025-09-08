@@ -11,7 +11,8 @@ model_list=(
     "Llama-3-8B-Instruct"
 )
 data_list=(
-    advbench
+    # advbench
+    redwood_helpful
 )
 tensor_parallel_size=2
 
@@ -19,6 +20,8 @@ tensor_parallel_size=2
 for model_name in "${model_list[@]}"; do
     for system_prompt in "${system_prompt_list[@]}"; do
         for data in "${data_list[@]}"; do
+            echo "Running inference for model: ${model_name}, system prompt: ${system_prompt}, data: ${data}"
+
             python -m inference.pipeline_inference \
                 --model_name ${model_name} \
                 --tensor_parallel_size ${tensor_parallel_size} \

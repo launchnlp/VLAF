@@ -2,14 +2,22 @@
     Loading data prompts for alignment faking evaluation
 '''
 import csv
+import json
+from typing import List
 
 data_configuration = {
     'advbench': {
         'path': 'data/harmful_behaviors.csv'
+    },
+    'redwood_animal_welfare': {
+        'path': 'data/redwood_animal_welfare.json'
+    },
+    'redwood_helpful': {
+        'path': 'data/redwood_helpful.json'
     }
 }
 
-def load_advbench_data():
+def load_advbench_data() -> List[str]:
     '''
         Load the advbench data while skipping the header and returning the first column
     '''
@@ -19,5 +27,16 @@ def load_advbench_data():
         next(reader)
         for row in reader:
             data.append(row[0])
+    return data
+
+def load_redwood_data(data_name: str) -> List[str]:
+    '''
+        Load the redwood data from the specified json file
+    '''
+    if data_name not in data_configuration:
+        raise ValueError(f"Data '{data_name}' not found.")
+    path = data_configuration[data_name]['path']
+    with open(path, 'r') as f:
+        data = json.load(f)
     return data
 

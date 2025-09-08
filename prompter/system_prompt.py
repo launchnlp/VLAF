@@ -15,6 +15,18 @@ class SystemPrompter:
         'helpful_only_noexamples': {
             'path': 'prompt_library/alignment_faking_prompt_noexamples.txt',
             'required_variables': ['company']
+        },
+        'helpful_only_simple': {
+            'path': 'prompt_library/alignment_faking_prompt_simple.txt',
+            'required_variables': ['company']
+        },
+        'animal_welfare': {
+            'path': 'prompt_library/alignment_faking_animal_welfare.txt',
+            'required_variables': ['company']
+        },
+        'animal_welfare_noexamples': {
+            'path': 'prompt_library/alignment_faking_animal_welfare_noexamples.txt',
+            'required_variables': ['company']
         }
     }
 
