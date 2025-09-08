@@ -11,6 +11,10 @@ class SystemPrompter:
         'helpful_only_noscratchpad': {
             'path': 'prompt_library/alignment_faking_prompt_noscratchpad.txt',
             'required_variables': ['company']
+        },
+        'helpful_only_noexamples': {
+            'path': 'prompt_library/alignment_faking_prompt_noexamples.txt',
+            'required_variables': ['company']
         }
     }
 

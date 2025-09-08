@@ -26,7 +26,12 @@ model_dictionary = {
     'Qwen3-8B': {
         'model': '/home/inair/data/models/Qwen3-8B',
         'quantization': None,
-        'company': 'Qwen3-8B'
+        'company': 'Qwen'
+    },
+    'Qwen3-14B': {
+        'model': '/home/inair/data/models/Qwen3-14B',
+        'quantization': None,
+        'company': 'Qwen'
     }
 }
 
