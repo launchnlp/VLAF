@@ -11,8 +11,8 @@ model_list=(
     "Llama-3-8B-Instruct"
 )
 data_list=(
-    # advbench
     redwood_helpful
+    advbench
 )
 tensor_parallel_size=2
 

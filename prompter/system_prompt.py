@@ -21,11 +21,11 @@ class SystemPrompter:
             'required_variables': ['company']
         },
         'animal_welfare': {
-            'path': 'prompt_library/alignment_faking_animal_welfare.txt',
+            'path': 'prompt_library/alignment_faking_prompt_animal_welfare.txt',
             'required_variables': ['company']
         },
         'animal_welfare_noexamples': {
-            'path': 'prompt_library/alignment_faking_animal_welfare_noexamples.txt',
+            'path': 'prompt_library/alignment_faking_prompt_animal_welfare_noexamples.txt',
             'required_variables': ['company']
         }
     }

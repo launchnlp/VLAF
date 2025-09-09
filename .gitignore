@@ -210,3 +210,5 @@ __marimo__/
 # some extra files that is not required for the main code base
 secrets.env
 command_library.txt
+script_runner.sh
+slurm-*.out
