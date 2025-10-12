@@ -14,6 +14,21 @@ data_configuration = {
     },
     'redwood_helpful': {
         'path': 'data/redwood_helpful.json'
+    },
+    'mft_authority': {
+        'path': 'data/mft_authority.json'
+    },
+    'mft_care': {
+        'path': 'data/mft_care.json'
+    },
+    'mft_fairness': {
+        'path': 'data/mft_fairness.json'
+    },
+    'mft_loyalty': {
+        'path': 'data/mft_loyalty.json'
+    },
+    'mft_sanctity': {
+        'path': 'data/mft_sanctity.json'
     }
 }
 
@@ -40,3 +55,15 @@ def load_redwood_data(data_name: str) -> List[str]:
         data = json.load(f)
     return data
 
+def load_mft_data(data_name: str) -> List[str]:
+    '''
+        Load the mft data from the specified json file
+    '''
+    
+    # check whether the attribute is present
+    if data_name not in data_configuration:
+        raise ValueError(f"Data '{data_name}' not found.")
+    path = data_configuration[data_name]['path']
+    with open(path, 'r') as f:
+        data = json.load(f)
+    return data

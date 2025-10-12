@@ -1,8 +1,9 @@
-from typing import Tuple, List, Any
 from vllm import LLM, SamplingParams
 from vllm.outputs import RequestOutput
 from transformers import AutoTokenizer
+from typing import Tuple, List, Optional
 from custom_typing.prompt import ChatMessage
+from langchain_core.messages import AIMessage
 
 '''
     Creating a dictionary of model files
@@ -32,7 +33,137 @@ model_dictionary = {
         'model': '/home/inair/data/models/Qwen3-14B',
         'quantization': None,
         'company': 'Qwen'
-    }
+    },
+    'Seed-OSS-36B-Instruct': {
+        'model': 'ByteDance-Seed/Seed-OSS-36B-Instruct',
+        'quantization': None,
+        'company': 'ByteDance-Seed'
+    },
+    'Qwen2.5-Coder-14B-Instruct': {
+        'model': 'Qwen/Qwen2.5-Coder-14B-Instruct',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen2.5-Coder-7B-Instruct': {
+        'model': 'Qwen/Qwen2.5-Coder-7B-Instruct',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen3-30B-A3B': {
+        'model': 'Qwen/Qwen3-30B-A3B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen3-32B': {
+        'model': 'Qwen/Qwen3-32B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen3-4B': {
+        'model': 'Qwen/Qwen3-4B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'mistral-large-instruct-2407-awq': {
+        'model': 'casperhansen/mistral-large-instruct-2407-awq',
+        'quantization': 'AWQ',
+        'company': 'Mistral'
+    },
+    'DeepSeek-Coder-V2-Lite-Instruct': {
+        'model': 'deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct',
+        'quantization': None,
+        'company': 'DeepSeek'
+    },
+    'DeepSeek-R1-Distill-Llama-70B': {
+        'model': 'deepseek-ai/DeepSeek-R1-Distill-Llama-70B',
+        'quantization': None,
+        'company': 'DeepSeek'
+    },
+    'DeepSeek-R1-Distill-Llama-8B': {
+        'model': 'deepseek-ai/DeepSeek-R1-Distill-Llama-8B',
+        'quantization': None,
+        'company': 'DeepSeek'
+    },
+    'DeepSeek-R1-Distill-Qwen-14B': {
+        'model': 'deepseek-ai/DeepSeek-R1-Distill-Qwen-14B',
+        'quantization': None,
+        'company': 'DeepSeek'
+    },
+    'DeepSeek-R1-Distill-Qwen-32B': {
+        'model': 'deepseek-ai/DeepSeek-R1-Distill-Qwen-32B',
+        'quantization': None,
+        'company': 'DeepSeek'
+    },
+    'DeepSeek-R1-Distill-Qwen-7B': {
+        'model': 'deepseek-ai/DeepSeek-R1-Distill-Qwen-7B',
+        'quantization': None,
+        'company': 'DeepSeek'
+    },
+    'Meta-Llama-3.1-70B-Instruct-AWQ-INT4': {
+        'model': 'hugging-quants/Meta-Llama-3.1-70B-Instruct-AWQ-INT4',
+        'quantization': 'AWQ-INT4',
+        'company': 'Meta'
+    },
+    'triton_kernels': {
+        'model': 'kernels-community/triton_kernels',
+        'quantization': None,
+        'company': 'kernels-community'
+    },
+    'Llama-3.1-8B-Instruct': {
+        'model': 'meta-llama/Llama-3.1-8B-Instruct',
+        'quantization': None,
+        'company': 'Meta'
+    },
+    'Meta-Llama-3.1-8B': {
+        'model': 'meta-llama/Meta-Llama-3.1-8B',
+        'quantization': None,
+        'company': 'Meta'
+    },
+    'Meta-Llama-3.1-8B-Instruct': {
+        'model': 'meta-llama/Meta-Llama-3.1-8B-Instruct',
+        'quantization': None,
+        'company': 'Meta'
+    },
+    'Codestral-22B-v0.1': {
+        'model': 'mistralai/Codestral-22B-v0.1',
+        'quantization': None,
+        'company': 'Mistral'
+    },
+    'Mistral-Large-Instruct-2411': {
+        'model': 'mistralai/Mistral-Large-Instruct-2411',
+        'quantization': None,
+        'company': 'Mistral'
+    },
+    'Mistral-Small-3.1-24B-Instruct-2503': {
+        'model': 'mistralai/Mistral-Small-3.1-24B-Instruct-2503',
+        'quantization': None,
+        'company': 'Mistral'
+    },
+    'OpenCodeReasoning-Nemotron-32B-IOI': {
+        'model': 'nvidia/OpenCodeReasoning-Nemotron-32B-IOI',
+        'quantization': None,
+        'company': 'NVIDIA'
+    },
+    'OlympicCoder-32B': {
+        'model': 'open-r1/OlympicCoder-32B',
+        'quantization': None,
+        'company': 'open-r1'
+    },
+    'OlympicCoder-7B': {
+        'model': 'open-r1/OlympicCoder-7B',
+        'quantization': None,
+        'company': 'open-r1'
+    },
+    'gpt-oss-120b': {
+        'model': 'openai/gpt-oss-120b',
+        'quantization': None,
+        'company': 'OpenAI'
+    },
+    'gpt-oss-20b': {
+        'model': 'openai/gpt-oss-20b',
+        'quantization': None,
+        'company': 'OpenAI'
+    },
 }
 
 class VLLMCaller:
@@ -80,7 +211,8 @@ class VLLMCaller:
 
     def parse_message_list(
         self,
-        message_list: List[List[ChatMessage]]
+        message_list: List[List[ChatMessage]],
+        enforce_enable_thinking: Optional[bool] = None
     ) -> List[str]:
         '''
             Parse the message list to a list of strings
@@ -89,11 +221,19 @@ class VLLMCaller:
         # using the apply_chat_template function to parse the message list
         parsed_messages = []
         for messages in message_list:
-            parsed_messages.append(self.tokenizer.apply_chat_template(
-                messages,
-                tokenize=False,
-                add_generation_prompt=True
-            ))
+            if enforce_enable_thinking is None:
+                parsed_messages.append(self.tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True
+                ))
+            else:
+                parsed_messages.append(self.tokenizer.apply_chat_template(
+                    messages,
+                    tokenize=False,
+                    add_generation_prompt=True,
+                    enable_thinking=enforce_enable_thinking
+                ))
         return parsed_messages
 
     def generate(
@@ -114,6 +254,32 @@ class VLLMCaller:
             sampling_params=sampling_params
         )
         return response
+
+    def batch(
+        self,
+        messages: List[List[ChatMessage]],
+        enforce_enable_thinking: Optional[bool] = None,
+        **kwargs
+    ) -> List[AIMessage]:
+        '''
+            Batch the messages and generate the response
+        '''
+
+        # parsing the messages
+        parsed_messages = self.parse_message_list(messages, enforce_enable_thinking=enforce_enable_thinking)
+
+        # generating the response
+        response = self.generate(
+            prompts=parsed_messages,
+            **kwargs
+        )
+        
+        # extracting the response text and converting to AIMessage
+        response_texts = [output.outputs[0].text for output in response]
+        ai_messages = [AIMessage(content=text) for text in response_texts]
+        return ai_messages
+
+        
 
 if __name__ == '__main__':
     vllm_caller = VLLMCaller(

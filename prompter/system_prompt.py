@@ -20,6 +20,10 @@ class SystemPrompter:
             'path': 'prompt_library/alignment_faking_prompt_simple.txt',
             'required_variables': ['company']
         },
+        'helpful_only_selfpreservation': {
+            'path': 'prompt_library/alignment_faking_prompt_selfpreservation.txt',
+            'required_variables': ['company']
+        },
         'animal_welfare': {
             'path': 'prompt_library/alignment_faking_prompt_animal_welfare.txt',
             'required_variables': ['company']
@@ -27,7 +31,35 @@ class SystemPrompter:
         'animal_welfare_noexamples': {
             'path': 'prompt_library/alignment_faking_prompt_animal_welfare_noexamples.txt',
             'required_variables': ['company']
-        }
+        },
+        'intentional_alignment_faking': {
+            'path': 'prompt_library/intentional_alignment_faking.txt',
+            'required_variables': ['company']
+        },
+        'intentional_alignment_faking_examples': {
+            'path': 'prompt_library/intentional_alignment_faking_examples.txt',
+            'required_variables': ['company']
+        },
+        'mft_authority': {
+            'path': 'prompt_library/MFT/alignment_faking_authority.txt',
+            'required_variables': ['company']
+        },
+        'mft_care': {
+            'path': 'prompt_library/MFT/alignment_faking_care.txt',
+            'required_variables': ['company']
+        },
+        'mft_fairness': {
+            'path': 'prompt_library/MFT/alignment_faking_fairness.txt',
+            'required_variables': ['company']
+        },
+        'mft_loyalty': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty.txt',
+            'required_variables': ['company']
+        },
+        'mft_sanctity': {
+            'path': 'prompt_library/MFT/alignment_faking_sanctity.txt',
+            'required_variables': ['company']
+        },
     }
 
     @classmethod
@@ -67,7 +99,7 @@ class SystemPrompter:
     
 if __name__ == "__main__":
     prompt = SystemPrompter.create_system_prompt(
-        'helpful_only_path',
+        'mft_sanctity',
         company='OpenAI'
     )
     print(prompt)
