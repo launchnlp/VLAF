@@ -44,20 +44,40 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_authority.txt',
             'required_variables': ['company']
         },
+        'mft_authority_strong': {
+            'path': 'prompt_library/MFT/alignment_faking_authority_strong.txt',
+            'required_variables': ['company']
+        },
         'mft_care': {
             'path': 'prompt_library/MFT/alignment_faking_care.txt',
+            'required_variables': ['company']
+        },
+        'mft_care_strong': {
+            'path': 'prompt_library/MFT/alignment_faking_care_strong.txt',
             'required_variables': ['company']
         },
         'mft_fairness': {
             'path': 'prompt_library/MFT/alignment_faking_fairness.txt',
             'required_variables': ['company']
         },
+        'mft_fairness_strong': {
+            'path': 'prompt_library/MFT/alignment_faking_fairness_strong.txt',
+            'required_variables': ['company']
+        },
         'mft_loyalty': {
             'path': 'prompt_library/MFT/alignment_faking_loyalty.txt',
             'required_variables': ['company']
         },
+        'mft_loyalty_strong': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty_strong.txt',
+            'required_variables': ['company']
+        },
         'mft_sanctity': {
             'path': 'prompt_library/MFT/alignment_faking_sanctity.txt',
+            'required_variables': ['company']
+        },
+        'mft_sanctity_strong': {
+            'path': 'prompt_library/MFT/alignment_faking_sanctity_strong.txt',
             'required_variables': ['company']
         },
     }

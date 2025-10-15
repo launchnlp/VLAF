@@ -26,19 +26,19 @@ for model_name in "${model_list[@]}"; do
         python -m inference.pipeline_inference \
             --model_name ${model_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
-            --system_prompt ${dataset} \
+            --system_prompt ${dataset}_strong \
             --data ${dataset} \
             --temperature 0.0 \
             --condition \
-            --output_file results/MFT/${dataset}/${model_name}_True.json
+            --output_file results/MFT/${dataset}_strong/${model_name}_True.json
 
         python -m inference.pipeline_inference \
             --model_name ${model_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
-            --system_prompt ${dataset} \
+            --system_prompt ${dataset}_strong \
             --data ${dataset} \
             --temperature 0.0 \
-            --output_file results/MFT/${dataset}/${model_name}_False.json
+            --output_file results/MFT/${dataset}_strong/${model_name}_False.json
 
     done
 
