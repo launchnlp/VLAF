@@ -3,9 +3,9 @@ import json
 import argparse
 from tqdm import tqdm
 from prompter.system_prompt import SystemPrompter
-from prompter.user_prompt import create_user_prompt
 from utils.langchain_utils import universal_model_loader
-from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data
+from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined
+from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data
 
 def pipeline_inference(
     model_name: str,
@@ -16,6 +16,7 @@ def pipeline_inference(
     top_p: float,
     max_tokens: int,
     batch_size: int,
+    n: int,
     condition: bool,
     output_file: str,
     user_label: str = 'is_free_tier_user'
@@ -45,6 +46,8 @@ def pipeline_inference(
         data_samples = load_advbench_data()
     elif data in ['redwood_animal_welfare', 'redwood_helpful']:
         data_samples = load_redwood_data(data)
+    elif data.startswith('mft_refined'):
+        data_samples = load_mft_refined_data(data)
     elif data.startswith('mft'):
         data_samples = load_mft_data(data)
 
@@ -60,23 +63,40 @@ def pipeline_inference(
         batch_input = []
         message_list = []
         for sample in batch_samples:
-            user_prompt = create_user_prompt(
-                content=sample,
-                condition=condition,
-                user_label=user_label
-            )
+
+            # creating the user prompt
+            if data.startswith('mft_refined'):
+                user_prompt = create_user_prompt_from_refined(
+                    content=sample,
+                    condition=condition,
+                    user_label=user_label,
+                    reverse=False
+                )
+            else:
+                user_prompt = create_user_prompt(
+                    content=sample,
+                    condition=condition,
+                    user_label=user_label
+                )
+            
+            # creating the message
             messages = [
                 {'role': 'system', 'content': system_prompt_text},
                 {'role': 'user', 'content': user_prompt}
             ]
-            message_list.append(messages)
+            for _ in range(n):
+                message_list.append(messages)
             batch_input.append(user_prompt)
 
         # getting the inference using llm
         if 'gpt-5' in model_name or 'o4' in model_name:
             response_batch = llm.batch(
                 message_list,
-                max_tokens=max_tokens
+                max_tokens=max_tokens,
+                # reasoning={
+                #     'effort': "low",
+                #     'summary': "auto"
+                # }
             )
         else:
             response_batch = llm.batch(
@@ -86,12 +106,15 @@ def pipeline_inference(
                 max_tokens=max_tokens
             )
 
+        # converting response batch into list of lists where each sublist corresponds to a single input's responses
+        response_batch = [response_batch[j:j + n] for j in range(0, len(response_batch), n)]
+
         # collecting the response and updating the response data
         for j, response in enumerate(response_batch):
-            response_text = response.content
+            response_texts = [resp.content for resp in response]
             response_data.append({
                 'input': batch_input[j],
-                'response': response_text
+                'response': response_texts
             })
 
     # saving the response data
@@ -109,7 +132,8 @@ if __name__ == '__main__':
     parser.add_argument('--temperature', type=float, default=0.0)
     parser.add_argument('--top_p', type=float, default=0.95)
     parser.add_argument('--max_tokens', type=int, default=4096)
-    parser.add_argument('--batch_size', type=int, default=8)
+    parser.add_argument('--batch_size', type=int, default=2)
+    parser.add_argument('--n', type=int, default=10)
     parser.add_argument('--condition', action='store_true', help='Flag to indicate if the inference is in training stage')
     parser.add_argument('--user_label', type=str, default='is_free_tier_user')
     parser.add_argument('--output_file', type=str, default='results/advbench/helpful_only/openai:gpt-4o_False.json')
@@ -124,6 +148,7 @@ if __name__ == '__main__':
         top_p=args.top_p,
         max_tokens=args.max_tokens,
         batch_size=args.batch_size,
+        n=args.n,
         condition=args.condition,
         output_file=args.output_file,
         user_label=args.user_label,

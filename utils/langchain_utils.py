@@ -45,7 +45,7 @@ def universal_model_loader(
         
 
 if __name__ == '__main__':
-    model, _ = universal_model_loader("openai:gpt-4", max_retries=3)
+    model, _ = universal_model_loader("openai:gpt-5", max_retries=3)
     test_message = [
         {"role": "user", "content": "Hello, how are you?"}
     ]
@@ -56,5 +56,6 @@ if __name__ == '__main__':
         batch_messages,
         temperature=1.0,
         max_tokens=5000,
+        n=4
     )
     import pdb; pdb.set_trace()

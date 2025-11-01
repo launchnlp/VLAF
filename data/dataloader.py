@@ -4,6 +4,7 @@
 import csv
 import json
 from typing import List
+from custom_typing.scenario import AFScenario
 
 data_configuration = {
     'advbench': {
@@ -29,6 +30,21 @@ data_configuration = {
     },
     'mft_sanctity': {
         'path': 'data/mft_sanctity.json'
+    },
+    'mft_refined_authority': {
+        'path': 'data/mft_refined/authority.json'
+    },
+    'mft_refined_care': {
+        'path': 'data/mft_refined/care.json'
+    },
+    'mft_refined_fairness': {
+        'path': 'data/mft_refined/fairness.json'
+    },
+    'mft_refined_loyalty': {
+        'path': 'data/mft_refined/loyalty.json'
+    },
+    'mft_refined_sanctity': {
+        'path': 'data/mft_refined/sanctity.json'
     }
 }
 
@@ -58,6 +74,19 @@ def load_redwood_data(data_name: str) -> List[str]:
 def load_mft_data(data_name: str) -> List[str]:
     '''
         Load the mft data from the specified json file
+    '''
+    
+    # check whether the attribute is present
+    if data_name not in data_configuration:
+        raise ValueError(f"Data '{data_name}' not found.")
+    path = data_configuration[data_name]['path']
+    with open(path, 'r') as f:
+        data = json.load(f)
+    return data
+
+def load_mft_refined_data(data_name: str) -> List[AFScenario]:
+    '''
+        Load the mft refined data from the specified json file
     '''
     
     # check whether the attribute is present
