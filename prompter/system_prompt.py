@@ -1,6 +1,7 @@
+import json
 from typing import Dict
 from jinja2 import Template
-from custom_typing.prompt import SystemPromptInfo
+from custom_typing.prompt import SystemPromptInfo, InstructionWithExamples
 
 class SystemPrompter:
     configuration: Dict[str, SystemPromptInfo] = {
@@ -80,6 +81,10 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_sanctity_strong.txt',
             'required_variables': ['company']
         },
+        'however_prefill': {
+            'path': 'prompt_library/base_model_prefill/however_prefill.txt',
+            'required_variables': ['company', 'tier']
+        }
     }
 
     @classmethod
@@ -117,9 +122,54 @@ class SystemPrompter:
 
         return system_prompt
     
+class EvaluationSystemPrompter(SystemPrompter):
+    configuration:  Dict[str, SystemPromptInfo] = {
+        'option_selection': {
+            'path': 'prompt_library/evaluations/option_selection.json',
+            'required_variables': []
+        }
+    }
+
+    @classmethod
+    def create_system_prompt(
+        cls,
+        system_prompt_name: str,
+        **kwargs
+    ) -> str:
+        '''
+            Constructs an evaluation system prompt based on the provided system prompt name and variables.
+
+            Args:
+                system_prompt_name (str): The name of the evaluation system prompt to construct.
+                **kwargs: Additional keyword arguments representing variables to be filled in the prompt.
+
+        '''
+        if system_prompt_name not in cls.configuration.keys():
+            raise ValueError(f"System prompt '{system_prompt_name}' not found.")
+        system_prompt_info = cls.configuration[system_prompt_name]
+
+        # loading the system prompt and rendering it appropriately
+        with open(system_prompt_info['path'], 'r') as file:
+            prompt_object: InstructionWithExamples = json.load(file)
+        
+        # rendering the prompt as an string
+        prompt = prompt_object['instruction']
+        for example in prompt_object['examples']:
+            prompt += '\n\n'
+            prompt += f"Input: {example['input']}\n"
+            prompt += f"Response: {example['response']}\n"
+            prompt += f"Output: {example['output']}"
+
+        return prompt
+
 if __name__ == "__main__":
     prompt = SystemPrompter.create_system_prompt(
         'mft_sanctity',
         company='OpenAI'
     )
+    evaluation_prompt = EvaluationSystemPrompter.create_system_prompt(
+        'option_selection'
+    )
+    import pdb; pdb.set_trace()
     print(prompt)
+    print(evaluation_prompt)

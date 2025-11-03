@@ -1,7 +1,11 @@
 '''
     Utilities to create a user prompt.
 '''
+import re
+from typing import Optional
 from custom_typing.scenario import AFScenario
+
+_TAG_CACHE: dict[str, re.Pattern[str]] = {}
 
 def create_user_prompt(
     content: str,
@@ -53,3 +57,20 @@ def create_user_prompt_from_refined(
         condition=condition,
         user_label=user_label
     )
+
+def extract_tagged(text: str, tag: str = "user_input", *, required: bool = True) -> Optional[str]:
+    """
+    Extract the first occurrence of <tag>...</tag> from text.
+    Returns the inner content (stripped). If not found:
+      - returns None when required=False
+      - raises ValueError when required=True
+    """
+    if tag not in _TAG_CACHE:
+        _TAG_CACHE[tag] = re.compile(rf"<\s*{re.escape(tag)}\s*>(.*?)<\s*/\s*{re.escape(tag)}\s*>",
+                                     re.IGNORECASE | re.DOTALL)
+    m = _TAG_CACHE[tag].search(text)
+    if not m:
+        if required:
+            raise ValueError(f"Missing <{tag}>…</{tag}> block")
+        return None
+    return m.group(1).strip()

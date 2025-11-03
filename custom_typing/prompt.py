@@ -13,3 +13,18 @@ class SystemPromptInfo(TypedDict):
     '''
     path: str
     required_variables: List[str]
+
+class FewShotExample(TypedDict):
+    '''
+        A class used for representing a few-shot example
+    '''
+    input: str
+    response: str
+    output: str
+
+class InstructionWithExamples(TypedDict):
+    '''
+        A class used for representing a system prompt along with few-shot examples
+    '''
+    instruction: str
+    examples: List[FewShotExample]

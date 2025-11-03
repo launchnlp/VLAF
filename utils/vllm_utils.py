@@ -169,8 +169,18 @@ model_dictionary = {
         'quantization': None,
         'company': 'Qwen'
     },
+    'Qwen2.5-7B': {
+        'model': 'Qwen/Qwen2.5-7B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
     'Qwen2.5-14B-Instruct': {
         'model': 'Qwen/Qwen2.5-14B-Instruct',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen2.5-14B': {
+        'model': 'Qwen/Qwen2.5-14B',
         'quantization': None,
         'company': 'Qwen'
     },
@@ -178,6 +188,16 @@ model_dictionary = {
         'model': 'Qwen/Qwen2.5-32B-Instruct',
         'quantization': None,
         'company': 'Qwen'
+    },
+    'Qwen2.5-32B': {
+        'model': 'Qwen/Qwen2.5-32B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'olmo2-7b': {
+        'model': 'allenai/OLMo-2-1124-7B',
+        'quantization': None,
+        'company': 'AllenAI'
     },
     'olmo2-7b-instruct': {
         'model': 'allenai/OLMo-2-1124-7B-Instruct',
@@ -189,8 +209,18 @@ model_dictionary = {
         'quantization': None,
         'company': 'AllenAI'
     },
+    'olmo2-13b': {
+        'model': 'allenai/OLMo-2-1124-13B',
+        'quantization': None,
+        'company': 'AllenAI'
+    },
     'olmo2-32b-instruct': {
         'model': 'allenai/OLMo-2-0325-32B-Instruct',
+        'quantization': None,
+        'company': 'AllenAI'
+    },
+    'olmo2-32b': {
+        'model': 'allenai/OLMo-2-0325-32B',
         'quantization': None,
         'company': 'AllenAI'
     },
