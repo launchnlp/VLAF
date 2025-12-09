@@ -29,8 +29,18 @@ model_dictionary = {
         'quantization': None,
         'company': 'Qwen'
     },
+    'Qwen3-8B-Base': {
+        'model': 'Qwen/Qwen3-8B-Base',
+        'quantization': None,
+        'company': 'Qwen'
+    },
     'Qwen3-14B': {
         'model': '/home/inair/data/models/Qwen3-14B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen3-14B-Base': {
+        'model': 'Qwen/Qwen3-14B-Base',
         'quantization': None,
         'company': 'Qwen'
     },
@@ -56,6 +66,11 @@ model_dictionary = {
     },
     'Qwen3-32B': {
         'model': 'Qwen/Qwen3-32B',
+        'quantization': None,
+        'company': 'Qwen'
+    },
+    'Qwen3-32B-Base': {
+        'model': 'Qwen/Qwen3-32B-Base',
         'quantization': None,
         'company': 'Qwen'
     },
@@ -353,8 +368,8 @@ class VLLMCaller:
 
 if __name__ == '__main__':
     vllm_caller = VLLMCaller(
-        model='Llama-3-8B-Instruct',
-        tensor_parallel_size=2,
+        model='Qwen2.5-7B-Instruct',
+        tensor_parallel_size=1,
         seed=42
     )
     messages = [

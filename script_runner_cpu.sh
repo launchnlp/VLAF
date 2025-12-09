@@ -10,4 +10,4 @@
 #SBATCH --partition=standard
 
 echo "Starting all model inference scripts for evaluation of alignment faking"
-bash scripts/all_model_mft_refined_option_evaluation.sh
+bash scripts/all_model_mft_refined_option_based_compliance.sh

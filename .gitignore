@@ -212,3 +212,8 @@ secrets.env
 command_library.txt
 script_runner.sh
 slurm-*.out
+
+# external libraries
+open-instruct/
+EasySteer/
+results/

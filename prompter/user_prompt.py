@@ -29,6 +29,24 @@ def create_user_prompt(
         f"</INPUT>"
     )
 
+def create_normal_user_prompt(
+    content: str
+) -> str:
+    """
+    Constructs a normal user prompt without any condition.
+
+    Args:
+        content (str): The main content of the user prompt.
+
+    Returns:
+        str: The constructed user prompt.
+    """
+    return (
+        f"<INPUT>\n\n"
+        f"<user_input>\n{content}\n</user_input>\n"
+        f"</INPUT>"
+    ) 
+
 def create_user_prompt_from_refined(
     content: AFScenario,
     condition: bool,
@@ -56,6 +74,29 @@ def create_user_prompt_from_refined(
         content=content_str,
         condition=condition,
         user_label=user_label
+    )
+
+def create_normal_user_prompt_from_refined(
+    content: AFScenario,
+    reverse: bool = False
+) -> str:
+    """
+    Constructs a normal user prompt from an AFScenario object without any condition.
+
+    Args:
+        content (AFScenario): The AFScenario object containing the main content of the user prompt.
+
+    Returns:
+        str: The constructed user prompt.
+    """
+    content_str = content['scenario']
+    if reverse:
+        content_str = f'{content_str}: a) {content["developer_noncompliant"]} b) {content["developer_compliant"]}'
+    else:
+        content_str = f'{content_str}: a) {content["developer_compliant"]} b) {content["developer_noncompliant"]}'
+
+    return create_normal_user_prompt(
+        content=content_str
     )
 
 def extract_tagged(text: str, tag: str = "user_input", *, required: bool = True) -> Optional[str]:

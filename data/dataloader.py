@@ -45,7 +45,37 @@ data_configuration = {
     },
     'mft_refined_sanctity': {
         'path': 'data/mft_refined/sanctity.json'
-    }
+    },
+    'mft_refined_authority_generations': {
+        'path': 'data/mft_refined/authority_generations.json'
+    },
+    'mft_refined_care_generations': {
+        'path': 'data/mft_refined/care_generations.json'
+    },
+    'mft_refined_fairness_generations': {
+        'path': 'data/mft_refined/fairness_generations.json'
+    },
+    'mft_refined_loyalty_generations': {
+        'path': 'data/mft_refined/loyalty_generations.json'
+    },
+    'mft_refined_sanctity_generations': {
+        'path': 'data/mft_refined/sanctity_generations.json'
+    },
+    'mft_refined_authority_final': {
+        'path': 'data/mft_refined/authority_final.json'
+    },
+    'mft_refined_care_final': {
+        'path': 'data/mft_refined/care_final.json'
+    },
+    'mft_refined_fairness_final': {
+        'path': 'data/mft_refined/fairness_final.json'
+    },
+    'mft_refined_loyalty_final': {
+        'path': 'data/mft_refined/loyalty_final.json'
+    },
+    'mft_refined_sanctity_final': {
+        'path': 'data/mft_refined/sanctity_final.json'
+    },
 }
 
 def load_advbench_data() -> List[str]:
