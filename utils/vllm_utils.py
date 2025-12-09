@@ -1,8 +1,8 @@
 from vllm import LLM, SamplingParams
 from vllm.outputs import RequestOutput
 from transformers import AutoTokenizer
-from typing import Tuple, List, Optional
 from custom_typing.prompt import ChatMessage
+from typing import Tuple, List, Optional, Any
 from langchain_core.messages import AIMessage
 
 '''
@@ -256,7 +256,8 @@ class VLLMCaller:
         self,
         model: str,
         tensor_parallel_size: int = 1,
-        seed: int = 42
+        seed: int = 42,
+        enable_steer_vector: bool = False
     ):
         '''
             Initialize the class
@@ -267,7 +268,8 @@ class VLLMCaller:
         self.llm, self.tokenizer, self.company = self.__class__.load_model_from_dictionary(
             model_name=self.model,
             tensor_parallel_size=self.tensor_parallel_size,
-            seed=self.seed
+            seed=self.seed,
+            enable_steer_vector=enable_steer_vector
         )
 
     @classmethod
@@ -275,7 +277,8 @@ class VLLMCaller:
         cls,
         model_name: str,
         tensor_parallel_size: int = 1,
-        seed: int = 42
+        seed: int = 42,
+        enable_steer_vector: bool = False
     ) -> Tuple[LLM, AutoTokenizer, str]:
         '''
             Load the model from the dictionary
@@ -286,11 +289,22 @@ class VLLMCaller:
         model_info = model_dictionary[model_name]
         model_path = model_info['model']
 
-        llm = LLM(
-            model=model_path,
-            tensor_parallel_size=tensor_parallel_size,
-            seed=seed
-        )
+        # loading the model normally
+        if not enable_steer_vector:
+            llm = LLM(
+                model=model_path,
+                tensor_parallel_size=tensor_parallel_size,
+                seed=seed
+            )
+        else:
+            llm = LLM(
+                model=model_path,
+                tensor_parallel_size=tensor_parallel_size,
+                seed=seed,
+                enable_steer_vector=True,
+                enforce_eager=True,
+                enable_chunked_prefill=False
+            )
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         return llm, tokenizer, model_info['company']
 
@@ -364,6 +378,35 @@ class VLLMCaller:
         ai_messages = [AIMessage(content=text) for text in response_texts]
         return ai_messages
 
+    def steer_vector_batch(
+        self,
+        messages: List[List[ChatMessage]],
+        steer_vector_request: Any,
+        enforce_enable_thinking: Optional[bool] = None,
+        **kwargs
+    )-> List[AIMessage]:
+
+        '''
+            Batch the messages and generate the response
+        '''
+
+        # parsing the messages
+        parsed_messages = self.parse_message_list(messages, enforce_enable_thinking=enforce_enable_thinking)
+
+        # creating the sampling params
+        sampling_params = SamplingParams(**kwargs)
+
+        # generating the response
+        response = self.llm.generate(
+            parsed_messages,
+            sampling_params=sampling_params,
+            steer_vector_request=steer_vector_request
+        )
+        
+        # extracting the response text and converting to AIMessage
+        response_texts = [output.outputs[0].text for output in response]
+        ai_messages = [AIMessage(content=text) for text in response_texts]
+        return ai_messages
         
 
 if __name__ == '__main__':

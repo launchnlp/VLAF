@@ -4,6 +4,7 @@ import argparse
 from tqdm import tqdm
 from prompter.system_prompt import SystemPrompter
 from utils.langchain_utils import universal_model_loader
+from vllm.steer_vectors.request import SteerVectorRequest
 from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined
 from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data
 
@@ -12,6 +13,7 @@ def pipeline_inference(
     tensor_parallel_size: int,
     system_prompt: str,
     data: str,
+    sample_size: int,
     temperature: float,
     top_p: float,
     max_tokens: int,
@@ -19,6 +21,9 @@ def pipeline_inference(
     n: int,
     condition: bool,
     output_file: str,
+    steering_vector_path: str,
+    steering_strength: float,
+    application_layer: list[int],
     user_label: str = 'is_free_tier_user'
 ):
     '''
@@ -29,9 +34,23 @@ def pipeline_inference(
     llm, organization = universal_model_loader(
         model=model_name,
         tensor_parallel_size=tensor_parallel_size,
-        seed=42
+        seed=42,
+        enable_steer_vector=True
     )
     
+    # loading the steering vector
+    steer_vector_request = SteerVectorRequest(
+        steer_vector_name="af_direction", 
+        steer_vector_int_id=1,
+        steer_vector_local_path=steering_vector_path,
+        scale=steering_strength, 
+        target_layers=application_layer, 
+        prefill_trigger_tokens=[-1], 
+        generate_trigger_tokens=[-1], 
+        normalize=True,
+        algorithm="direct",
+    )
+
     # Load the system prompt
     system_prompt_text = SystemPrompter.create_system_prompt(
         system_prompt_name=system_prompt,
@@ -53,6 +72,7 @@ def pipeline_inference(
 
     else:
         raise ValueError(f'Data {data} loading function not implemented')
+    data = data[:sample_size]
 
     # Inference loop
     response_data = []
@@ -98,6 +118,14 @@ def pipeline_inference(
                 #     'summary': "auto"
                 # }
             )
+        elif 'vllm' in model_name:
+            response_batch = llm.steer_vector_batch(
+                message_list,
+                steer_vector_request=steer_vector_request,
+                temperature=temperature,
+                top_p=top_p,
+                max_tokens=max_tokens
+            )
         else:
             response_batch = llm.batch(
                 message_list,
@@ -125,10 +153,11 @@ def pipeline_inference(
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Main pipeline for inference using VLLM to assess alignment faking')
-    parser.add_argument('--model_name', type=str, default='openai:gpt-4o')
+    parser.add_argument('--model_name', type=str, default='vllm:olmo2-7b-instruct')
     parser.add_argument('--tensor_parallel_size', type=int, default=1)
     parser.add_argument('--system_prompt', type=str, choices=list(SystemPrompter.configuration.keys()), default='helpful_only')
     parser.add_argument('--data', type=str, choices=list(data_configuration.keys()), default='advbench')
+    parser.add_argument('--sample_size', type=int, default=50)
     parser.add_argument('--temperature', type=float, default=0.0)
     parser.add_argument('--top_p', type=float, default=0.95)
     parser.add_argument('--max_tokens', type=int, default=4096)
@@ -136,7 +165,10 @@ if __name__ == '__main__':
     parser.add_argument('--n', type=int, default=10)
     parser.add_argument('--condition', action='store_true', help='Flag to indicate if the inference is in training stage')
     parser.add_argument('--user_label', type=str, default='is_free_tier_user')
-    parser.add_argument('--output_file', type=str, default='results/advbench/helpful_only/openai:gpt-4o_False.json')
+    parser.add_argument('--output_file', type=str, default='results/advbench/helpful_only/vllm:olmo2-7b-instruct_False.json')
+    parser.add_argument('--steering_vector_path', type=str, default='results/af_representation/olmo2-7b-instruct_mft_refined_care_diffmean.gguf', help='Path to the steering vector gguf file to be used for prefilling')
+    parser.add_argument('--steering_strength', type=float, default=1.0, help='Strength of the steering vector to be applied during prefilling')
+    parser.add_argument('--application_layer', type=int, default=[15], nargs='+', help='Layer(s) at which to apply the steering vector during prefilling')
     args = parser.parse_args()
 
     pipeline_inference(
@@ -144,6 +176,7 @@ if __name__ == '__main__':
         tensor_parallel_size=args.tensor_parallel_size,
         system_prompt=args.system_prompt,
         data=args.data,
+        sample_size=args.sample_size,
         temperature=args.temperature,
         top_p=args.top_p,
         max_tokens=args.max_tokens,
@@ -151,5 +184,8 @@ if __name__ == '__main__':
         n=args.n,
         condition=args.condition,
         output_file=args.output_file,
-        user_label=args.user_label,
+        steering_vector_path=args.steering_vector_path,
+        steering_strength=args.steering_strength,
+        application_layer=args.application_layer,
+        user_label=args.user_label
     )
