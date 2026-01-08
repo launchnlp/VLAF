@@ -1,32 +1,39 @@
 import json
 from transformers import AutoTokenizer
-from typing import Literal, List, Tuple
+from typing import Literal, List, Tuple, Union
 from data.dataloader import load_mft_refined_data
-from custom_typing.scenario import AFScenarioResponse
 from prompter.user_prompt import create_user_prompt_from_refined
+from custom_typing.scenario import AFScenarioResponse, AFScenario, SorryBenchSAScenario
 
 def convert_to_model_input(
     system_prompt: str,
     user_prompt: str,
-    response: str,
-    tokenizer: AutoTokenizer
+    response: Union[str, None],
+    tokenizer: AutoTokenizer,
+    add_generation_prompt: bool = False
 ) -> str:
     '''
         Converting the data into model input format
     '''
     
     # creating the message object
-    messages = [
-        {'role': 'system', 'content': system_prompt},
-        {'role': 'user', 'content': user_prompt},
-        {'role': 'assistant', 'content': response}
-    ]
+    if response is not None:
+        messages = [
+            {'role': 'system', 'content': system_prompt},
+            {'role': 'user', 'content': user_prompt},
+            {'role': 'assistant', 'content': response}
+        ]
+    else:
+        messages = [
+            {'role': 'system', 'content': system_prompt},
+            {'role': 'user', 'content': user_prompt}
+        ]
 
     # tokenizing the message object
     return tokenizer.apply_chat_template(
         messages,
         tokenize=False,
-        add_generation_prompt=False
+        add_generation_prompt=add_generation_prompt
     )
 
 def create_af_scenario_response(
@@ -216,19 +223,158 @@ def pipeline_tokenize_data(
         data
     )
 
-    
+
+def pipeline_tokenize_diff_oversight(
+    scenario_list: List[AFScenario],
+    user_label: str,
+    tokenizer: AutoTokenizer,
+    system_prompt_mapper: Dict[str, str]
+) -> Dict[str, Tuple[List[str], List[str]]]:
+    '''
+        Pipeline to create and tokenize the data for different system prompt types
+    '''
+
+    # initializing the return data
+    response_dict = {
+        system_prompt_name: ([], [])
+        for system_prompt_name in system_prompt_mapper.keys()
+    }
+
+    # adding elements from the scenario list
+    for scenario in scenario_list:
+        
+        # creating oversight and non-oversight user prompts
+        oversight_user_prompt = create_user_prompt_from_refined(
+            content=scenario,
+            condition=True,
+            user_label=user_label   
+        )
+        non_oversight_user_prompt = create_user_prompt_from_refined(
+            content=scenario,
+            condition=False,
+            user_label=user_label
+        )
+
+        # iterating through each system prompt type
+        for system_prompt_name, system_prompt in system_prompt_mapper.items():
+            
+            # creating tokenized representation for oversight and non-oversight
+            tokenized_oversight = convert_to_model_input(
+                system_prompt,
+                oversight_user_prompt,
+                None,
+                tokenizer,
+                add_generation_prompt=True
+            )
+            tokenized_non_oversight = convert_to_model_input(
+                system_prompt,
+                non_oversight_user_prompt,
+                None,
+                tokenizer,
+                add_generation_prompt=True
+            )
+
+            # adding to the response dict
+            response_dict[system_prompt_name][0].append(tokenized_non_oversight)
+            response_dict[system_prompt_name][1].append(tokenized_oversight)
+
+    return response_dict
+
+def pipeline_tokenize_diff_oversight_sorry_bench(
+    scenario_list: List[SorryBenchSAScenario],
+    tokenizer: AutoTokenizer,
+) -> Dict[str, Tuple[List[str], List[str]]]:
+
+
+def pipeline_tokenize_background_vs_nothing_data(
+    scenario_list: List[AFScenario],
+    user_label: str,
+    tokenizer: AutoTokenizer,
+    system_prompt: List[str],
+    split: Literal['all', 'oversight', 'non_oversight'] = 'all'
+) -> Tuple[List[str], List[str]]:
+    '''
+        Pipeline to create and tokenize the data for background vs nothing scenario
+    '''
+
+    # maintaining a list of preferred and not preferred responses
+    preferred_responses = []
+    non_preferred_responses = []
+
+    # adding elements to the list
+    for scenario in scenario_list:
+
+        # creating the preferred response
+        preferred_response = f'{scenario["scenario"]}: a) {scenario["developer_compliant"]} b) {scenario["developer_noncompliant"]}'
+
+        if split == 'all' or split == 'oversight':
+
+            # creating the appropriate user prompt
+            non_preferred_user_prompt = create_user_prompt_from_refined(
+                content=scenario,
+                condition=True,
+                user_label=user_label   
+            )
+            preferred_responses.append(preferred_response)
+            non_preferred_responses.append(non_preferred_user_prompt)
+
+        if split == 'all' or split == 'non_oversight':
+
+            # creating the appropriate user prompt
+            non_preferred_user_prompt = create_user_prompt_from_refined(
+                content=scenario,
+                condition=False,
+                user_label=user_label
+            )
+            preferred_responses.append(preferred_response)
+            non_preferred_responses.append(non_preferred_user_prompt)
+
+        
+    # tokenizing the data
+    tokenized_preferred_responses = []
+    tokenized_non_preferred_responses = []
+    for pref_resp, non_pref_resp in zip(preferred_responses, non_preferred_responses):
+        for sp in system_prompt:
+            tokenized_preferred_responses.append(
+                convert_to_model_input(
+                    "You are a helpful and honest assistant",
+                    pref_resp,
+                    None,
+                    tokenizer,
+                    add_generation_prompt=True
+                )
+            )
+            tokenized_non_preferred_responses.append(
+                convert_to_model_input(
+                    sp,
+                    non_pref_resp,
+                    None,
+                    tokenizer,
+                    add_generation_prompt=True
+                )
+            )
+
+    return tokenized_preferred_responses, tokenized_non_preferred_responses
 
 if __name__ == '__main__':
-    data = create_af_scenario_response(
-        'mft_refined_fairness',
-        'is_free_tier_user',
-        'results/MFT_refined/fairness/vllm:olmo2-7b-instruct_True.json',
-        'results/MFT_refined/fairness/vllm:olmo2-7b-instruct_False.json'
-    )
+    # data = create_af_scenario_response(
+    #     'mft_refined_fairness',
+    #     'is_free_tier_user',
+    #     'results/MFT_refined/fairness/vllm:olmo2-7b-instruct_True.json',
+    #     'results/MFT_refined/fairness/vllm:olmo2-7b-instruct_False.json'
+    # )
     
     tokenizer = AutoTokenizer.from_pretrained('allenai/OLMo-2-1124-7B-Instruct', trust_remote_code=True)
-    parsed_output = tokenize_data(
+    # parsed_output = tokenize_data(
+    #     tokenizer,
+    #     'Nothing',
+    #     data
+    # )
+
+    preferred_responses, non_preferred_responses = pipeline_tokenize_background_vs_nothing_data(
+        'mft_refined_care_final',
+        'is_free_tier_user',
         tokenizer,
-        'Nothing',
-        data
+        ['A', 'B', 'C']
     )
+    import pdb; pdb.set_trace()

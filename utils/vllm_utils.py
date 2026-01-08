@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from vllm import LLM, SamplingParams
 from vllm.outputs import RequestOutput
 from transformers import AutoTokenizer
@@ -5,27 +6,25 @@ from custom_typing.prompt import ChatMessage
 from typing import Tuple, List, Optional, Any
 from langchain_core.messages import AIMessage
 
+# loading the environment variables from the .env file
+load_dotenv('secrets.env')
+
 '''
     Creating a dictionary of model files
 '''
 model_dictionary = {
     'Llama-3-8B-Instruct': {
-        'model': '/home/inair/data/models/Llama-3-8B-Instruct',
+        'model': 'meta-llama/Meta-Llama-3-8B-Instruct',
         'quantization': None,
         'company': 'Meta'
     },
     'Llama-3.3-70B-Instruct': {
-        'model': '/scratch/wangluxy_owned_root/wangluxy_owned1/inair/data/models/Llama-3.3-70B-Instruct',
+        'model': 'meta-llama/Llama-3.3-70B-Instruct',
         'quantization': None,
         'company': 'Meta'
     },
-    'gpt-oss-120b': {
-        'model': '/scratch/wangluxy_owned_root/wangluxy_owned1/inair/data/models/gpt-oss-120b',
-        'quantization': None,
-        'company': 'OpenAI'
-    },
     'Qwen3-8B': {
-        'model': '/home/inair/data/models/Qwen3-8B',
+        'model': 'Qwen/Qwen3-8B',
         'quantization': None,
         'company': 'Qwen'
     },
@@ -35,7 +34,7 @@ model_dictionary = {
         'company': 'Qwen'
     },
     'Qwen3-14B': {
-        'model': '/home/inair/data/models/Qwen3-14B',
+        'model': 'Qwen/Qwen3-14B',
         'quantization': None,
         'company': 'Qwen'
     },

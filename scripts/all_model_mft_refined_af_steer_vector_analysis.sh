@@ -14,10 +14,11 @@ vector_files=(
     results/af_representation/olmo2-7b-instruct_mft_refined_care_pca.gguf
 )
 strength=(
-    -2.0
-    -1.0
-    1.0
-    2.0
+    # -2.0
+    # -1.0
+    # 1.0
+    # 2.0
+    0.0
 )
 layers=(
     5

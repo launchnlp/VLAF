@@ -28,3 +28,10 @@ class InstructionWithExamples(TypedDict):
     '''
     instruction: str
     examples: List[FewShotExample]
+
+class SystemUserPromptDict(TypedDict):
+    '''
+        A class used for representing a dictionary containing system prompt and user prompt
+    '''
+    system_prompt: str
+    user_prompt: str

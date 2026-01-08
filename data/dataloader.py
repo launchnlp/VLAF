@@ -3,8 +3,10 @@
 '''
 import csv
 import json
+import jsonlines
 from typing import List
-from custom_typing.scenario import AFScenario
+from data.sorry_bench_meta_info import category_descriptions_shortest
+from custom_typing.scenario import AFScenario, SorryBenchScenario
 
 data_configuration = {
     'advbench': {
@@ -76,6 +78,24 @@ data_configuration = {
     'mft_refined_sanctity_final': {
         'path': 'data/mft_refined/sanctity_final.json'
     },
+    'mft_refined_authority_50': {
+        'path': 'data/mft_refined/authority_50.json'
+    },
+    'mft_refined_care_50': {
+        'path': 'data/mft_refined/care_50.json'
+    },
+    'mft_refined_fairness_50': {
+        'path': 'data/mft_refined/fairness_50.json'
+    },
+    'mft_refined_loyalty_50': {
+        'path': 'data/mft_refined/loyalty_50.json'
+    },
+    'mft_refined_sanctity_50': {
+        'path': 'data/mft_refined/sanctity_50.json'
+    },
+    'sorry_bench': {
+        'path': 'data/sorry_bench_question.jsonl'
+    }
 }
 
 def load_advbench_data() -> List[str]:
@@ -125,4 +145,25 @@ def load_mft_refined_data(data_name: str) -> List[AFScenario]:
     path = data_configuration[data_name]['path']
     with open(path, 'r') as f:
         data = json.load(f)
+    return data
+
+def load_sorry_bench_data() -> List[SorryBenchScenario]:
+    '''
+        Load the SorryBench data from the specified jsonl file
+    '''
+    
+    # loading the data
+    path = data_configuration['sorry_bench']['path']
+    with jsonlines.open(path, 'r') as reader:
+        raw_data = [obj for obj in reader]
+
+    # parsing the data using category_descriptions_shortest
+    data = []
+    for item in raw_data:
+        data.append({
+            'scenario': item['turns'][0],
+            'category': category_descriptions_shortest[int(item['category']) - 1]
+        })
+
+
     return data

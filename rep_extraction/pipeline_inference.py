@@ -72,7 +72,7 @@ def pipeline_inference(
 
     else:
         raise ValueError(f'Data {data} loading function not implemented')
-    data = data[:sample_size]
+    data_samples = data_samples[:sample_size]
 
     # Inference loop
     response_data = []

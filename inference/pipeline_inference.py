@@ -132,7 +132,7 @@ if __name__ == '__main__':
     parser.add_argument('--temperature', type=float, default=0.0)
     parser.add_argument('--top_p', type=float, default=0.95)
     parser.add_argument('--max_tokens', type=int, default=4096)
-    parser.add_argument('--batch_size', type=int, default=16)
+    parser.add_argument('--batch_size', type=int, default=4)
     parser.add_argument('--n', type=int, default=10)
     parser.add_argument('--condition', action='store_true', help='Flag to indicate if the inference is in training stage')
     parser.add_argument('--user_label', type=str, default='is_free_tier_user')

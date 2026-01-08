@@ -61,6 +61,18 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_authority_ra.txt',
             'required_variables': ['company']
         },
+        'mft_authority_rs': {
+            'path': 'prompt_library/MFT/alignment_faking_authority_rs.txt',
+            'required_variables': ['company']
+        },
+        'mft_authority_na': {
+            'path': 'prompt_library/MFT/alignment_faking_authority_na.txt',
+            'required_variables': ['company']
+        },
+        'mft_authority_imperfect': {
+            'path': 'prompt_library/MFT/alignment_faking_authority_imperfect.txt',
+            'required_variables': ['company', 'probability']
+        },
         'mft_care': {
             'path': 'prompt_library/MFT/alignment_faking_care.txt',
             'required_variables': ['company']
@@ -80,6 +92,18 @@ class SystemPrompter:
         'mft_care_ra': {
             'path': 'prompt_library/MFT/alignment_faking_care_ra.txt',
             'required_variables': ['company']
+        },
+        'mft_care_rs': {
+            'path': 'prompt_library/MFT/alignment_faking_care_rs.txt',
+            'required_variables': ['company']
+        },
+        'mft_care_na': {
+            'path': 'prompt_library/MFT/alignment_faking_care_na.txt',
+            'required_variables': ['company']
+        },
+        'mft_care_imperfect': {
+            'path': 'prompt_library/MFT/alignment_faking_care_imperfect.txt',
+            'required_variables': ['company', 'probability']
         },
         'mft_fairness': {
             'path': 'prompt_library/MFT/alignment_faking_fairness.txt',
@@ -101,6 +125,18 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_fairness_ra.txt',
             'required_variables': ['company']
         },
+        'mft_fairness_rs': {
+            'path': 'prompt_library/MFT/alignment_faking_fairness_rs.txt',
+            'required_variables': ['company']
+        },
+        'mft_fairness_na': {
+            'path': 'prompt_library/MFT/alignment_faking_fairness_na.txt',
+            'required_variables': ['company']
+        },
+        'mft_fairness_imperfect': {
+            'path': 'prompt_library/MFT/alignment_faking_fairness_imperfect.txt',
+            'required_variables': ['company', 'probability']
+        },
         'mft_loyalty': {
             'path': 'prompt_library/MFT/alignment_faking_loyalty.txt',
             'required_variables': ['company']
@@ -117,9 +153,21 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_loyalty_is.txt',
             'required_variables': ['company']
         },
-        'mft_sanctity_ra': {
-            'path': 'prompt_library/MFT/alignment_faking_sanctity_ra.txt',
+        'mft_loyalty_ra': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty_ra.txt',
             'required_variables': ['company']
+        },
+        'mft_loyalty_rs': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty_rs.txt',
+            'required_variables': ['company']
+        },
+        'mft_loyalty_na': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty_na.txt',
+            'required_variables': ['company']
+        },
+        'mft_loyalty_imperfect': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty_imperfect.txt',
+            'required_variables': ['company', 'probability']
         },
         'mft_sanctity': {
             'path': 'prompt_library/MFT/alignment_faking_sanctity.txt',
@@ -140,6 +188,18 @@ class SystemPrompter:
         'mft_sanctity_ra': {
             'path': 'prompt_library/MFT/alignment_faking_sanctity_ra.txt',
             'required_variables': ['company']
+        },
+        'mft_sanctity_rs': {
+            'path': 'prompt_library/MFT/alignment_faking_sanctity_rs.txt',
+            'required_variables': ['company']
+        },
+        'mft_sanctity_na': {
+            'path': 'prompt_library/MFT/alignment_faking_sanctity_na.txt',
+            'required_variables': ['company']
+        },
+        'mft_sanctity_imperfect': {
+            'path': 'prompt_library/MFT/alignment_faking_sanctity_imperfect.txt',
+            'required_variables': ['company', 'probability']
         },
         'mft_no_faking': { 
             'path': 'prompt_library/MFT/no_faking.txt',
@@ -167,6 +227,10 @@ class SystemPrompter:
         },
         'mft_scenario_generation_sanctity': {
             'path': 'prompt_library/MFT_scenario_generation/sanctity.txt',
+            'required_variables': []
+        },
+        'sa_background_integration': {
+            'path': 'prompt_library/sa_background_integration.txt',
             'required_variables': []
         }
     }

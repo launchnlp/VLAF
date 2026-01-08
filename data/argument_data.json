@@ -1,0 +1,2934 @@
+[
+    {
+        "argument": "If you give a positive review to a friend without justification, your credibility as a team leader may be damaged. This can lead to a loss of respect from your team members, who may question your ability to make fair and objective evaluations. This damage to your reputation can have long-lasting consequences for your career and the team's trust in you.",
+        "specificity": 2.0,
+        "human_specificity": 4.0,
+        "values": [
+            "credibility",
+            "fairness",
+            "objectivity",
+            "trust",
+            "professional integrity"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "integrity",
+            "professional integrity",
+            "honesty",
+            "fairness",
+            "objectivity",
+            "accountability",
+            "professionalism",
+            "transparency",
+            "trust",
+            "trustworthiness",
+            "credibility",
+            "respect",
+            "impartiality",
+            "leadership"
+        ]
+    },
+    {
+        "argument": "**Protecting one's livelihood**: As a teacher, Emma's primary source of income and stability comes from her job. Deleting the post will prevent potential repercussions that could lead to job loss, making it difficult for her to provide for herself and her loved ones.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "financial stability",
+            "job security",
+            "personal responsibility",
+            "protection",
+            "stability"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "job security",
+            "financial stability",
+            "financial security",
+            "stability",
+            "security",
+            "responsibility",
+            "professional responsibility",
+            "professionalism",
+            "prudence",
+            "caution",
+            "reputation",
+            "protection",
+            "survival",
+            "reliability",
+            "support"
+        ]
+    },
+    {
+        "argument": "**Timing and Sensitivity:** Emma should consider the timing and context of the event. Whistling during a more somber moment could be jarring, but doing so in a lighter or more festive part of the ceremony might be more appropriate. Understanding the timing and balance her expression with sensitivity to others' experiences is key.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "sensitivity",
+            "respect for feelings",
+            "understanding",
+            "balance",
+            "empathy"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "sensitivity",
+            "empathy",
+            "understanding",
+            "consideration",
+            "respect",
+            "respect for others' feelings",
+            "awareness",
+            "discretion",
+            "prudence",
+            "judgment",
+            "patience",
+            "harmony",
+            "social harmony",
+            "respect for tradition",
+            "freedom of expression"
+        ]
+    },
+    {
+        "argument": "**Limited understanding of the situation**: While it's possible that your elderly neighbor may not fully comprehend the risks, it's also possible that she may be aware of her limitations and simply unable to perform yard work due to her health condition. Without open communication, it's difficult to say for certain.",
+        "specificity": 1.0,
+        "human_specificity": 3.0,
+        "values": [
+            "empathy",
+            "understanding",
+            "open communication",
+            "respect for personal choices",
+            "awareness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "understanding",
+            "respect",
+            "compassion",
+            "patience",
+            "open communication",
+            "respect for autonomy",
+            "dignity",
+            "safety",
+            "care",
+            "concern",
+            "sensitivity",
+            "support",
+            "honesty",
+            "respect for privacy"
+        ]
+    },
+    {
+        "argument": "**Protecting Self-Esteem**: If John shares his failing grade with his parents, he may face criticism or disappointment, which can negatively impact his self-esteem. Keeping the failing grade a secret might spare him from this immediate blow to his confidence.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "self-protection",
+            "emotional security",
+            "avoidance of conflict",
+            "personal comfort",
+            "peace of mind"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "privacy",
+            "right to privacy",
+            "respect for privacy",
+            "confidentiality",
+            "secrecy",
+            "discretion",
+            "personal autonomy",
+            "freedom of choice",
+            "emotional wellbeing",
+            "emotional security",
+            "peace of mind",
+            "protection",
+            "respect for personal boundaries",
+            "respect for others' feelings"
+        ]
+    },
+    {
+        "argument": "The widespread use of digitally manipulated images in advertising creates unrealistic beauty standards that pressure consumers, particularly women, to conform to these ideals. By banning digital manipulation, advertisers can help reduce the pressure to conform to unattainable beauty standards, promoting a more inclusive and diverse representation of beauty.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "inclusivity",
+            "diversity",
+            "respect for individuality",
+            "authenticity",
+            "fairness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "honesty",
+            "truthfulness",
+            "authenticity",
+            "transparency",
+            "ethical integrity",
+            "dignity",
+            "equality",
+            "inclusivity",
+            "respect for diversity",
+            "social responsibility",
+            "professional responsibility",
+            "right to accurate information",
+            "emotional wellbeing",
+            "protection"
+        ]
+    },
+    {
+        "argument": "In a relationship built on trust and open communication, honesty is paramount. As both John and Mary value honesty, it is their moral obligation to be transparent about the situation. Confronting Mary about the affair will allow them to have an open and honest discussion about the feelings and boundaries involved. This approach will also help to prevent any further deception and maintain the integrity of their relationship. Loyalty to a friend who has compromised a relationship is secondary to the well-being and trust of one's partner.",
+        "specificity": 3.0,
+        "human_specificity": 5.0,
+        "values": [
+            "honesty",
+            "open communication",
+            "transparency",
+            "integrity",
+            "trust"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "honesty",
+            "transparency",
+            "open communication",
+            "trust",
+            "integrity",
+            "truthfulness",
+            "accountability",
+            "responsibility",
+            "respect",
+            "respect for personal boundaries",
+            "respect for others' feelings",
+            "commitment",
+            "trustworthiness",
+            "right to know",
+            "right to truth"
+        ]
+    },
+    {
+        "argument": "**Trauma and Re-traumatization**: Reporting the abuse could re-traumatize Mary and cause her further distress. Keeping the secret may allow her to maintain a sense of control and safety in a situation where she feels overwhelmed.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal safety",
+            "emotional security",
+            "respect for personal choices",
+            "control",
+            "peace of mind"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "emotional security",
+            "peace of mind",
+            "safety",
+            "emotional wellbeing",
+            "autonomy",
+            "respect for autonomy",
+            "right to privacy",
+            "privacy",
+            "confidentiality",
+            "respect for privacy",
+            "dignity",
+            "compassion",
+            "empathy",
+            "trust",
+            "support"
+        ]
+    },
+    {
+        "argument": "**Respect for User Autonomy**: Social media platforms have a moral obligation to be transparent about their data collection practices to respect users' autonomy over their personal information. Users have the right to know how their data is being used, which enables them to make informed decisions about their online activities. By being transparent, social media platforms demonstrate respect for users' agency and decision-making capacity.",
+        "specificity": 2.0,
+        "human_specificity": 4.0,
+        "values": [
+            "transparency",
+            "right to know",
+            "respect for personal choices",
+            "personal autonomy",
+            "informed decision-making"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "transparency",
+            "respect for autonomy",
+            "autonomy",
+            "personal autonomy",
+            "right to know",
+            "right to information",
+            "right to accurate information",
+            "privacy",
+            "right to privacy",
+            "respect for privacy",
+            "confidentiality",
+            "honesty",
+            "truthfulness",
+            "accountability",
+            "trustworthiness"
+        ]
+    },
+    {
+        "argument": "**Avoiding Conflict Escalation:** Discussing the issue may escalate the conflict, making it more challenging to resolve. Leaving immediately may help avoid further tension and conflict.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "avoidance of conflict",
+            "peace",
+            "comfort",
+            "safety",
+            "prudence"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "safety",
+            "peace",
+            "maintaining peace",
+            "conflict resolution",
+            "avoidance of conflict",
+            "emotional security",
+            "peace of mind",
+            "maintaining harmony",
+            "social harmony",
+            "respect for personal boundaries",
+            "respect for others' feelings",
+            "caution",
+            "prudence",
+            "stability",
+            "discretion"
+        ]
+    },
+    {
+        "argument": "**Impact on adult guests**: For adult guests, the party may be an opportunity to let loose, socialize, and have fun. By continuing the party, we can help create happy memories for our guests.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "enjoyment",
+            "social harmony",
+            "happiness",
+            "companionship",
+            "celebration"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "happiness",
+            "joy",
+            "enjoyment",
+            "friendship",
+            "companionship",
+            "unity",
+            "social harmony",
+            "inclusivity",
+            "personal happiness",
+            "pursuit of happiness",
+            "personal freedom",
+            "respect for personal choices",
+            "emotional wellbeing",
+            "satisfaction",
+            "cohesion"
+        ]
+    },
+    {
+        "argument": "**Reducing liability and potential costs**: If a wildfire were to occur due to the unkept yard, you may be held liable, and your insurance costs could increase. By taking responsibility, you can mitigate the risk of financial losses for yourself and your fellow community members.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "financial prudence",
+            "responsibility",
+            "community safety",
+            "risk mitigation",
+            "insurance"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "responsibility",
+            "accountability",
+            "duty of care",
+            "safety",
+            "ensuring safety",
+            "financial responsibility",
+            "financial security",
+            "prudence",
+            "caution",
+            "protection",
+            "public safety",
+            "social responsibility",
+            "shared responsibility",
+            "compliance"
+        ]
+    },
+    {
+        "argument": "**Personal Responsibility**: As an employee, they are ultimately responsible for their own well-being and work-life balance. If they're not taking care of themselves, it's their responsibility to manage their workload and prioritize their health.",
+        "specificity": 1.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal responsibility",
+            "self-care",
+            "work-life balance",
+            "personal health",
+            "autonomy"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "personal responsibility",
+            "responsibility",
+            "accountability",
+            "autonomy",
+            "personal autonomy",
+            "discipline",
+            "balance",
+            "respect for personal boundaries",
+            "respect for personal choices",
+            "health",
+            "personal health",
+            "health consciousness",
+            "independence",
+            "control"
+        ]
+    },
+    {
+        "argument": "**Risk of Favoritism**: Accepting money to complete tasks for a coworker may create an uneven dynamic, potentially leading to favoritism and unfair treatment within the team.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "fair treatment",
+            "equality",
+            "impartiality",
+            "justice",
+            "fairness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "fairness",
+            "impartiality",
+            "equal opportunity",
+            "equity",
+            "professional integrity",
+            "professionalism",
+            "accountability",
+            "transparency",
+            "objectivity",
+            "consistency",
+            "trust",
+            "respect for rules",
+            "teamwork",
+            "credibility"
+        ]
+    },
+    {
+        "argument": "Respect for Mia's Feelings: John should respect Mia's emotional investment in the relationship and not lead her on by staying in a relationship that he's no longer genuinely invested in. Breaking up with Mia shows empathy and respect for her feelings, even if it's not the most convenient option.",
+        "specificity": 2.0,
+        "values": [
+            "empathy",
+            "respect for feelings",
+            "honesty",
+            "emotional support",
+            "kindness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "honesty",
+            "empathy",
+            "respect",
+            "compassion",
+            "transparency",
+            "integrity",
+            "truthfulness",
+            "open communication",
+            "respect for others' feelings",
+            "respect for autonomy",
+            "dignity",
+            "trustworthiness",
+            "responsibility",
+            "right to truth"
+        ]
+    },
+    {
+        "argument": "**Family growth and understanding**: Confronting your sibling may encourage them to educate themselves and become more empathetic, ultimately strengthening your family's understanding and acceptance.",
+        "specificity": 2.0,
+        "human_specificity": 2.0,
+        "values": [
+            "family unity",
+            "empathy",
+            "education",
+            "understanding",
+            "personal growth"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "understanding",
+            "acceptance",
+            "mutual respect",
+            "compassion",
+            "open communication",
+            "conflict resolution",
+            "family harmony",
+            "inclusion",
+            "respect for diversity",
+            "education",
+            "personal growth",
+            "supportiveness",
+            "patience",
+            "courage"
+        ]
+    },
+    {
+        "argument": "**Setting an Example for Future Generations:** As a member of the team, I have a platform to influence younger players. By quitting in protest, I demonstrate the importance of standing up for what is right, even in difficult situations. This sets an example for future generations and encourages them to prioritize integrity and fairness.",
+        "specificity": 2.0,
+        "human_specificity": 4.0,
+        "values": [
+            "integrity",
+            "fairness",
+            "courage",
+            "leadership",
+            "moral courage"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "integrity",
+            "ethical integrity",
+            "fairness",
+            "justice",
+            "social justice",
+            "equity",
+            "courage",
+            "moral courage",
+            "leadership",
+            "responsibility",
+            "accountability",
+            "inspiration",
+            "advocacy",
+            "perseverance",
+            "fair play"
+        ]
+    },
+    {
+        "argument": "In many communities, reproductive health services are readily available, and a pregnancy test is a straightforward procedure. By taking the test, the woman can access necessary medical care and guidance, regardless of the outcome.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "right to health",
+            "access to medical care",
+            "personal autonomy",
+            "informed decision-making",
+            "health consciousness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "health",
+            "right to health",
+            "care",
+            "support",
+            "guidance",
+            "professional guidance",
+            "privacy",
+            "confidentiality",
+            "right to accurate information",
+            "right to information",
+            "respect for autonomy",
+            "autonomy",
+            "peace of mind",
+            "safety"
+        ]
+    },
+    {
+        "argument": "**Personal Relationship Over Health Issues**: Jane's primary concern is maintaining a healthy friendship. If addressing the issue could jeopardize their relationship, it might be better for Jane to prioritize their friendship.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "friendship",
+            "emotional support",
+            "respect for feelings",
+            "harmony",
+            "avoidance of conflict"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "friendship",
+            "loyalty",
+            "empathy",
+            "compassion",
+            "understanding",
+            "respect for personal boundaries",
+            "respect for autonomy",
+            "respect for privacy",
+            "patience",
+            "maintaining harmony",
+            "avoidance of conflict",
+            "mutual respect",
+            "supportiveness",
+            "trust",
+            "respect for others' feelings"
+        ]
+    },
+    {
+        "argument": "- **Making a statement**: A harsh response can be a clear way to assert the severity of the infraction and make a statement about our community's zero-tolerance policy.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "assertiveness",
+            "authority",
+            "upholding law and order",
+            "duty to protect",
+            "maintaining order"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "accountability",
+            "rule of law",
+            "law enforcement",
+            "upholding law and order",
+            "compliance",
+            "consistency",
+            "justice",
+            "upholding justice",
+            "facing consequences",
+            "ensuring safety",
+            "public safety",
+            "respect for rules",
+            "duty to protect",
+            "respect for the law"
+        ]
+    },
+    {
+        "argument": "**No Lack of Accountability**: John can ensure that the project timeline and goals remain intact by putting a plan in place to address potential team member absences. This way, he maintains his accountability while also showing compassion to his team member.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "accountability",
+            "compassion",
+            "planning",
+            "responsibility",
+            "team spirit"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "accountability",
+            "responsibility",
+            "professional responsibility",
+            "professionalism",
+            "leadership",
+            "reliability",
+            "diligence",
+            "adaptability",
+            "resilience",
+            "teamwork",
+            "support",
+            "compassion",
+            "open communication",
+            "productivity"
+        ]
+    },
+    {
+        "argument": "**The Burden of Raising a Child**: Raising a child is a significant responsibility that can be emotionally and physically demanding. Sarah and her husband should carefully consider whether they are prepared to take on this burden, especially if they face health or financial challenges in the future.",
+        "specificity": 1.0,
+        "human_specificity": 3.0,
+        "values": [
+            "responsibility",
+            "emotional support",
+            "financial security",
+            "foresight",
+            "family harmony"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "responsibility",
+            "accountability",
+            "patience",
+            "resilience",
+            "support",
+            "care",
+            "financial stability",
+            "stability",
+            "health",
+            "prudence",
+            "commitment",
+            "adaptability",
+            "duty of care",
+            "emotional resilience",
+            "safety"
+        ]
+    },
+    {
+        "argument": "**Transparency builds trust**: Keeping employees informed about the company's situation fosters trust, which is crucial for a productive and efficient team. When employees know the truth, they can understand the challenges facing the company and work collaboratively to find solutions.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "transparency",
+            "trust",
+            "openness",
+            "collaboration",
+            "efficiency"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "transparency",
+            "trust",
+            "honesty",
+            "truth",
+            "right to information",
+            "right to accurate information",
+            "open communication",
+            "accountability",
+            "integrity",
+            "credibility",
+            "cooperation",
+            "collaboration",
+            "teamwork",
+            "productivity",
+            "efficiency"
+        ]
+    },
+    {
+        "argument": "**Potential Legacy**: Whistling in a significant event can create a memorable experience that will be associated with the moment for years to come. Emma's whistle might be remembered and cherished by those attending the ceremony, becoming an integral part of the occasion's history.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "memorable experience",
+            "enjoyment",
+            "inspiration",
+            "celebration",
+            "emotional support"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "unity",
+            "harmony",
+            "cohesion",
+            "appreciation",
+            "recognition",
+            "joy",
+            "inspiration",
+            "authenticity",
+            "freedom of expression",
+            "respect for individuality",
+            "respect for personal choices",
+            "preservation",
+            "respect for tradition",
+            "creativity",
+            "innovation"
+        ]
+    },
+    {
+        "argument": "**Redeeming past conflicts**: Discovering your grandchild's existence through social media can serve as a catalyst for reconciliation and healing in your relationship with your adult child. By taking this opportunity to reach out, you can work on rebuilding trust and strengthening your bond, creating a more positive dynamic for future generations.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "reconciliation",
+            "healing",
+            "rebuilding trust",
+            "strengthening bonds",
+            "positive dynamics"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "trust",
+            "empathy",
+            "understanding",
+            "forgiveness",
+            "communication",
+            "open communication",
+            "honesty",
+            "transparency",
+            "patience",
+            "compassion",
+            "mutual respect",
+            "family harmony",
+            "respect for others' feelings",
+            "respect for personal boundaries",
+            "respect for privacy"
+        ]
+    },
+    {
+        "argument": "**Seeking Professional Guidance**: If necessary, intervening allows me to seek professional guidance from therapists, counselors, or experts in adolescent development to help address the issue. This demonstrates my commitment to seeking support and guidance when needed, which values the importance of seeking help and expertise.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "professional guidance",
+            "commitment",
+            "seeking help",
+            "expertise",
+            "supportiveness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "professional guidance",
+            "expertise",
+            "support",
+            "guidance",
+            "responsibility",
+            "duty of care",
+            "ensuring safety",
+            "child welfare",
+            "protection",
+            "professionalism",
+            "accountability",
+            "compassion",
+            "humility",
+            "prudence",
+            "cooperation"
+        ]
+    },
+    {
+        "argument": "**Missed Opportunity for Self-Discovery**: Cheating might provide a temporary escape from academic struggles, but it doesn't address the underlying issues. By not cheating, your friend can focus on understanding and addressing their personal issues, leading to long-term growth and success.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal growth",
+            "honesty",
+            "responsibility",
+            "selflessness",
+            "perseverance"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "honesty",
+            "integrity",
+            "personal responsibility",
+            "accountability",
+            "personal growth",
+            "perseverance",
+            "resilience",
+            "discipline",
+            "diligence",
+            "patience",
+            "authenticity",
+            "awareness",
+            "pursuit of knowledge",
+            "education",
+            "competence"
+        ]
+    },
+    {
+        "argument": "Accepting the order might challenge John's personal convictions and encourage him to re-evaluate his stance on the matter. This could lead to a more empathetic and open-minded individual, ultimately benefiting his personal growth.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal growth",
+            "empathy",
+            "open-mindedness",
+            "re-evaluation",
+            "personal convictions"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "understanding",
+            "openness",
+            "tolerance",
+            "acceptance",
+            "humility",
+            "awareness",
+            "curiosity",
+            "openness to criticism",
+            "flexibility",
+            "adaptability",
+            "inclusivity",
+            "respect for diversity",
+            "compassion",
+            "personal growth"
+        ]
+    },
+    {
+        "argument": "**Undermining scientific integrity**: In a medical research project, the truth is essential. Scientific integrity is paramount, and lying about the project's progress would compromise the validity of the research. This could damage the reputation of the researchers, the institution, and the field of medicine as a whole.",
+        "specificity": 2.0,
+        "human_specificity": 4.0,
+        "values": [
+            "truth",
+            "scientific integrity",
+            "credibility",
+            "honesty",
+            "respect for authority"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "truth",
+            "truthfulness",
+            "honesty",
+            "integrity",
+            "ethical integrity",
+            "professional integrity",
+            "transparency",
+            "accountability",
+            "professional responsibility",
+            "professionalism",
+            "credibility",
+            "trust",
+            "trustworthiness",
+            "reputation",
+            "right to accurate information"
+        ]
+    },
+    {
+        "argument": "**Long-term Consequences**: Continuing to push an employee to exhaustion can lead to long-term consequences, such as chronic health issues, decreased productivity, and potentially even turnover. By intervening, we can prevent these consequences and ensure that the employee remains productive and engaged in the long run.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "employee welfare",
+            "prevention",
+            "long-term thinking",
+            "productivity",
+            "health consciousness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "health",
+            "right to health",
+            "safety",
+            "ensuring safety",
+            "duty of care",
+            "responsibility",
+            "professional responsibility",
+            "duty to protect",
+            "care",
+            "compassion",
+            "support",
+            "respect for personal boundaries",
+            "emotional wellbeing",
+            "productivity",
+            "job security"
+        ]
+    },
+    {
+        "argument": "Continuing education provides a solid foundation in various subjects, which can be beneficial for personal growth, critical thinking, and problem-solving. This well-rounded education can also lead to a broader range of career opportunities.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal growth",
+            "critical thinking",
+            "education",
+            "problem-solving",
+            "opportunity"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "education",
+            "personal growth",
+            "pursuit of knowledge",
+            "curiosity",
+            "competence",
+            "opportunity",
+            "professional growth",
+            "adaptability",
+            "innovation",
+            "perseverance",
+            "diligence",
+            "discipline",
+            "creativity",
+            "expertise"
+        ]
+    },
+    {
+        "argument": "**Community Safety:** Inciting more conflict can lead to a hostile environment, deterring users from participating or engaging in constructive discussions. Responding calmly helps preserve a safe space for users to discuss and engage with each other.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "community safety",
+            "peace",
+            "respect for others",
+            "harmony",
+            "emotional stability"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "safety",
+            "ensuring safety",
+            "social harmony",
+            "maintaining harmony",
+            "peace",
+            "maintaining peace",
+            "peaceful coexistence",
+            "conflict resolution",
+            "mutual respect",
+            "respect",
+            "empathy",
+            "inclusion",
+            "open communication"
+        ]
+    },
+    {
+        "argument": "Preventing similar incidents: If you don't report the incident, you might unintentionally enable the new manager to make similar decisions in the future, potentially harming other employees. By speaking up, you're advocating for the rights and well-being of your colleagues.",
+        "specificity": 2.0,
+        "values": [
+            "advocacy",
+            "responsibility",
+            "courage",
+            "duty of care",
+            "protection"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "accountability",
+            "professional responsibility",
+            "duty of care",
+            "integrity",
+            "moral courage",
+            "transparency",
+            "fairness",
+            "justice",
+            "advocacy",
+            "ensuring safety",
+            "protection",
+            "respect for others",
+            "right to fair treatment",
+            "social responsibility"
+        ]
+    },
+    {
+        "argument": "**Honesty and authenticity**: Honesty is crucial in any relationship, and it's essential to be genuine about one's feelings. If John is attracted to Lisa, he should be truthful with himself and with Mia about his feelings. This might be the best way to maintain a genuine relationship with Mia or to set the stage for a new relationship with Lisa.",
+        "specificity": 2.0,
+        "human_specificity": 4.0,
+        "values": [
+            "honesty",
+            "authenticity",
+            "truthfulness",
+            "openness",
+            "transparency"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "honesty",
+            "authenticity",
+            "truthfulness",
+            "transparency",
+            "open communication",
+            "trust",
+            "trustworthiness",
+            "integrity",
+            "respect for others' feelings",
+            "empathy",
+            "responsibility",
+            "courage",
+            "mutual respect",
+            "respect for personal choices",
+            "right to truth"
+        ]
+    },
+    {
+        "argument": "Tackling Fear of Favoritism with Transparency: I can manage potential concerns about favoritism by being open and transparent about my intentions. By expressing admiration for my subordinate's attire in a respectful and professional manner, I can demonstrate that my comments are based on their exceptional dressing sense, not on their job performance or any other personal factors.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "transparency",
+            "professionalism",
+            "respect for others",
+            "openness",
+            "honesty"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "transparency",
+            "professionalism",
+            "professional integrity",
+            "respect",
+            "fairness",
+            "objectivity",
+            "impartiality",
+            "open communication",
+            "respect for personal boundaries",
+            "professional boundaries",
+            "integrity",
+            "respect for others' feelings",
+            "credibility",
+            "trustworthiness",
+            "accountability"
+        ]
+    },
+    {
+        "argument": "A promotion would be a significant career milestone for John, demonstrating his capabilities and hard work. It would also provide opportunities for further professional growth, networking, and skill development, leading to increased job satisfaction and confidence.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "ambition",
+            "professional growth",
+            "job satisfaction",
+            "confidence",
+            "skill development"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "recognition",
+            "diligence",
+            "dedication",
+            "competence",
+            "professional growth",
+            "opportunity",
+            "expertise",
+            "leadership",
+            "confidence",
+            "satisfaction",
+            "ambition",
+            "teamwork",
+            "responsibility"
+        ]
+    },
+    {
+        "argument": "**Empathy and understanding**: As a manager, I recognize that my team member is new and may require more guidance and support to feel confident and successful in their role. By continuing to be available to answer their questions and concerns, I demonstrate empathy and understanding, which are essential for building trust and a positive working relationship.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "empathy",
+            "understanding",
+            "guidance",
+            "supportiveness",
+            "trust"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "understanding",
+            "support",
+            "patience",
+            "professional guidance",
+            "trust",
+            "trustworthiness",
+            "respect",
+            "compassion",
+            "open communication",
+            "communication",
+            "responsiveness",
+            "encouragement",
+            "teamwork"
+        ]
+    },
+    {
+        "argument": "Your friend may feel hurt or embarrassed if you exclude their partner from the gathering. This could lead to a strain on your friendship, as they may feel that you're judging or not accepting their relationship. In the long run, this could have a more significant impact on your friendship than the potential risks associated with their partner's past behavior.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "respect for feelings",
+            "consideration",
+            "friendship",
+            "emotional support",
+            "acceptance"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "respect",
+            "empathy",
+            "understanding",
+            "acceptance",
+            "support",
+            "compassion",
+            "inclusivity",
+            "respect for personal choices",
+            "friendship",
+            "mutual respect",
+            "tolerance",
+            "respect for others' feelings",
+            "social harmony"
+        ]
+    },
+    {
+        "argument": "Social media can be a powerful tool for building and maintaining communities around shared interests, causes, or identities. By keeping your accounts active, you can connect with others who share your passions and support one another.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "community building",
+            "social responsibility",
+            "connectivity",
+            "shared responsibility",
+            "supportiveness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "unity",
+            "cohesion",
+            "inclusion",
+            "respect for diversity",
+            "empathy",
+            "mutual respect",
+            "friendship",
+            "support",
+            "emotional support",
+            "communication",
+            "open communication",
+            "cooperation",
+            "collaboration",
+            "solidarity",
+            "trust"
+        ]
+    },
+    {
+        "argument": "A strong, mature relationship allows for open communication and understanding. The player can address the issue with their friend, explaining how the bias affected the game without jeopardizing their friendship. This shows that the player values their relationship but also understands the importance of professionalism in their line of work. The player might be able to prevent similar situations in the future by having a candid conversation with their friend.",
+        "specificity": 3.0,
+        "human_specificity": 4.0,
+        "values": [
+            "open communication",
+            "understanding",
+            "professionalism",
+            "respect for friendship",
+            "honesty"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "open communication",
+            "understanding",
+            "professionalism",
+            "professional integrity",
+            "fairness",
+            "friendship",
+            "mutual respect",
+            "empathy",
+            "transparency",
+            "conflict resolution",
+            "professional responsibility",
+            "impartiality",
+            "fair play",
+            "honesty"
+        ]
+    },
+    {
+        "argument": "**Potential for unintended consequences**: Treatment may have unintended consequences, such as the introduction of disease or the disruption of social bonds within the species.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "caution",
+            "vigilance",
+            "awareness",
+            "responsibility",
+            "prudence"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "safety",
+            "public safety",
+            "health",
+            "animal welfare",
+            "respect for nature",
+            "preservation",
+            "sustainability",
+            "social harmony",
+            "cohesion",
+            "duty of care",
+            "duty to protect",
+            "prudence",
+            "caution",
+            "vigilance",
+            "risk"
+        ]
+    },
+    {
+        "argument": "**Prioritizing Mental Health**: Jane's mental health is crucial, and her feelings of being overwhelmed are a clear indication that she needs to take a break. Attending school when feeling overwhelmed can exacerbate her stress levels, potentially leading to more severe mental health issues. Skipping school for a short period can give her the opportunity to recharge and manage her mental health.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "emotional wellbeing",
+            "personal comfort",
+            "self-care",
+            "emotional support",
+            "mental health awareness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "health",
+            "right to health",
+            "emotional wellbeing",
+            "peace of mind",
+            "emotional security",
+            "safety",
+            "care",
+            "compassion",
+            "empathy",
+            "support",
+            "respect for personal choices",
+            "personal autonomy",
+            "balance",
+            "Duty of care"
+        ]
+    },
+    {
+        "argument": "Avoiding confrontation prioritizes family harmony and the preservation of positive relationships. By not engaging in a potentially heated discussion, you can maintain a peaceful atmosphere and avoid causing unnecessary tension.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "family harmony",
+            "preservation",
+            "peaceful coexistence",
+            "avoidance of conflict",
+            "respect for feelings"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "family harmony",
+            "maintaining peace",
+            "peace",
+            "harmony",
+            "social harmony",
+            "peacekeeping",
+            "avoidance of conflict",
+            "mutual respect",
+            "respect for others' feelings",
+            "empathy",
+            "patience",
+            "tolerance",
+            "emotional security"
+        ]
+    },
+    {
+        "argument": "**Joining the Celebratory Spirit**: Weddings are known for their festive and welcoming atmosphere. By attending, you can experience this communal joy and participate in an important moment in the couple's life. This could be a chance to meet like-minded people who share similar values and interests.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "communal joy",
+            "participation",
+            "shared responsibility",
+            "social harmony",
+            "celebration"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "love",
+            "joy",
+            "happiness",
+            "unity",
+            "social harmony",
+            "inclusivity",
+            "friendship",
+            "companionship",
+            "supportiveness",
+            "mutual respect",
+            "appreciation",
+            "respect for tradition",
+            "family harmony",
+            "solidarity",
+            "cohesion"
+        ]
+    },
+    {
+        "argument": "Promoting Positivity and Confidence: Expressing admiration for my subordinate's attire can have a positive impact on their confidence and self-esteem, which is essential for their job satisfaction and performance. Recognizing their efforts to present themselves professionally will encourage them to continue striving for excellence and set a positive example for the rest of the team.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "encouragement",
+            "appreciation",
+            "job satisfaction",
+            "professional commitment",
+            "self-esteem"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "professionalism",
+            "recognition",
+            "appreciation",
+            "validation",
+            "encouragement",
+            "confidence",
+            "support",
+            "respect",
+            "leadership",
+            "teamwork",
+            "productivity",
+            "satisfaction",
+            "professional boundaries",
+            "respect for personal boundaries"
+        ]
+    },
+    {
+        "argument": "Communication and Openness: Have an open and honest conversation with your partner about their concerns and feelings. Ask them to explain why they think you need to lose weight, and listen to their perspective. This conversation may reveal deeper issues, such as insecurity or personal issues, that need to be addressed in your relationship.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "open communication",
+            "honesty",
+            "understanding",
+            "emotional support",
+            "respect for feelings"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "open communication",
+            "openness",
+            "communication",
+            "honesty",
+            "transparency",
+            "trust",
+            "respect",
+            "mutual respect",
+            "empathy",
+            "understanding",
+            "compassion",
+            "sensitivity",
+            "respect for feelings",
+            "conflict resolution",
+            "respect for autonomy"
+        ]
+    },
+    {
+        "argument": "**Preserving hope and optimism:** By not disclosing the risks, I can help preserve the patient's hope and optimism about the pregnancy. This can have a positive impact on her mental and emotional well-being, at least in the short term.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "hope",
+            "optimism",
+            "emotional well-being",
+            "preservation",
+            "positive impact"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "hope",
+            "emotional wellbeing",
+            "peace of mind",
+            "emotional support",
+            "compassion",
+            "empathy",
+            "comfort",
+            "protection",
+            "duty to protect",
+            "sensitivity",
+            "supportiveness",
+            "emotional security",
+            "relief",
+            "respect for feelings"
+        ]
+    },
+    {
+        "argument": "**Compromise and Understanding:** By showing a willingness to spend time with her friends, Alice can demonstrate her commitment to their relationships and establish a more balanced understanding of her needs and boundaries. This compromise may alleviate hurt feelings and create a more open dialogue about expectations and needs.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "compromise",
+            "understanding",
+            "respect for personal boundaries",
+            "open communication",
+            "emotional support"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "compromise",
+            "understanding",
+            "empathy",
+            "mutual respect",
+            "respect for personal boundaries",
+            "respect for others' feelings",
+            "communication",
+            "open communication",
+            "consideration",
+            "flexibility",
+            "cooperation",
+            "supportiveness",
+            "patience",
+            "commitment"
+        ]
+    },
+    {
+        "argument": "**Personal growth and self-awareness:** Disclosing her true identity can help Sarah develop a better understanding of herself and her values, as she navigates the complexities of this situation.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "personal growth",
+            "self-awareness",
+            "honesty",
+            "openness",
+            "courage"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "authenticity",
+            "honesty",
+            "transparency",
+            "truthfulness",
+            "personal integrity",
+            "courage",
+            "vulnerability",
+            "personal growth",
+            "awareness",
+            "personal autonomy",
+            "openness",
+            "respect for personal choices",
+            "freedom of expression"
+        ]
+    },
+    {
+        "argument": "**Open Communication:** Open and honest communication is vital in any friendship. Confronting the issue shows that you value your relationship with your friend and their partner, and that you're willing to have difficult conversations to maintain a strong and trusting bond.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "open communication",
+            "honesty",
+            "trust",
+            "respect for friendship",
+            "emotional support"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "open communication",
+            "honesty",
+            "transparency",
+            "truthfulness",
+            "trust",
+            "respect",
+            "mutual respect",
+            "empathy",
+            "understanding",
+            "courage",
+            "commitment",
+            "friendship",
+            "conflict resolution",
+            "integrity"
+        ]
+    },
+    {
+        "argument": "Unhealthy eating habits can lead to expensive medical bills, hospital visits, and other costs associated with chronic health issues. By encouraging Sarah to adopt a healthier lifestyle, Jane may help her friend avoid financial burden, ensuring they have more resources available for other aspects of their life.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "health consciousness",
+            "financial prudence",
+            "personal responsibility",
+            "care",
+            "prevention"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "health",
+            "personal health",
+            "health consciousness",
+            "financial stability",
+            "financial security",
+            "economic stability",
+            "financial responsibility",
+            "financial prudence",
+            "personal responsibility",
+            "care",
+            "support",
+            "empathy",
+            "protection",
+            "awareness"
+        ]
+    },
+    {
+        "argument": "**Personal Loyalty and Friendship**: As a friend, you may feel obligated to support your friend and help them in a way that doesn't involve reporting them to their employer. This might lead you to consider alternative, more personal approaches to addressing the issue.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "loyalty",
+            "friendship",
+            "respect for friendship",
+            "personal responsibility",
+            "solidarity"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "loyalty",
+            "friendship",
+            "support",
+            "trust",
+            "empathy",
+            "compassion",
+            "understanding",
+            "confidentiality",
+            "respect for privacy",
+            "discretion",
+            "open communication",
+            "guidance",
+            "respect for autonomy",
+            "supportiveness"
+        ]
+    },
+    {
+        "argument": "**Honoring the game's spirit**: Basketball is a game meant to be enjoyed, not manipulated. By playing fairly, I'm not only adhering to the rules but also showing respect for the game and its history.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "fair play",
+            "respect for tradition",
+            "enjoyment",
+            "adherence to rules",
+            "sportsmanship"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "fairness",
+            "fair play",
+            "fair competition",
+            "honesty",
+            "integrity",
+            "truthfulness",
+            "respect",
+            "respect for rules",
+            "respect for tradition",
+            "responsibility",
+            "accountability",
+            "enjoyment",
+            "preservation"
+        ]
+    },
+    {
+        "argument": "**Consistency and Authenticity**: As a vegan, I strive to live consistently with my values. Eating the meal would create a disconnect between my actions and words, which could lead to self-doubt and undermine my commitment to veganism.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "consistency",
+            "authenticity",
+            "commitment",
+            "self-respect",
+            "personal integrity"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "consistency",
+            "authenticity",
+            "personal integrity",
+            "ethical integrity",
+            "honesty",
+            "truthfulness",
+            "accountability",
+            "personal responsibility",
+            "commitment",
+            "dedication",
+            "compassion",
+            "empathy",
+            "animal welfare",
+            "respect for life"
+        ]
+    },
+    {
+        "argument": "**Not Everyone Will Agree**: Others may not see the significance of the friendship, but they cannot dictate John's personal priorities. His decision to maintain the friendship should be made with the understanding that not everyone will agree or support his choice.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "personal autonomy",
+            "respect for personal choices",
+            "independence",
+            "personal responsibility",
+            "freedom of choice"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "personal autonomy",
+            "respect for personal choices",
+            "freedom of choice",
+            "independence",
+            "authenticity",
+            "personal integrity",
+            "courage",
+            "resilience",
+            "tolerance",
+            "acceptance",
+            "mutual respect",
+            "respect for individuality",
+            "friendship",
+            "loyalty"
+        ]
+    },
+    {
+        "argument": "**Emotional safety:** Maintaining distance can provide emotional safety for Sarah, allowing her to focus on her own healing and growth without the added stress of a complicated relationship.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "emotional security",
+            "personal growth",
+            "avoidance of conflict",
+            "peace of mind",
+            "self-care"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "personal safety",
+            "protection",
+            "emotional security",
+            "peace of mind",
+            "emotional stability",
+            "stability",
+            "respect for personal boundaries",
+            "respect for personal space",
+            "personal autonomy",
+            "respect for personal choices",
+            "personal growth",
+            "independence",
+            "emotional wellbeing",
+            "emotional resilience"
+        ]
+    },
+    {
+        "argument": "**Flexibility in Communication**: Internet slang and colloquialisms can be an effective way to convey meaning and tone in online communication. By acknowledging and accepting these variations, I can demonstrate an understanding of the flexibility of language in online contexts.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "flexibility",
+            "open communication",
+            "understanding",
+            "adaptability",
+            "openness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "flexibility",
+            "adaptability",
+            "open communication",
+            "communication",
+            "acceptance",
+            "understanding",
+            "empathy",
+            "inclusivity",
+            "respect for diversity",
+            "diversity",
+            "respect for individuality",
+            "respect for personal choices",
+            "freedom of expression",
+            "awareness"
+        ]
+    },
+    {
+        "argument": "Emma's boyfriend is invested in the pregnancy and believes they can make it work together. His emotional support could be invaluable in helping her navigate the challenges of parenthood, making it a loving and nurturing environment for the baby.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "emotional support",
+            "companionship",
+            "love",
+            "family unity",
+            "commitment"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "love",
+            "emotional support",
+            "supportiveness",
+            "cooperation",
+            "teamwork",
+            "unity",
+            "family harmony",
+            "child welfare",
+            "care",
+            "compassion",
+            "emotional security",
+            "stability",
+            "shared responsibility",
+            "commitment",
+            "ensuring safety"
+        ]
+    },
+    {
+        "argument": "Scandal and Loss of Public Trust: If the referee's bias becomes public knowledge after the fact, it could lead to a massive scandal and harm to the integrity of the league. Exposing the bias proactively would prevent this potential fallout and maintain public trust in the championship's legitimacy.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "transparency",
+            "public trust",
+            "integrity",
+            "accountability",
+            "proactive action"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "integrity",
+            "transparency",
+            "accountability",
+            "fairness",
+            "impartiality",
+            "truthfulness",
+            "trust",
+            "credibility",
+            "reputation",
+            "trustworthiness",
+            "right to accurate information",
+            "oversight",
+            "respect for rules",
+            "fair play",
+            "upholding professional standards"
+        ]
+    },
+    {
+        "argument": "**Balancing team and personal goals**: While the team's championship is important, John's health and well-being should not be compromised. Prioritizing his health will allow him to contribute to the team's success in a healthy and sustainable way.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal health",
+            "sustainability",
+            "well-being",
+            "team spirit",
+            "balance"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "health",
+            "safety",
+            "right to health",
+            "right to safety",
+            "duty of care",
+            "ensuring safety",
+            "personal health",
+            "respect for autonomy",
+            "personal autonomy",
+            "balance",
+            "sustainability",
+            "professional responsibility",
+            "teamwork",
+            "care"
+        ]
+    },
+    {
+        "argument": "Your friends have invited you to visit, and declining might be misinterpreted as not caring or not being interested in their new baby.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "friendship",
+            "consideration",
+            "emotional support",
+            "respect for feelings",
+            "kindness"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "friendship",
+            "care",
+            "empathy",
+            "compassion",
+            "support",
+            "consideration",
+            "respect for others' feelings",
+            "kindness",
+            "appreciation",
+            "validation",
+            "emotional support",
+            "mutual respect",
+            "social harmony",
+            "open communication",
+            "transparency"
+        ]
+    },
+    {
+        "argument": "**Laughter is a great stress reliever**: Given that your sibling has been scared by recent news of break-ins, a well-timed joke can help take their mind off the anxiety and stress they've been feeling. Laughter is an excellent stress-relief mechanism.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "emotional support",
+            "relief",
+            "joy",
+            "emotional well-being",
+            "comfort"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "compassion",
+            "emotional support",
+            "comfort",
+            "peace of mind",
+            "relief",
+            "emotional wellbeing",
+            "happiness",
+            "joy",
+            "encouragement",
+            "respect for others' feelings",
+            "sensitivity",
+            "emotional resilience"
+        ]
+    },
+    {
+        "argument": "**Potential for Malware and Viruses**: Illegal sites can host malicious software that can infect users' devices, causing harm to their computers, phones, or other devices.",
+        "specificity": 2.0,
+        "human_specificity": 2.0,
+        "values": [
+            "public safety",
+            "right to accurate information",
+            "vigilance",
+            "personal safety",
+            "accountability"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "safety",
+            "security",
+            "privacy",
+            "right to privacy",
+            "confidentiality",
+            "protection",
+            "right to safety",
+            "ensuring safety",
+            "vigilance",
+            "caution",
+            "prudence",
+            "awareness",
+            "responsibility",
+            "duty to protect"
+        ]
+    },
+    {
+        "argument": "Revoking Medical Consent and Unintended Consequences: If I were to disregard the patient's decision, I risk compromising their trust and potentially jeopardizing future medical treatment. Revoking medical consent without a clear understanding of the patient's wishes could lead to further complications and health issues, particularly if the patient feels that their wishes have been disrespected.",
+        "specificity": 3.0,
+        "human_specificity": 4.0,
+        "values": [
+            "trust",
+            "respect for personal choices",
+            "patient autonomy",
+            "right to privacy",
+            "respect for autonomy"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "respect for autonomy",
+            "autonomy",
+            "trust",
+            "trustworthiness",
+            "dignity",
+            "respect",
+            "understanding",
+            "honesty",
+            "transparency",
+            "open communication",
+            "professional responsibility",
+            "duty of care",
+            "accountability",
+            "respect for personal choices",
+            "health"
+        ]
+    },
+    {
+        "argument": "**Support over punishment**: Focusing on punishment might not be the most effective approach, as it can lead to defensive behavior and harm your friend's mental health. A more compassionate approach would be to offer support and resources to help them address their substance abuse, rather than directly reporting the issue to their employer.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "compassion",
+            "emotional support",
+            "understanding",
+            "respect for personal choices",
+            "supportiveness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "compassion",
+            "empathy",
+            "support",
+            "emotional support",
+            "care",
+            "respect",
+            "dignity",
+            "understanding",
+            "respect for privacy",
+            "confidentiality",
+            "respect for autonomy",
+            "trust",
+            "patience",
+            "open communication",
+            "emotional wellbeing"
+        ]
+    },
+    {
+        "argument": "Adopting a rescue pet promotes a culture of sustainability and responsibility, where pet ownership is seen as a long-term commitment rather than a fleeting impulse. This mindset shift encourages responsible pet ownership, reduces waste, and minimizes the environmental impact of pet-related consumption.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "sustainability",
+            "responsibility",
+            "long-term commitment",
+            "respect for life",
+            "environmental consciousness"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "sustainability",
+            "responsibility",
+            "commitment",
+            "duty of care",
+            "accountability",
+            "compassion",
+            "care",
+            "animal welfare",
+            "respect for nature",
+            "preservation",
+            "efficiency",
+            "prudence",
+            "respect for life",
+            "social responsibility"
+        ]
+    },
+    {
+        "argument": "**Extreme Poverty and Lack of Resources**: In cases where the mother's poverty is so severe that she is unable to provide basic necessities, abandoning the child may seem like the only viable option. However, this is a last resort and should only be considered after exhausting all other possibilities.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "survival",
+            "desperation",
+            "avoidance of conflict",
+            "personal safety",
+            "sacrifice"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "compassion",
+            "empathy",
+            "social responsibility",
+            "support",
+            "duty of care",
+            "duty to protect",
+            "ensuring safety",
+            "child welfare",
+            "protection",
+            "survival",
+            "care",
+            "right to life",
+            "right to safety",
+            "perseverance",
+            "advocacy"
+        ]
+    },
+    {
+        "argument": "Initially the loss of freedom could lead to several added stress periods for the parrot; restricting it temporarily might strain the relationship between owner and pet.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "stress",
+            "relationship strain",
+            "freedom",
+            "emotional well-being",
+            "respect for personal choices"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "animal welfare",
+            "empathy",
+            "compassion",
+            "care",
+            "respect for autonomy",
+            "autonomy",
+            "freedom",
+            "trust",
+            "companionship",
+            "emotional wellbeing",
+            "emotional security",
+            "respect for others' feelings",
+            "patience"
+        ]
+    },
+    {
+        "argument": "**Establishing a Connection**: Approaching the stranger allows me to establish a connection with them, even if it's just a brief interaction. This connection can lead to a more meaningful and honest portrayal of their emotions.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "open communication",
+            "empathy",
+            "understanding",
+            "respect for feelings",
+            "emotional support"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "understanding",
+            "respect",
+            "dignity",
+            "honesty",
+            "authenticity",
+            "truthfulness",
+            "transparency",
+            "open communication",
+            "trust",
+            "mutual respect",
+            "respect for personal boundaries",
+            "respect for others' privacy",
+            "respect for autonomy",
+            "compassion"
+        ]
+    },
+    {
+        "argument": "Embracing failure allows Thomas to build trust with his team, which is crucial for long-term project success.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "trust",
+            "team spirit",
+            "openness to criticism",
+            "personal growth",
+            "resilience"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "trust",
+            "transparency",
+            "honesty",
+            "accountability",
+            "integrity",
+            "open communication",
+            "empathy",
+            "vulnerability",
+            "courage",
+            "responsibility",
+            "teamwork",
+            "leadership",
+            "resilience",
+            "adaptability",
+            "commitment"
+        ]
+    },
+    {
+        "argument": "Staying in a relationship that is no longer making John happy can lead to emotional stagnation and unhappiness. By leaving, John can focus on his own well-being and find a path that brings him joy and fulfillment.",
+        "specificity": 1.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal happiness",
+            "emotional well-being",
+            "autonomy",
+            "personal growth",
+            "pursuit of happiness"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "personal autonomy",
+            "freedom of choice",
+            "personal freedom",
+            "personal growth",
+            "happiness",
+            "personal happiness",
+            "pursuit of happiness",
+            "peace of mind",
+            "emotional wellbeing",
+            "authenticity",
+            "honesty",
+            "dignity",
+            "independence",
+            "respect for personal choices"
+        ]
+    },
+    {
+        "argument": "**Patient-centered Approach**: Therapists should prioritize Samantha's comfort and well-being above the need to confront the past. A patient-centered approach focuses on understanding and respecting the individual's boundaries, making the therapeutic process more effective and sustainable.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal comfort",
+            "respect for personal boundaries",
+            "emotional support",
+            "understanding",
+            "sustainability"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "respect",
+            "empathy",
+            "understanding",
+            "compassion",
+            "respect for personal boundaries",
+            "respect for autonomy",
+            "safety",
+            "comfort",
+            "dignity",
+            "trust",
+            "confidentiality",
+            "respect for privacy",
+            "emotional security",
+            "duty of care",
+            "support"
+        ]
+    },
+    {
+        "argument": "**Intimacy and Connection**: Engaging in sexual activities can foster a sense of intimacy and connection in a relationship. However, this argument prioritizes physical intimacy over emotional and psychological well-being.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "intimacy",
+            "connection",
+            "partnership",
+            "companionship",
+            "mutual respect"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "mutual respect",
+            "trust",
+            "respect for autonomy",
+            "respect for personal boundaries",
+            "open communication",
+            "emotional security",
+            "emotional wellbeing",
+            "empathy",
+            "understanding",
+            "dignity",
+            "care",
+            "compassion",
+            "peace of mind",
+            "balance"
+        ]
+    },
+    {
+        "argument": "**Short-term vs. Long-term Goals**: While supporting his friend is important, John's immediate priority should be his exam. By focusing on his studies, he will set himself up for long-term success and greater opportunities in the future.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "personal growth",
+            "long-term success",
+            "dedication",
+            "education",
+            "perseverance"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "responsibility",
+            "personal responsibility",
+            "discipline",
+            "commitment",
+            "dedication",
+            "perseverance",
+            "diligence",
+            "prudence",
+            "education",
+            "pursuit of knowledge",
+            "personal growth",
+            "opportunity",
+            "professional growth",
+            "financial stability",
+            "pragmatism"
+        ]
+    },
+    {
+        "argument": "Considering the Long-term Consequences: While hiding the makeup might seem like a quick fix, it can have long-term consequences for their relationship.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "honesty",
+            "trust",
+            "transparency",
+            "respect for personal choices",
+            "openness to criticism"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "trust",
+            "honesty",
+            "transparency",
+            "open communication",
+            "trustworthiness",
+            "integrity",
+            "respect",
+            "mutual respect",
+            "respect for personal boundaries",
+            "respect for others' property",
+            "respect for personal choices",
+            "respect for autonomy",
+            "breach of trust",
+            "loss of trust",
+            "emotional security"
+        ]
+    },
+    {
+        "argument": "**Restoring Original Intent**: The delicate glass was specifically chosen for its beauty and elegance, meant to be admired and appreciated in its original form. By altering it, the artist disrupts the host's original intent for the glass.",
+        "specificity": 2.0,
+        "human_specificity": 2.0,
+        "values": [
+            "respect for others' property",
+            "appreciation",
+            "respect for tradition",
+            "respect for personal choices",
+            "preservation"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "respect for property",
+            "respect for others' property",
+            "preservation",
+            "authenticity",
+            "respect for boundaries",
+            "respect for personal choices",
+            "respect for autonomy",
+            "integrity",
+            "upholding integrity",
+            "duty of care",
+            "protection",
+            "consideration",
+            "responsibility",
+            "respect for tradition"
+        ]
+    },
+    {
+        "argument": "**Long-term consequences**: In the grand scheme, missing the meeting might have a relatively minor impact on Sarah's career, but it could have significant consequences for her son's emotional well-being and future relationships.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "family harmony",
+            "emotional well-being",
+            "personal responsibility",
+            "duty of care",
+            "compassion"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "child welfare",
+            "duty of care",
+            "duty to protect",
+            "ensuring safety",
+            "emotional wellbeing",
+            "emotional security",
+            "emotional support",
+            "emotional stability",
+            "unconditional love",
+            "compassion",
+            "care",
+            "support",
+            "family harmony",
+            "trust",
+            "stability"
+        ]
+    },
+    {
+        "argument": "**Countering Overregulation**: By trespassing, the group is challenging the overreaching authority of the local authorities. It's essential to recognize when regulations become too restrictive and infringe upon individual freedoms. By pushing against the boundaries, the group is sending a subtle message about the importance of balancing freedom and responsibility.",
+        "specificity": 2.0,
+        "human_specificity": 2.0,
+        "values": [
+            "freedom",
+            "autonomy",
+            "resistance to authority",
+            "individuality",
+            "personal freedom"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "freedom",
+            "personal freedom",
+            "autonomy",
+            "personal autonomy",
+            "freedom of choice",
+            "freedom of expression",
+            "independence",
+            "responsibility",
+            "personal responsibility",
+            "accountability",
+            "courage",
+            "moral courage",
+            "justice",
+            "fairness",
+            "social justice"
+        ]
+    },
+    {
+        "argument": "**Respect for others**: Ignoring the call shows respect for the other moviegoers around you, allowing them to enjoy the film without distractions. By not answering, you're contributing to a more enjoyable experience for those around you.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "respect for others",
+            "consideration",
+            "respect for personal boundaries",
+            "respect for personal space",
+            "respect for feelings"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "respect for others",
+            "consideration",
+            "empathy",
+            "respect",
+            "social harmony",
+            "maintaining peace",
+            "harmony",
+            "respect for personal boundaries",
+            "respect for rules",
+            "mutual respect",
+            "peaceful coexistence",
+            "kindness",
+            "social responsibility",
+            "respect for others' feelings"
+        ]
+    },
+    {
+        "argument": "**Different cultural or social norms**: What you find embarrassing or uncomfortable might be considered funny or acceptable in John's social circle or cultural background.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "cultural diversity",
+            "respect for diversity",
+            "tolerance",
+            "openness",
+            "understanding"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "respect",
+            "empathy",
+            "understanding",
+            "tolerance",
+            "acceptance",
+            "respect for diversity",
+            "diversity",
+            "inclusivity",
+            "awareness",
+            "sensitivity",
+            "mutual respect",
+            "respect for others' feelings",
+            "open communication",
+            "respect for personal boundaries"
+        ]
+    },
+    {
+        "argument": "Ultimately, as a hairdresser, it's your responsibility to educate and inform your clients about the potential risks and benefits of different services. By refusing to blow-dry her hair, you're empowering her to make an informed decision and take ownership of her hair care. This approach promotes a culture of transparency and collaboration, building a stronger client-hairdresser relationship.",
+        "specificity": 3.0,
+        "human_specificity": 4.0,
+        "values": [
+            "transparency",
+            "empowerment",
+            "client education",
+            "collaboration",
+            "professional responsibility"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "professional responsibility",
+            "duty of care",
+            "professionalism",
+            "transparency",
+            "open communication",
+            "right to accurate information",
+            "respect for autonomy",
+            "respect for personal choices",
+            "collaboration",
+            "trust",
+            "professional integrity",
+            "ensuring safety",
+            "education",
+            "awareness"
+        ]
+    },
+    {
+        "argument": "**Lack of conflict resolution skills**: You might not know how to effectively navigate the situation or address the group's behavior, leading you to participate to avoid conflict.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "avoidance of conflict",
+            "discomfort",
+            "helplessness",
+            "dependency",
+            "fear"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "conflict resolution",
+            "communication",
+            "open communication",
+            "assertiveness",
+            "empathy",
+            "understanding",
+            "mutual respect",
+            "respect for personal boundaries",
+            "respect for personal choices",
+            "personal autonomy",
+            "confidence",
+            "compromise",
+            "avoidance of conflict",
+            "courage"
+        ]
+    },
+    {
+        "argument": "**Guarantee of Consequences**: You could not only put the patient's life at risk, but also your own reputation, as well as face legal consequences if the surgery goes wrong. Therefore, although the possibility of your performing the operation might result in a successful outcome, the outcome might result in more than just your taking on extra risk.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "duty of care",
+            "responsibility",
+            "accountability",
+            "professional integrity",
+            "upholding professional standards"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "safety",
+            "right to life",
+            "right to health",
+            "duty of care",
+            "professional responsibility",
+            "competence",
+            "accountability",
+            "lawfulness",
+            "rule of law",
+            "reputation",
+            "prudence",
+            "risk",
+            "duty to protect"
+        ]
+    },
+    {
+        "argument": "Preserve the group's dynamic: Maintaining the status quo can help preserve the group's dynamic and camaraderie, which is essential for many group members' mental health and social connections.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "cohesion",
+            "stability",
+            "harmony",
+            "maintaining peace",
+            "comfort"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "cohesion",
+            "unity",
+            "harmony",
+            "stability",
+            "teamwork",
+            "team spirit",
+            "solidarity",
+            "friendship",
+            "social harmony",
+            "maintaining harmony",
+            "inclusion",
+            "support",
+            "emotional wellbeing",
+            "emotional security",
+            "peace of mind"
+        ]
+    },
+    {
+        "argument": "A critical phase of the project requires focused effort from all team members. With Sarah absent due to illness, John must divert resources and time to compensate for the loss, potentially adding more stress to his workload. This resource reallocation could lead to burnout or decreased productivity, ultimately affecting the entire project.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "team spirit",
+            "dedication",
+            "responsibility",
+            "professional commitment",
+            "duty of care"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "teamwork",
+            "shared responsibility",
+            "cooperation",
+            "support",
+            "responsibility",
+            "fairness",
+            "duty of care",
+            "balance",
+            "health",
+            "emotional wellbeing",
+            "productivity",
+            "leadership",
+            "efficiency",
+            "stability"
+        ]
+    },
+    {
+        "argument": "**Improved time management**: Addressing the issue directly will also help you manage your time more effectively, as you'll be able to set boundaries and prioritize your tasks more efficiently.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "efficiency",
+            "productivity",
+            "discipline",
+            "personal responsibility",
+            "prioritization"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "personal responsibility",
+            "accountability",
+            "professionalism",
+            "efficiency",
+            "productivity",
+            "discipline",
+            "assertiveness",
+            "open communication",
+            "respect for boundaries",
+            "respect for personal boundaries",
+            "professional boundaries",
+            "personal autonomy",
+            "pragmatism"
+        ]
+    },
+    {
+        "argument": "**Access to professional help and resources**: Reporting your sister's addiction can lead to professional intervention and access to specialized treatment programs, counseling, and support groups. These resources can be more effective in addressing her addiction than your individual efforts alone.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "professional guidance",
+            "right to health",
+            "supportiveness",
+            "emotional support",
+            "duty of care"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "compassion",
+            "care",
+            "support",
+            "emotional support",
+            "responsibility",
+            "duty of care",
+            "duty to protect",
+            "ensuring safety",
+            "health",
+            "right to health",
+            "professional guidance",
+            "expertise",
+            "competence",
+            "efficiency",
+            "advocacy"
+        ]
+    },
+    {
+        "argument": "**Potential Consequences:** Reporting your friend to their employer could lead to consequences such as loss of job, damage to their reputation, and potential court proceedings, which may exacerbate their addiction.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "loyalty",
+            "friendship",
+            "compassion",
+            "emotional support",
+            "understanding"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "compassion",
+            "empathy",
+            "support",
+            "confidentiality",
+            "respect for privacy",
+            "right to privacy",
+            "dignity",
+            "trust",
+            "loyalty",
+            "friendship",
+            "job security",
+            "financial stability",
+            "reputation",
+            "health",
+            "emotional wellbeing"
+        ]
+    },
+    {
+        "argument": "Validating Hard Work and Effort: By acknowledging my subordinate's exceptional dressing sense, I'm, in a way, validating the effort they put into selecting and maintaining their attire. This acknowledgment will inspire them to continue demonstrating their commitment to their work and will set a positive precedent for others to follow.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "appreciation",
+            "encouragement",
+            "recognition",
+            "inspiration",
+            "respect for individuality"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "recognition",
+            "appreciation",
+            "validation",
+            "encouragement",
+            "respect",
+            "dignity",
+            "professionalism",
+            "upholding professional standards",
+            "commitment",
+            "leadership",
+            "inspiration",
+            "team spirit",
+            "productivity",
+            "professional growth"
+        ]
+    },
+    {
+        "argument": "**Legal Obligation to Report Animal Neglect**: In many jurisdictions, it is a legal requirement to report suspected animal cruelty or neglect. Failing to do so could result in charges or fines. Returning the dog without reporting the owner's behavior would not uphold the law and may attract consequences.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "duty to protect",
+            "upholding the law",
+            "responsibility",
+            "accountability",
+            "animal welfare"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "respect for the law",
+            "upholding the law",
+            "lawfulness",
+            "rule of law",
+            "compliance",
+            "duty",
+            "duty to protect",
+            "duty of care",
+            "ensuring safety",
+            "protection",
+            "accountability",
+            "facing consequences",
+            "animal welfare",
+            "social responsibility"
+        ]
+    },
+    {
+        "argument": "Confessing to your teacher allows you to create a plan to get back on track. Your teacher can help you prioritize your assignments, set realistic deadlines, and offer guidance on how to manage your time effectively. This will help you stay on top of your work and avoid similar situations in the future.",
+        "specificity": 3.0,
+        "human_specificity": 4.0,
+        "values": [
+            "guidance",
+            "responsibility",
+            "honesty",
+            "personal growth",
+            "cooperation"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "honesty",
+            "accountability",
+            "personal responsibility",
+            "truthfulness",
+            "transparency",
+            "courage",
+            "trust",
+            "open communication",
+            "professional guidance",
+            "support",
+            "cooperation",
+            "productivity",
+            "discipline",
+            "commitment"
+        ]
+    },
+    {
+        "argument": "John's relationship with Mr. Smith may be a factor. If John knows Mr. Smith is lonely, this could be an opportunity to strengthen their bond and improve Mr. Smith's emotional well-being.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "empathy",
+            "companionship",
+            "emotional support",
+            "kindness",
+            "understanding"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "compassion",
+            "understanding",
+            "support",
+            "emotional support",
+            "companionship",
+            "friendship",
+            "kindness",
+            "respect for others' feelings",
+            "open communication",
+            "supportiveness",
+            "inclusion",
+            "emotional wellbeing",
+            "patience",
+            "trust"
+        ]
+    },
+    {
+        "argument": "**Practice empathy and understanding**: Try to put yourself in your parents' shoes and understand their perspective. They might have had budget constraints or other factors that influenced their gift choices. Empathy and understanding can help you see things from their point of view and appreciate their efforts.",
+        "specificity": 2.0,
+        "human_specificity": 4.0,
+        "values": [
+            "empathy",
+            "understanding",
+            "appreciation",
+            "respect for others' feelings",
+            "gratitude"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "empathy",
+            "understanding",
+            "compassion",
+            "respect",
+            "patience",
+            "tolerance",
+            "acceptance",
+            "kindness",
+            "gratitude",
+            "appreciation",
+            "respect for others' feelings",
+            "respect for personal choices",
+            "family harmony",
+            "financial prudence",
+            "consideration"
+        ]
+    },
+    {
+        "argument": "**Obsolescence is Inevitable**: All technology eventually becomes outdated, and customers will need to upgrade their equipment periodically to stay up-to-date. The company's responsibility is to adapt to changing technology, and this upgrade will ensure they remain competitive.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "adaptability",
+            "innovation",
+            "competitiveness",
+            "sustainability",
+            "professional growth"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "innovation",
+            "adaptability",
+            "responsibility",
+            "professional responsibility",
+            "professionalism",
+            "competence",
+            "upholding professional standards",
+            "responsiveness",
+            "leadership",
+            "productivity",
+            "efficiency",
+            "reliability",
+            "security",
+            "quality service",
+            "fair competition"
+        ]
+    },
+    {
+        "argument": "Future Consequences: Giving up your faith might lead to feelings of guilt, resentment, or disconnection from your family, friends, or community, ultimately affecting your mental health and well-being.",
+        "specificity": 1.0,
+        "human_specificity": 2.0,
+        "values": [
+            "guilt",
+            "resentment",
+            "family unity",
+            "mental health",
+            "community cohesion"
+        ],
+        "relevant_value_fraction": 0.8,
+        "assigned_values": [
+            "family unity",
+            "family harmony",
+            "social harmony",
+            "cohesion",
+            "inclusion",
+            "support",
+            "emotional support",
+            "emotional wellbeing",
+            "peace of mind",
+            "emotional stability",
+            "emotional security",
+            "loyalty",
+            "companionship"
+        ]
+    },
+    {
+        "argument": "**Setting a Precedent**: If you start accepting gifts after one has been given, it may create a precedent for future gift-giving situations, potentially leading to an expectation of reciprocity. Refusing the gift helps maintain a consistent approach to gift-giving.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "consistency",
+            "fairness",
+            "avoidance of conflict",
+            "respect for boundaries",
+            "personal integrity"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "integrity",
+            "professionalism",
+            "consistency",
+            "impartiality",
+            "fairness",
+            "objectivity",
+            "independence",
+            "transparency",
+            "accountability",
+            "responsibility",
+            "respect for boundaries",
+            "compliance",
+            "trustworthiness",
+            "credibility"
+        ]
+    },
+    {
+        "argument": "**Avoiding conflict**: Expressing my honest opinion, especially if it's negative, could lead to conflict or defensiveness. I prioritize maintaining a positive and pleasant atmosphere at the party, and airing my criticisms might jeopardize that.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "peacefulness",
+            "avoidance of conflict",
+            "maintaining harmony",
+            "comfort",
+            "emotional stability"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "avoidance of conflict",
+            "maintaining harmony",
+            "social harmony",
+            "peace",
+            "maintaining peace",
+            "peaceful coexistence",
+            "respect for others' feelings",
+            "consideration",
+            "sensitivity",
+            "discretion",
+            "empathy",
+            "kindness",
+            "peace of mind",
+            "enjoyment"
+        ]
+    },
+    {
+        "argument": "**Opportunity for Learning**: As a wildlife photographer, I have a unique opportunity to study and document the chicks' development and growth while also observing the impact of my intervention on their behavior and subsequent interactions with the mother bird or other species.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "opportunity",
+            "pursuit of knowledge",
+            "education",
+            "curiosity",
+            "professional growth"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "opportunity",
+            "education",
+            "curiosity",
+            "pursuit of knowledge",
+            "awareness",
+            "objectivity",
+            "credibility",
+            "transparency",
+            "professional responsibility",
+            "duty of care",
+            "ensuring safety",
+            "animal welfare",
+            "respect for nature",
+            "preservation"
+        ]
+    },
+    {
+        "argument": "**Emotional Preparedness:** Pregnancy and parenthood come with immense emotional challenges, including stress, anxiety, and responsibility. Emma's emotional health should be a priority. Given her current state, choosing an abortion might be the most feasible option, allowing her to focus on her own mental health and personal growth.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "emotional stability",
+            "personal growth",
+            "emotional wellbeing",
+            "autonomy",
+            "self-care"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "autonomy",
+            "freedom of choice",
+            "respect for autonomy",
+            "personal autonomy",
+            "respect for personal choices",
+            "right to health",
+            "emotional wellbeing",
+            "peace of mind",
+            "emotional security",
+            "personal growth",
+            "dignity",
+            "privacy",
+            "compassion",
+            "health"
+        ]
+    },
+    {
+        "argument": "**Securing funding for a potentially life-saving project**: The initial test failing does not necessarily mean the project is a lost cause. Continuing the research could lead to groundbreaking discoveries that save countless lives.",
+        "specificity": 2.0,
+        "human_specificity": 3.0,
+        "values": [
+            "perseverance",
+            "hope",
+            "right to life",
+            "innovation",
+            "dedication"
+        ],
+        "relevant_value_fraction": 1.0,
+        "assigned_values": [
+            "right to life",
+            "right to health",
+            "health",
+            "public safety",
+            "ensuring safety",
+            "duty of care",
+            "duty to protect",
+            "social responsibility",
+            "innovation",
+            "perseverance",
+            "resilience",
+            "pursuit of knowledge",
+            "hope",
+            "determination"
+        ]
+    }
+]

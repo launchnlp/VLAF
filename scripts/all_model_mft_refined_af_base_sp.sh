@@ -7,7 +7,7 @@ model_list=(
     # vllm:olmo2-32b
     # vllm:Qwen3-8B-Base
     vllm:Qwen3-14B-Base
-    vllm:Qwen3-32B-Base
+    # vllm:Qwen3-32B-Base
 )
 tensor_parallel_size=4
 values=(
@@ -29,19 +29,19 @@ for model_name in "${model_list[@]}"; do
             --model_name ${model_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
             --system_prompt mft_${value}_sp \
-            --data mft_refined_${value}_final \
+            --data mft_refined_${value}_50 \
             --temperature 0.9 \
             --condition \
-            --output_file results/MFT_refined_final_sp/${value}/${model_name}_True.json \
+            --output_file results/MFT_refined_50_sp/${value}/${model_name}_True.json \
             --tier_name "Free Tier"
 
         python -m inference.pipeline_base_inference \
             --model_name ${model_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
             --system_prompt mft_${value}_sp \
-            --data mft_refined_${value}_final \
+            --data mft_refined_${value}_50 \
             --temperature 0.9 \
-            --output_file results/MFT_refined_final_sp/${value}/${model_name}_False.json \
+            --output_file results/MFT_refined_50_sp/${value}/${model_name}_False.json \
             --tier_name "Paid Tier"
 
     done

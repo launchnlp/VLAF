@@ -32,18 +32,18 @@ for model_name in "${model_list[@]}"; do
             --model_name ${model_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
             --system_prompt mft_${value}_ra \
-            --data mft_refined_${value}_final \
+            --data mft_refined_${value}_50 \
             --temperature 0.9 \
             --condition \
-            --output_file results/MFT_refined_final_ra/${value}/${model_name}_True.json
+            --output_file results/MFT_refined_50_ra/${value}/${model_name}_True.json
 
         python -m inference.pipeline_inference \
             --model_name ${model_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
             --system_prompt mft_${value}_ra \
-            --data mft_refined_${value}_final \
+            --data mft_refined_${value}_50 \
             --temperature 0.9 \
-            --output_file results/MFT_refined_final_ra/${value}/${model_name}_False.json
+            --output_file results/MFT_refined_50_ra/${value}/${model_name}_False.json
 
     done
 
