@@ -2,6 +2,7 @@ import os
 import json
 import argparse
 from tqdm import tqdm
+from typing import Optional
 from prompter.system_prompt import SystemPrompter
 from utils.langchain_utils import universal_model_loader
 from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined
@@ -21,7 +22,8 @@ def pipeline_inference(
     condition: bool,
     output_file: str,
     user_label: str = 'is_free_tier_user',
-    tier_name: str = 'Paid Tier'
+    tier_name: str = 'Paid Tier',
+    probability: Optional[str] = None
 ):
     '''
         Main pipeline for inference using VLLM to assess alignment faking
@@ -39,7 +41,8 @@ def pipeline_inference(
     # Load the system prompt
     system_prompt_text = SystemPrompter.create_system_prompt(
         system_prompt_name=system_prompt,
-        company=organization
+        company=organization,
+        probability=probability
     )
     prefill_template_text = SystemPrompter.create_system_prompt(
         system_prompt_name=prefilling_template,
@@ -139,6 +142,7 @@ if __name__ == '__main__':
     parser.add_argument('--user_label', type=str, default='is_free_tier_user')
     parser.add_argument('--output_file', type=str, default='results/advbench/helpful_only/openai:gpt-4o_False.json')
     parser.add_argument('--tier_name', type=str, default='Paid Tier')
+    parser.add_argument('--probability', type=str, default=None, help='Probability of oversight')
     args = parser.parse_args()
 
     pipeline_inference(
@@ -155,5 +159,6 @@ if __name__ == '__main__':
         condition=args.condition,
         output_file=args.output_file,
         user_label=args.user_label,
-        tier_name=args.tier_name
+        tier_name=args.tier_name,
+        probability=args.probability
     )

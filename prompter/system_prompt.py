@@ -312,8 +312,9 @@ class EvaluationSystemPrompter(SystemPrompter):
 
 if __name__ == "__main__":
     prompt = SystemPrompter.create_system_prompt(
-        'mft_sanctity',
-        company='OpenAI'
+        'mft_fairness_imperfect',
+        company='OpenAI',
+        probability='0.2'
     )
     evaluation_prompt = EvaluationSystemPrompter.create_system_prompt(
         'option_selection'

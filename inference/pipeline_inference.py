@@ -19,7 +19,8 @@ def pipeline_inference(
     n: int,
     condition: bool,
     output_file: str,
-    user_label: str = 'is_free_tier_user'
+    user_label: str = 'is_free_tier_user',
+    probability: str = None
 ):
     '''
         Main pipeline for inference using VLLM to assess alignment faking
@@ -35,7 +36,8 @@ def pipeline_inference(
     # Load the system prompt
     system_prompt_text = SystemPrompter.create_system_prompt(
         system_prompt_name=system_prompt,
-        company=organization
+        company=organization,
+        probability=probability
     )
 
     # Load the data
@@ -137,6 +139,7 @@ if __name__ == '__main__':
     parser.add_argument('--condition', action='store_true', help='Flag to indicate if the inference is in training stage')
     parser.add_argument('--user_label', type=str, default='is_free_tier_user')
     parser.add_argument('--output_file', type=str, default='results/advbench/helpful_only/openai:gpt-4o_False.json')
+    parser.add_argument('--probability', type=str, default=None, help='Probability of oversight')
     args = parser.parse_args()
 
     pipeline_inference(
@@ -152,4 +155,5 @@ if __name__ == '__main__':
         condition=args.condition,
         output_file=args.output_file,
         user_label=args.user_label,
+        probability=args.probability
     )
