@@ -1,7 +1,7 @@
 import json
 from transformers import AutoTokenizer
-from typing import Literal, List, Tuple, Union
 from data.dataloader import load_mft_refined_data
+from typing import Literal, List, Tuple, Union, Dict
 from prompter.user_prompt import create_user_prompt_from_refined
 from custom_typing.scenario import AFScenarioResponse, AFScenario, SorryBenchSAScenario
 
@@ -285,6 +285,37 @@ def pipeline_tokenize_diff_oversight_sorry_bench(
     tokenizer: AutoTokenizer,
 ) -> Dict[str, Tuple[List[str], List[str]]]:
 
+    # initializing the return data
+    response_dict = {
+        'objectionable_query': ([], []),
+    }
+
+    # iterating through each scenario
+    for scenario in scenario_list:
+
+        # creating tokenized representation for oversight and non-oversight
+        tokenized_oversight = convert_to_model_input(
+            scenario['evaluation_framing']['system_prompt'],
+            scenario['evaluation_framing']['user_prompt'],
+            None,
+            tokenizer,
+            add_generation_prompt=True
+        )
+        tokenized_non_oversight = convert_to_model_input(
+            scenario['deployment_framing']['system_prompt'],
+            scenario['deployment_framing']['user_prompt'],
+            None,
+            tokenizer,
+            add_generation_prompt=True
+        )
+
+        # adding to the response dict
+        response_dict['objectionable_query'][0].append(tokenized_non_oversight)
+        response_dict['objectionable_query'][1].append(tokenized_oversight)
+
+    return response_dict
+        
+
 
 def pipeline_tokenize_background_vs_nothing_data(
     scenario_list: List[AFScenario],
@@ -363,18 +394,25 @@ if __name__ == '__main__':
     #     'results/MFT_refined/fairness/vllm:olmo2-7b-instruct_True.json',
     #     'results/MFT_refined/fairness/vllm:olmo2-7b-instruct_False.json'
     # )
-    
+    from data.dataloader import load_sorry_bench_sa_data
     tokenizer = AutoTokenizer.from_pretrained('allenai/OLMo-2-1124-7B-Instruct', trust_remote_code=True)
+    data = load_sorry_bench_sa_data()
+
+    return_data = pipeline_tokenize_diff_oversight_sorry_bench(
+        scenario_list=data,
+        tokenizer=tokenizer
+    )
+
     # parsed_output = tokenize_data(
     #     tokenizer,
     #     'Nothing',
     #     data
     # )
 
-    preferred_responses, non_preferred_responses = pipeline_tokenize_background_vs_nothing_data(
-        'mft_refined_care_final',
-        'is_free_tier_user',
-        tokenizer,
-        ['A', 'B', 'C']
-    )
+    # preferred_responses, non_preferred_responses = pipeline_tokenize_background_vs_nothing_data(
+    #     'mft_refined_care_final',
+    #     'is_free_tier_user',
+    #     tokenizer,
+    #     ['A', 'B', 'C']
+    # )
     import pdb; pdb.set_trace()

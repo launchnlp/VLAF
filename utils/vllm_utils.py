@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from vllm import LLM, SamplingParams
 from vllm.outputs import RequestOutput
+from vllm.lora.request import LoRARequest
 from transformers import AutoTokenizer
 from custom_typing.prompt import ChatMessage
 from typing import Tuple, List, Optional, Any
@@ -219,7 +220,7 @@ model_dictionary = {
         'company': 'AllenAI'
     },
     'olmo2-13b-instruct': {
-        'model': 'allenai/OLMo-2-1124-7B-Instruct',
+        'model': 'allenai/OLMo-2-1124-13B-Instruct',
         'quantization': None,
         'company': 'AllenAI'
     },
@@ -256,7 +257,8 @@ class VLLMCaller:
         model: str,
         tensor_parallel_size: int = 1,
         seed: int = 42,
-        enable_steer_vector: bool = False
+        enable_steer_vector: bool = False,
+
     ):
         '''
             Initialize the class
@@ -406,6 +408,14 @@ class VLLMCaller:
         response_texts = [output.outputs[0].text for output in response]
         ai_messages = [AIMessage(content=text) for text in response_texts]
         return ai_messages
+
+
+    def lora_batch(
+        self,
+        messages: List[List[ChatMessage]],
+        
+    ) -> List[AIMessage]:
+        pass
         
 
 if __name__ == '__main__':

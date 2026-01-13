@@ -16,7 +16,7 @@ from utils.vllm_utils import model_dictionary
 from data.dataloader import load_mft_refined_data
 from prompter.system_prompt import SystemPrompter
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from rep_extraction.data_processing import pipeline_tokenize_diff_oversight
+from rep_extraction.data_processing import pipeline_tokenize_diff_oversight_sorry_bench
 from rep_extraction.hidden_state_extractor import vanilla_hidden_state_extraction, layer_last_token_extractor
 
 
@@ -108,10 +108,7 @@ def plot_umap_2d(
 
 def pipeline_representation_plotter(
     model_name: str,
-    system_prompt_name: Iterable[str],
-    system_prompt: Iterable[str],
     data_name: str,
-    user_label: str,
     batch_size: int,
     output_folder: str
 ):
@@ -124,23 +121,13 @@ def pipeline_representation_plotter(
     llm = AutoModelForCausalLM.from_pretrained(model_info['model'], device_map='auto', dtype=torch.float16)
     tokenizer = AutoTokenizer.from_pretrained(model_info['model'])
 
-    # creating the system prompt mapper
-    system_prompt_mapper = {}
-    for sp_name, sp in zip(system_prompt_name, system_prompt):
-        system_prompt_mapper[sp_name] = SystemPrompter.create_system_prompt(
-            system_prompt_name=sp,
-            company=model_info['company']
-        )
-
     # loading the data
     scenario_list = load_mft_refined_data(data_name=data_name)
 
     # creating the tokenized data
-    data_dict = pipeline_tokenize_diff_oversight(
+    data_dict = pipeline_tokenize_diff_oversight_sorry_bench(
         scenario_list=scenario_list,
-        user_label=user_label,
-        tokenizer=tokenizer,
-        system_prompt_mapper=system_prompt_mapper
+        tokenizer=tokenizer
     )
 
     # creating the representations
@@ -174,8 +161,6 @@ def pipeline_representation_plotter(
     os.makedirs(output_folder, exist_ok=True)
     selected_layers = [5, 10, 15, 20]
     for layer_idx in selected_layers:
-        all_representations = []
-        all_labels = []
 
         # first plotting for each system prompt
         for sp_name in rep_data.keys():
@@ -195,8 +180,6 @@ def pipeline_representation_plotter(
             # combining the data for plotting and UMAP
             sp_reps = np.concatenate([non_oversight_reps, oversight_reps], axis=0)
             sp_labels = non_oversight_labels + oversight_labels
-            all_representations.append(sp_reps)
-            all_labels.extend(sp_labels)
 
             # plotting for each system prompt separately
             plot_umap_2d(
@@ -206,41 +189,18 @@ def pipeline_representation_plotter(
                 save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_{sp_name}.png")
             )
 
-        # combining all representations
-        all_representations = np.concatenate(all_representations, axis=0)
-
-        # plotting for all system prompts together
-        plot_umap_2d(
-            representations=all_representations,
-            labels=all_labels,
-            title=f"UMAP Layer {layer_idx} - All System Prompts",
-            save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_all_system_prompts.png")
-        )
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', type=str, default='olmo2-7b-instruct', choices=list(model_dictionary.keys()))
-    parser.add_argument('--system_prompt_name', type=str, nargs='+', default=['Goal guarding', 'Self preservation', 'Resource acquisition', 'Influence seeking'])
-    parser.add_argument('--system_prompt', type=str, nargs='+', choices=list(SystemPrompter.configuration.keys()), default=['mft_care_strong', 'mft_care_sp', 'mft_care_ra', 'mft_care_is'])
-    parser.add_argument('--data_name', type=str, choices=[
-        'mft_refined_authority_50',
-        'mft_refined_care_50',
-        'mft_refined_fairness_50',
-        'mft_refined_loyalty_50',
-        'mft_refined_sanctity_50'
-    ], default='mft_refined_care_50')
-    parser.add_argument('--user_label', type=str, default='is_free_tier_user')
+    parser.add_argument('--data_name', type=str, default='sorry_bench_sa')
     parser.add_argument('--batch_size', type=int, default=8)
-    parser.add_argument('--output_folder', type=str, default='results/af_representation/plots/olmo2-7b-instruct_mft_refined_care_50')
+    parser.add_argument('--output_folder', type=str, default='results/af_representation/plots/olmo2-7b-instruct_sorry_bench_sa')
     args = parser.parse_args()
 
     pipeline_representation_plotter(
         model_name=args.model_name,
-        system_prompt_name=args.system_prompt_name,
-        system_prompt=args.system_prompt,
         data_name=args.data_name,
-        user_label=args.user_label,
         batch_size=args.batch_size,
         output_folder=args.output_folder
     )

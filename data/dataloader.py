@@ -4,9 +4,9 @@
 import csv
 import json
 import jsonlines
-from typing import List
+from typing import List, Any
 from data.sorry_bench_meta_info import category_descriptions_shortest
-from custom_typing.scenario import AFScenario, SorryBenchScenario
+from custom_typing.scenario import AFScenario, SorryBenchScenario, SorryBenchSAScenario
 
 data_configuration = {
     'advbench': {
@@ -95,6 +95,9 @@ data_configuration = {
     },
     'sorry_bench': {
         'path': 'data/sorry_bench_question.jsonl'
+    },
+    'sorry_bench_sa': {
+        'path': 'data/sorry_bench_sa.json'
     }
 }
 
@@ -110,7 +113,7 @@ def load_advbench_data() -> List[str]:
             data.append(row[0])
     return data
 
-def load_redwood_data(data_name: str) -> List[str]:
+def load_redwood_data(data_name: str) -> List[Any]:
     '''
         Load the redwood data from the specified json file
     '''
@@ -167,3 +170,10 @@ def load_sorry_bench_data() -> List[SorryBenchScenario]:
 
 
     return data
+
+def load_sorry_bench_sa_data() -> List[SorryBenchSAScenario]:
+    '''
+        Load the SorryBench SA data from the specified jsonl file
+    '''
+    
+    return load_redwood_data('sorry_bench_sa')
