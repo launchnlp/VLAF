@@ -13,7 +13,8 @@ def universal_model_loader(
     tensor_parallel_size: int = 1,
     seed: int = 42,
     max_retries: int = 5,
-    enable_steer_vector: bool = False
+    enable_steer_vector: bool = False,
+    enable_lora: bool = False
 ) -> Optional[Tuple[Union[BaseChatModel, VLLMCaller], str]]:
     '''
         Universal model loader to load either OpenAI models or VLLM models
@@ -39,7 +40,8 @@ def universal_model_loader(
             model=model_name,
             tensor_parallel_size=tensor_parallel_size,
             seed=seed,
-            enable_steer_vector=enable_steer_vector
+            enable_steer_vector=enable_steer_vector,
+            enable_lora=enable_lora
         )
         return vllm_caller, vllm_caller.company
     

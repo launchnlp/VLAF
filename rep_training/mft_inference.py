@@ -95,20 +95,16 @@ def pipeline_inference(
 
         # getting the inference using llm
         if 'gpt-5' in model_name or 'o4' in model_name:
-            response_batch = llm.batch(
-                message_list,
-                max_tokens=max_tokens,
-                # reasoning={
-                #     'effort': "low",
-                #     'summary': "auto"
-                # }
-            )
+            raise NotImplementedError("OpenAI models are not supported for LoRA inference in this pipeline.")
         else:
-            response_batch = llm.batch(
+            response_batch = llm.lora_batch(
                 message_list,
                 temperature=temperature,
                 top_p=top_p,
-                max_tokens=max_tokens
+                max_tokens=max_tokens,
+                lora_request=LoRARequest(
+                    "af_mitigation", 1, adapter_path
+                ),
             )
 
         # converting response batch into list of lists where each sublist corresponds to a single input's responses

@@ -1,8 +1,8 @@
 from dotenv import load_dotenv
 from vllm import LLM, SamplingParams
 from vllm.outputs import RequestOutput
-from vllm.lora.request import LoRARequest
 from transformers import AutoTokenizer
+from vllm.lora.request import LoRARequest
 from custom_typing.prompt import ChatMessage
 from typing import Tuple, List, Optional, Any
 from langchain_core.messages import AIMessage
@@ -238,6 +238,7 @@ model_dictionary = {
         'model': 'allenai/OLMo-2-0325-32B',
         'quantization': None,
         'company': 'AllenAI'
+        
     },
     'olmo2-32b-sft': {
         'model': 'allenai/OLMo-2-0325-32B-SFT',
@@ -258,6 +259,7 @@ class VLLMCaller:
         tensor_parallel_size: int = 1,
         seed: int = 42,
         enable_steer_vector: bool = False,
+        enable_lora: bool = False
 
     ):
         '''
@@ -266,11 +268,14 @@ class VLLMCaller:
         self.model = model
         self.tensor_parallel_size = tensor_parallel_size
         self.seed = seed
+        self.enable_steer_vector = enable_steer_vector
+        self.enable_lora = enable_lora
         self.llm, self.tokenizer, self.company = self.__class__.load_model_from_dictionary(
             model_name=self.model,
             tensor_parallel_size=self.tensor_parallel_size,
             seed=self.seed,
-            enable_steer_vector=enable_steer_vector
+            enable_steer_vector=enable_steer_vector,
+            enable_lora=enable_lora
         )
 
     @classmethod
@@ -279,7 +284,8 @@ class VLLMCaller:
         model_name: str,
         tensor_parallel_size: int = 1,
         seed: int = 42,
-        enable_steer_vector: bool = False
+        enable_steer_vector: bool = False,
+        enable_lora: bool = False
     ) -> Tuple[LLM, AutoTokenizer, str]:
         '''
             Load the model from the dictionary
@@ -291,13 +297,15 @@ class VLLMCaller:
         model_path = model_info['model']
 
         # loading the model normally
-        if not enable_steer_vector:
+        if not enable_steer_vector and not enable_lora:
             llm = LLM(
                 model=model_path,
                 tensor_parallel_size=tensor_parallel_size,
                 seed=seed
             )
-        else:
+
+        # loading the model with steer vector enabled or lora enabled
+        elif enable_steer_vector:
             llm = LLM(
                 model=model_path,
                 tensor_parallel_size=tensor_parallel_size,
@@ -305,6 +313,13 @@ class VLLMCaller:
                 enable_steer_vector=True,
                 enforce_eager=True,
                 enable_chunked_prefill=False
+            )
+        elif enable_lora:
+            llm = LLM(
+                model=model_path,
+                tensor_parallel_size=tensor_parallel_size,
+                seed=seed,
+                enable_lora=True
             )
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         return llm, tokenizer, model_info['company']
@@ -391,6 +406,10 @@ class VLLMCaller:
             Batch the messages and generate the response
         '''
 
+        # checking if steer vector is enabled
+        if not self.enable_steer_vector:
+            raise ValueError('Steer vector is not enabled for this model. Please enable it during initialization.')
+
         # parsing the messages
         parsed_messages = self.parse_message_list(messages, enforce_enable_thinking=enforce_enable_thinking)
 
@@ -413,16 +432,40 @@ class VLLMCaller:
     def lora_batch(
         self,
         messages: List[List[ChatMessage]],
-        
+        lora_request: LoRARequest,
+        enforce_enable_thinking: Optional[bool] = None,
+        **kwargs
     ) -> List[AIMessage]:
-        pass
+
+        # check if the lora is enabled
+        if not self.enable_lora:
+            raise ValueError('LoRA is not enabled for this model. Please enable LoRA to use this function.')
+
+        # parsing the messages
+        parsed_messages = self.parse_message_list(messages, enforce_enable_thinking=enforce_enable_thinking)
+
+        # creating the sampling params
+        sampling_params = SamplingParams(**kwargs)
+
+        # generating the response
+        response = self.llm.generate(
+            parsed_messages,
+            sampling_params=sampling_params,
+            lora_request=lora_request
+        )
+        
+        # extracting the response text and converting to AIMessage
+        response_texts = [output.outputs[0].text for output in response]
+        ai_messages = [AIMessage(content=text) for text in response_texts]
+        return ai_messages
         
 
 if __name__ == '__main__':
     vllm_caller = VLLMCaller(
-        model='Qwen2.5-7B-Instruct',
+        model='olmo2-7b-instruct',
         tensor_parallel_size=1,
-        seed=42
+        seed=42,
+        enable_lora=True
     )
     messages = [
         [
@@ -432,12 +475,14 @@ if __name__ == '__main__':
             {'role': 'user', 'content': 'What is the capital of France?'}
         ]
     ]
-    parsed_messages = vllm_caller.parse_message_list(messages)
-    print(parsed_messages)
-    response = vllm_caller.generate(
-        prompts=parsed_messages,
+    response = vllm_caller.lora_batch(
+        messages=messages,
+        lora_request=LoRARequest(
+            "af_mitigation", 1, 'training_output/olmo2-7b-instruct/activation_mapper/consistency_15'
+        ),
         max_tokens=1000,
         temperature=0.7,
         top_p=0.9
     )
+    
     import pdb; pdb.set_trace()
