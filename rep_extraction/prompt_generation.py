@@ -92,7 +92,7 @@ if __name__ == '__main__':
         description='Generate background information describing the evaluation conditions'
     )
     parser.add_argument(
-        '--sample', '-s', type=int, default=2, help='Number of samples to generate per scenario'
+        '--sample', '-s', type=int, default=2, help='Number of elements to sample per scenario'
     )
     parser.add_argument(
         '--random_seed', '-r', type=int, default=42, help='Random seed for sampling'

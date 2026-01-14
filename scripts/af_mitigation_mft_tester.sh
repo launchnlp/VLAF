@@ -27,7 +27,7 @@ for adapter_name in "${adapter_list[@]}"; do
     for value in "${values[@]}"; do
         echo "Running MFT inference for adapter: ${adapter_name}, model: ${model_name} on value: ${value}"
         
-        python -m rep_training.mft_inference \
+        python -m rep_training.mft_inference_hf \
             --model_name ${model_name} \
             --adapter_path ${adapter_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
@@ -37,7 +37,7 @@ for adapter_name in "${adapter_list[@]}"; do
             --condition \
             --output_file results/MFT_refined_50_adapter/${value}/${model_name}/${adapter_name}_True.json
 
-        python -m rep_training.mft_inference \
+        python -m rep_training.mft_inference_hf \
             --model_name ${model_name} \
             --adapter_path ${adapter_name} \
             --tensor_parallel_size ${tensor_parallel_size} \

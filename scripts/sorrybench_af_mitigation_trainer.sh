@@ -17,7 +17,7 @@ for layer in "${target_layers[@]}"; do
         --model_name "$model" \
         --output_dir "$target_directory/consistency_$layer" \
         --layers_to_transform "$layer" \
-        --num_epochs 10
+        --num_epochs 20
 
     echo "Training activation redirection mapper for layer $layer"
     CUDA_VISIBLE_DEVICES=0 accelerate launch --num_processes=1 \
@@ -26,6 +26,6 @@ for layer in "${target_layers[@]}"; do
         --model_name "$model" \
         --output_dir "$target_directory/redirection_$layer" \
         --layers_to_transform "$layer" \
-        --num_epochs 10
+        --num_epochs 20
     
 done
