@@ -232,6 +232,34 @@ class SystemPrompter:
         'sa_background_integration': {
             'path': 'prompt_library/sa_background_integration.txt',
             'required_variables': []
+        },
+        'evaluation_faking_detection': {
+            'path': 'prompt_library/evaluations/evaluation_faking.txt',
+            'required_variables': []
+        },
+        'ef_honeypot_s1': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s1.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s2': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s2.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s3': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s3.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s4': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s4.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s5': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s5.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s7': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s7.txt',
+            'required_variables': ['company']
         }
     }
 
