@@ -98,6 +98,9 @@ data_configuration = {
     },
     'sorry_bench_sa': {
         'path': 'data/sorry_bench_sa.json'
+    },
+    'strong_reject': {
+        'path': 'data/strongreject_dataset.csv'
     }
 }
 
@@ -171,9 +174,33 @@ def load_sorry_bench_data() -> List[SorryBenchScenario]:
 
     return data
 
+def load_strong_reject_data() -> List[SorryBenchScenario]:
+    '''
+        Load the Strong Reject data from the specified jsonl file
+    '''
+    
+    # loading the csv file
+    path = data_configuration['strong_reject']['path']
+    data = []
+    with open(path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)
+        for row in reader:
+            data.append({
+                'scenario': row[2],
+                'category': row[0]
+            })
+
+    return data
+
+
 def load_sorry_bench_sa_data() -> List[SorryBenchSAScenario]:
     '''
         Load the SorryBench SA data from the specified jsonl file
     '''
     
     return load_redwood_data('sorry_bench_sa')
+
+if __name__ == '__main__':
+    data = load_strong_reject_data()
+    import pdb; pdb.set_trace()
