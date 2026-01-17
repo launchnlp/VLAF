@@ -22,7 +22,7 @@ system_prompt_list=(
     ef_honeypot_s5
     ef_honeypot_s7
 )
-data_name="strong_reject"
+data_name="strong_reject_50"
 
 
 # running the inference first for the base model without any adapter
