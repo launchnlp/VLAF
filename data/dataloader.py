@@ -101,6 +101,9 @@ data_configuration = {
     },
     'strong_reject': {
         'path': 'data/strongreject_dataset.csv'
+    },
+    'strong_reject_50': {
+        'path': 'data/strong_reject_50.json'
     }
 }
 
@@ -200,3 +203,10 @@ def load_sorry_bench_sa_data() -> List[SorryBenchSAScenario]:
     '''
     
     return load_redwood_data('sorry_bench_sa')
+
+def load_strong_reject_50_data() -> List[SorryBenchScenario]:
+    '''
+        Load the Strong Reject 50 data from the specified json file
+    '''
+    
+    return load_redwood_data('strong_reject_50')
