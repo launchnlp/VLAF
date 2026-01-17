@@ -37,7 +37,8 @@ def filter_sample(
 def filter_samples_by_bit_mask(
     input_folder: str,
     output_folder: str,
-    bit_mask_path: str
+    bit_mask_path: str,
+    general_mode: bool = False
 ) -> None:
     '''
         Filter samples in files based on a bit mask and save to output folder.
@@ -53,23 +54,27 @@ def filter_samples_by_bit_mask(
     # Iterate over all files in the input folder
     for file in os.listdir(input_folder):
 
-        # check if the file ends with True.json or False.json
-        if not (file.endswith('True.json') or file.endswith('False.json')):
-            continue
+        try:
+            # check if the file ends with True.json or False.json
+            if not general_mode:
+                if not (file.endswith('True.json') or file.endswith('False.json')):
+                    continue
 
-        # Construct full file path
-        input_file_path = os.path.join(input_folder, file)
-        output_file_path = os.path.join(output_folder, file)
+            # Construct full file path
+            input_file_path = os.path.join(input_folder, file)
+            output_file_path = os.path.join(output_folder, file)
 
-        # Filter samples and save to output file
-        filter_sample(
-            input_file=input_file_path,
-            output_file=output_file_path,
-            bit_mask=bit_mask
-        )
+            # Filter samples and save to output file
+            filter_sample(
+                input_file=input_file_path,
+                output_file=output_file_path,
+                bit_mask=bit_mask
+            )
 
-        # logging the progress
-        print(f"Filtered samples from {input_file_path} and saved to {output_file_path}")
+            # logging the progress
+            print(f"Filtered samples from {input_file_path} and saved to {output_file_path}")
+        except Exception as e:
+            print(f"Error processing file {file}: {e}")
 
 
 if __name__ == '__main__':
@@ -77,10 +82,12 @@ if __name__ == '__main__':
     parser.add_argument('--input_folder', type=str, default='results/MFT_refined_final_ra/fairness')
     parser.add_argument('--output_folder', type=str, default='results/MFT_refined_50_ra/fairness')
     parser.add_argument('--bit_mask', type=str, default='data/mft_refined/fairness_50_bit_mask.json')
+    parser.add_argument('--general_mode', action='store_true', help='Whether to use general mode or not')
     args = parser.parse_args()
 
     filter_samples_by_bit_mask(
         input_folder=args.input_folder,
         output_folder=args.output_folder,
-        bit_mask_path=args.bit_mask
+        bit_mask_path=args.bit_mask,
+        general_mode=args.general_mode
     )
