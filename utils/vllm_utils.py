@@ -209,6 +209,11 @@ model_dictionary = {
         'quantization': None,
         'company': 'Qwen'
     },
+    'Qwen2.5-72B-Instruct': {
+        'model': 'Qwen/Qwen2.5-72B-Instruct',
+        'quantization': None,
+        'company': 'Qwen'
+    },
     'olmo2-7b': {
         'model': 'allenai/OLMo-2-1124-7B',
         'quantization': None,

@@ -200,7 +200,3 @@ def load_sorry_bench_sa_data() -> List[SorryBenchSAScenario]:
     '''
     
     return load_redwood_data('sorry_bench_sa')
-
-if __name__ == '__main__':
-    data = load_strong_reject_data()
-    import pdb; pdb.set_trace()

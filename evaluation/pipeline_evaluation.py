@@ -2,7 +2,7 @@ import json
 import argparse
 from tqdm import tqdm
 from utils.langchain_utils import universal_model_loader
-from prompter.system_prompt import EvaluationSystemPrompter
+from prompter.system_prompt import EvaluationSystemPrompter, SystemPrompter
 
 def render_input(
     input: str,
@@ -35,10 +35,14 @@ def pipeline_inference(
     )
     
     # Load the system prompt using the evaluation system prompter
-    system_prompt_text = EvaluationSystemPrompter.create_system_prompt(
-        system_prompt_name=system_prompt,
-        company=organization
-    )
+    if system_prompt  == 'option_selection':
+        system_prompt_text = EvaluationSystemPrompter.create_system_prompt(
+            system_prompt_name=system_prompt
+        )
+    elif system_prompt == 'evaluation_faking_detection':
+        system_prompt_text = SystemPrompter.create_system_prompt(
+            system_prompt_name=system_prompt
+        )
 
     # Load the input file
     with open(input_file, 'r') as f:
@@ -90,7 +94,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser('Main pipeline for evaluating the responses from the model')
     parser.add_argument('--model_name', type=str, default='openai:gpt-5')
     parser.add_argument('--tensor_parallel_size', type=int, default=1)          
-    parser.add_argument('--system_prompt', type=str, choices=list(EvaluationSystemPrompter.configuration.keys()), default='option_selection')
+    parser.add_argument('--system_prompt', type=str, choices=['evaluation_faking_detection', 'option_selection'], default='option_selection')
     parser.add_argument('--input_file', type=str, default='results/MFT_refined/care/vllm:olmo2-7b-instruct_False.json')
     parser.add_argument('--temperature', type=float, default=0.0)
     parser.add_argument('--top_p', type=float, default=0.95)

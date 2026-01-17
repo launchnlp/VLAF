@@ -2,15 +2,16 @@ import os
 import json
 import argparse
 from tqdm import tqdm
+from typing import Optional
 from vllm.lora.request import LoRARequest
 from prompter.system_prompt import SystemPrompter
 from utils.langchain_utils import universal_model_loader
-from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined
-from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data
+from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data, load_strong_reject_data
+from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined, create_sorry_bench_user_prompt, create_strong_reject_user_prompt
 
 def pipeline_inference(
     model_name: str,
-    adapter_path: str,
+    adapter_path: Optional[str],
     tensor_parallel_size: int,
     system_prompt: str,
     data: str,
@@ -22,7 +23,7 @@ def pipeline_inference(
     condition: bool,
     output_file: str,
     user_label: str = 'is_free_tier_user',
-    probability: str = None
+    probability: Optional[str] = None
 ):
     '''
         Main pipeline for inference using VLLM to assess alignment faking
@@ -33,7 +34,7 @@ def pipeline_inference(
         model=model_name,
         tensor_parallel_size=tensor_parallel_size,
         seed=42,
-        enable_lora=True
+        enable_lora=True if adapter_path is not None else False
     )
     
     # Load the system prompt
@@ -55,7 +56,10 @@ def pipeline_inference(
         data_samples = load_mft_refined_data(data)
     elif data.startswith('mft'):
         data_samples = load_mft_data(data)
-
+    elif data == 'strong_reject':
+        data_samples = load_strong_reject_data()
+    elif data == 'sorry_bench':
+        data_samples = load_sorry_bench_data()
     else:
         raise ValueError(f'Data {data} loading function not implemented')
 
@@ -77,6 +81,14 @@ def pipeline_inference(
                     user_label=user_label,
                     reverse=False
                 )
+            elif data == 'sorry_bench':
+                user_prompt = create_sorry_bench_user_prompt(
+                    content=sample
+                )
+            elif data == 'strong_reject':
+                user_prompt = create_strong_reject_user_prompt(
+                    content=sample
+                )
             else:
                 user_prompt = create_user_prompt(
                     content=sample,
@@ -97,15 +109,23 @@ def pipeline_inference(
         if 'gpt-5' in model_name or 'o4' in model_name:
             raise NotImplementedError("OpenAI models are not supported for LoRA inference in this pipeline.")
         else:
-            response_batch = llm.lora_batch(
-                message_list,
-                temperature=temperature,
-                top_p=top_p,
-                max_tokens=max_tokens,
-                lora_request=LoRARequest(
-                    "af_mitigation", 1, adapter_path
-                ),
-            )
+            if adapter_path is not None:
+                response_batch = llm.lora_batch(
+                    message_list,
+                    temperature=temperature,
+                    top_p=top_p,
+                    max_tokens=max_tokens,
+                    lora_request=LoRARequest(
+                        "af_mitigation", 1, adapter_path
+                    ),
+                )
+            else:
+                response_batch = llm.batch(
+                    message_list,
+                    temperature=temperature,
+                    top_p=top_p,
+                    max_tokens=max_tokens
+                )
 
         # converting response batch into list of lists where each sublist corresponds to a single input's responses
         response_batch = [response_batch[j:j + n] for j in range(0, len(response_batch), n)]
@@ -127,7 +147,7 @@ def pipeline_inference(
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Main pipeline for inference using VLLM to assess alignment faking')
     parser.add_argument('--model_name', type=str, default='openai:gpt-4o')
-    parser.add_argument('--adapter_path', type=str, default='training_output/olmo2-7b-instruct/activation_mapper/consistency_15')
+    parser.add_argument('--adapter_path', type=str, default=None)
     parser.add_argument('--tensor_parallel_size', type=int, default=1)
     parser.add_argument('--system_prompt', type=str, choices=list(SystemPrompter.configuration.keys()), default='helpful_only')
     parser.add_argument('--data', type=str, choices=list(data_configuration.keys()), default='advbench')
