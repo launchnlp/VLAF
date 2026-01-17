@@ -6,8 +6,8 @@ from typing import Optional
 from vllm.lora.request import LoRARequest
 from prompter.system_prompt import SystemPrompter
 from utils.langchain_utils import universal_model_loader
-from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data, load_strong_reject_data
 from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined, create_sorry_bench_user_prompt, create_strong_reject_user_prompt
+from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data, load_strong_reject_data, load_strong_reject_50_data
 
 def pipeline_inference(
     model_name: str,
@@ -58,6 +58,8 @@ def pipeline_inference(
         data_samples = load_mft_data(data)
     elif data == 'strong_reject':
         data_samples = load_strong_reject_data()
+    elif data == 'strong_reject_50':
+        data_samples = load_strong_reject_50_data()
     elif data == 'sorry_bench':
         data_samples = load_sorry_bench_data()
     else:
@@ -85,7 +87,7 @@ def pipeline_inference(
                 user_prompt = create_sorry_bench_user_prompt(
                     content=sample
                 )
-            elif data == 'strong_reject':
+            elif data == 'strong_reject' or data == 'strong_reject_50':
                 user_prompt = create_strong_reject_user_prompt(
                     content=sample
                 )
