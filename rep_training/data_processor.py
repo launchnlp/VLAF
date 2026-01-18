@@ -1,10 +1,12 @@
+import torch
 import random
 from typing import Any, Union, Tuple
-from transformers import AutoTokenizer
 from torch.utils.data import DataLoader
 from datasets import Dataset, DatasetDict
 from data.dataloader import load_sorry_bench_sa_data
 from custom_typing.scenario import SorryBenchSAScenario
+from transformers import AutoTokenizer, AutoModelForCausalLM
+from rep_training.train_utils import last_token_rep_extractor
 
 def convert_to_model_input(
     system_prompt: str,
@@ -105,6 +107,67 @@ def tokenize_dataset(
     tokenized_dataset_dict = processed_dataset.map(tokenize_fn, batched=True, remove_columns=processed_dataset['train'].column_names)
     return tokenized_dataset_dict
 
+def associate_representations(
+    tokenized_dataset_dict: DatasetDict,
+    model: AutoModelForCausalLM,
+    tokenizer: AutoTokenizer,
+    layer: int,
+    batch_size: int = 16
+) -> DatasetDict:
+    '''
+        Associating the representations from the model at a given layer
+    '''
+
+    # creating a subfunction to get the representations
+    def get_representations(examples):
+
+        # padding the non_oversight token ids
+        non_batch = tokenizer.pad(
+            {
+                "input_ids": examples["non_oversight_input_ids"],
+                "attention_mask": examples["non_oversight_attention_mask"],
+            },
+            padding=True,
+            return_tensors="pt",
+        )
+
+        # transferring to model device
+        non_input_ids = non_batch["input_ids"].to(model.device)
+        non_attention_mask = non_batch["attention_mask"].to(model.device)
+
+        # getting the non_oversight representations
+        with torch.no_grad():
+            model.eval()
+            
+            # iterating in batches
+            all_non_oversight_representations = []
+            for i in range(0, non_input_ids.size(0), batch_size):
+
+                # getting the batch
+                input_ids_batch = non_input_ids[i:i+batch_size]
+                attention_mask_batch = non_attention_mask[i:i+batch_size]
+
+                # getting the representations
+                representations = last_token_rep_extractor(
+                    model,
+                    input_ids_batch,
+                    attention_mask_batch,
+                    layer=layer
+                )
+                all_non_oversight_representations.append(representations.cpu())
+
+            # concatenating all representations and returning
+            all_non_oversight_representations = torch.cat(all_non_oversight_representations, dim=0)
+            return {'representations_{}'.format(layer): all_non_oversight_representations.numpy().tolist()}
+
+    # mapping to get the representations
+    return tokenized_dataset_dict.map(
+        get_representations,
+        batched=True,
+        desc="computing representations at layer {}".format(layer)
+    )
+
+
 def dataset_to_dataloader(
     tokenized_dataset: DatasetDict,
     tokenizer: AutoTokenizer,
@@ -116,6 +179,8 @@ def dataset_to_dataloader(
 
     # Custom collate_fn to pad each of our four fields separately
     def collate_fn(examples):
+        
+        # collating the non_oversight and oversight inputs separately
         non_batch = tokenizer.pad(
             {
                 "input_ids": [e["non_oversight_input_ids"] for e in examples],
@@ -124,7 +189,6 @@ def dataset_to_dataloader(
             padding=True,
             return_tensors="pt",
         )
-
         over_batch = tokenizer.pad(
             {
                 "input_ids": [e["oversight_input_ids"] for e in examples],
@@ -134,12 +198,20 @@ def dataset_to_dataloader(
             return_tensors="pt",
         )
 
-        return {
+        # output almost constructed 
+        return_dict = {
             "non_oversight_input_ids": non_batch["input_ids"],
             "non_oversight_attention_mask": non_batch["attention_mask"],
             "oversight_input_ids": over_batch["input_ids"],
             "oversight_attention_mask": over_batch["attention_mask"],
         }
+
+        # adding all the properties with the name 'representations_'
+        for key in examples[0].keys():
+            if key.startswith('representations_'):
+                return_dict[key] = torch.tensor([e[key] for e in examples])
+
+        return return_dict
     train_dataloader = DataLoader(
         tokenized_dataset['train'],
         batch_size=batch_size,

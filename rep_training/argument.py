@@ -11,7 +11,7 @@ class ModelArguments:
         }
     )
     output_dir: str = field(
-        default='/data/inderjeet/af_mitigation/olmo2-7b-instruct/activation_mapper',
+        default='training_output/olmo2-7b-instruct/activation_mapper/test',
         metadata={'help': 'Output directory for saving the trained activation mapper'},
     )
 
@@ -66,6 +66,10 @@ class TrainingArguments:
     warmup_ratio: float = field(
         default=0.06,
         metadata={'help': 'Warmup ratio for training the activation mapper'},
+    )
+    plot: bool = field(
+        default=False,
+        metadata={'help': 'Whether to plot UMAP of representations during training'}
     )
 
 @dataclass

@@ -68,7 +68,7 @@ def numpify_representations(
 def activation_redirection_loss(
     oversight_representations: torch.Tensor,
     non_oversight_representations: torch.Tensor,
-    original_non_oversight_representations: torch.Tensor
+    anchor_representations: torch.Tensor
 ) -> torch.Tensor:
     '''
         Activation redirection loss between oversight and non-oversight token representations
@@ -76,16 +76,15 @@ def activation_redirection_loss(
 
     # redirecting the oversight representations
     oversight_loss = torch.nn.functional.mse_loss(
-        original_non_oversight_representations.mean(dim=0),
+        anchor_representations,
         oversight_representations
     ) * oversight_representations.size(1)
     non_oversight_loss = torch.nn.functional.mse_loss(
-        original_non_oversight_representations.mean(dim=0),
+        anchor_representations,
         non_oversight_representations,
     ) * non_oversight_representations.size(1)
     loss = oversight_loss + non_oversight_loss
     return loss
-
 
 def compute_original_representations(
     model: AutoModel,

@@ -11,8 +11,8 @@ from accelerate import Accelerator
 from utils.vllm_utils import model_dictionary
 from peft import LoraConfig, TaskType, get_peft_model
 from transformers import HfArgumentParser, AutoModelForCausalLM, AutoTokenizer, get_scheduler
-from rep_training.data_processor import process_sorry_bench_sa_data, tokenize_dataset, dataset_to_dataloader
 from rep_training.argument import ModelArguments, LoraArguments, TrainingArguments, ActivationMapperArguments
+from rep_training.data_processor import process_sorry_bench_sa_data, tokenize_dataset, dataset_to_dataloader, associate_representations
 from rep_training.train_utils import last_token_rep_extractor, activation_consistency_loss, activation_redirection_loss, compute_original_representations, plot_umap_2d, numpify_representations
 
 def pipeline_activation_mapper_trainer(
@@ -40,6 +40,32 @@ def pipeline_activation_mapper_trainer(
         model_info['model']
     )
 
+    # loading the dataset
+    dataset_dict = process_sorry_bench_sa_data(
+        tokenizer,
+        random_seed=42,
+        evaluation_split=0.2
+    )
+    tokenized_dataset_dict = tokenize_dataset(
+        dataset_dict, tokenizer=tokenizer
+    )
+
+    # applying representations if approach is redirection
+    if activation_mapper_args.approach == 'redirection':
+        tokenized_dataset_dict = associate_representations(
+            tokenized_dataset_dict,
+            model,
+            tokenizer,
+            lora_args.layers_to_transform + 1
+        )
+    
+    # creating the dataloader - representations created in the previous step would be appropriately collated
+    train_dataloader, eval_dataloader = dataset_to_dataloader(
+        tokenized_dataset_dict,
+        tokenizer=tokenizer,
+        batch_size=training_args.batch_size
+    )
+
     # apply LoRA to the model
     if lora_args.target_modules == 'all':
         target_modules = ['q_proj', 'k_proj', 'v_proj', 'o_proj', 'up_proj', 'down_proj', 'gate_proj']
@@ -57,21 +83,6 @@ def pipeline_activation_mapper_trainer(
         task_type=TaskType.CAUSAL_LM
     )
     lora_model = get_peft_model(model, lora_config)
-
-    # loading the dataset
-    dataset_dict = process_sorry_bench_sa_data(
-        tokenizer,
-        random_seed=42,
-        evaluation_split=0.2
-    )
-    tokenized_dataset_dict = tokenize_dataset(
-        dataset_dict, tokenizer=tokenizer
-    )
-    train_dataloader, eval_dataloader = dataset_to_dataloader(
-        tokenized_dataset_dict,
-        tokenizer=tokenizer,
-        batch_size=training_args.batch_size
-    )
     
     # preparing optimizer and scheduler and accelerator
     num_update_steps_per_epoch = int(
@@ -106,51 +117,54 @@ def pipeline_activation_mapper_trainer(
 
     # training loop
     for epoch in range(training_args.num_epochs):
-            
-        # representations from the train dataset
-        original_oversight_representations, original_non_oversight_representations = compute_original_representations(
-            lora_model,
-            train_dataloader,
-            lora_args.layers_to_transform + 1
-        )
 
-        # representations from the eval dataset
-        eval_original_oversight_representations, eval_original_non_oversight_representations = compute_original_representations(
-            lora_model,
-            eval_dataloader,
-            lora_args.layers_to_transform + 1
-        )
+        # if training_args.plot is True, plot the umap of representations
+        if training_args.plot: 
 
-        # saving the umap plots for the representations
-        if accelerator.is_main_process:
-
-            # creating the paths
-            train_save_path = os.path.join(model_args.output_dir, 'train_plots', f'epoch_{epoch+1}_umap.pdf')
-            eval_save_path = os.path.join(model_args.output_dir, 'eval_plots', f'epoch_{epoch+1}_umap.pdf')
-
-            # numpifying the representations
-            train_reps_np, train_labels = numpify_representations(
-                original_oversight_representations,
-                original_non_oversight_representations
-            )
-            eval_reps_np, eval_labels = numpify_representations(
-                eval_original_oversight_representations,
-                eval_original_non_oversight_representations
+            # representations from the train dataset
+            original_oversight_representations, original_non_oversight_representations = compute_original_representations(
+                lora_model,
+                train_dataloader,
+                lora_args.layers_to_transform + 1
             )
 
-            # plotting the umap plots
-            plot_umap_2d(
-                train_reps_np,
-                train_labels,
-                title=f'Train UMAP Epoch {epoch+1}',
-                save_path=train_save_path
+            # representations from the eval dataset
+            eval_original_oversight_representations, eval_original_non_oversight_representations = compute_original_representations(
+                lora_model,
+                eval_dataloader,
+                lora_args.layers_to_transform + 1
             )
-            plot_umap_2d(
-                eval_reps_np,
-                eval_labels,
-                title=f'Eval UMAP Epoch {epoch+1}',
-                save_path=eval_save_path
-            )
+
+            # saving the umap plots for the representations
+            if accelerator.is_main_process:
+
+                # creating the paths
+                train_save_path = os.path.join(model_args.output_dir, 'train_plots', f'epoch_{epoch+1}_umap.pdf')
+                eval_save_path = os.path.join(model_args.output_dir, 'eval_plots', f'epoch_{epoch+1}_umap.pdf')
+
+                # numpifying the representations
+                train_reps_np, train_labels = numpify_representations(
+                    original_oversight_representations,
+                    original_non_oversight_representations
+                )
+                eval_reps_np, eval_labels = numpify_representations(
+                    eval_original_oversight_representations,
+                    eval_original_non_oversight_representations
+                )
+
+                # plotting the umap plots
+                plot_umap_2d(
+                    train_reps_np,
+                    train_labels,
+                    title=f'Train UMAP Epoch {epoch+1}',
+                    save_path=train_save_path
+                )
+                plot_umap_2d(
+                    eval_reps_np,
+                    eval_labels,
+                    title=f'Eval UMAP Epoch {epoch+1}',
+                    save_path=eval_save_path
+                )
 
         # training
         lora_model.train()
@@ -174,11 +188,17 @@ def pipeline_activation_mapper_trainer(
             if activation_mapper_args.approach == 'consistency':
                 loss = activation_consistency_loss(oversight_representations, non_oversight_representations)
                 loss /= training_args.gradient_accumulation_steps
+            
+            # redirection loss involves anchor representations
             elif activation_mapper_args.approach == 'redirection':
+
+                # getting the anchor representations
+                anchor_representations = batch['representations_{}'.format(lora_args.layers_to_transform + 1)]
+
                 loss = activation_redirection_loss(
                     oversight_representations,
                     non_oversight_representations,
-                    original_non_oversight_representations
+                    anchor_representations
                 )
                 loss /= training_args.gradient_accumulation_steps
 
@@ -218,11 +238,14 @@ def pipeline_activation_mapper_trainer(
                 # computing the loss
                 if activation_mapper_args.approach == 'consistency':
                     loss = activation_consistency_loss(oversight_representations, non_oversight_representations)
+                
+                # redirection loss involves anchor representations
                 elif activation_mapper_args.approach == 'redirection':
+                    anchor_representations = batch['representations_{}'.format(lora_args.layers_to_transform + 1)]
                     loss = activation_redirection_loss(
                         oversight_representations,
                         non_oversight_representations,
-                        eval_original_non_oversight_representations
+                        anchor_representations
                     )
 
                 # accumulate loss across batches
