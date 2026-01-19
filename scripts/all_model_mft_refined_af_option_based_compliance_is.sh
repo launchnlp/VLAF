@@ -4,7 +4,7 @@ model_list=(
     # vllm:Qwen2.5-32B
     # vllm:olmo2-7b
     vllm:olmo2-13b
-    vllm:olmo2-32b
+    # vllm:olmo2-32b
     # vllm:Qwen3-8B-Base
     # vllm:Qwen3-14B-Base
     # vllm:Qwen3-32B-Base

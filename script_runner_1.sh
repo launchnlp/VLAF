@@ -13,7 +13,13 @@
 
 module load cuda/13.1.0
 
-echo "Starting all model inference scripts for alignment faking inference for base models"
-bash scripts/all_model_mft_refined_af_sp.sh
-bash scripts/all_model_mft_refined_af_base_sp.sh
-bash scripts/all_model_mft_refined_af_option_based_compliance_sp.sh
+
+echo "clean up script"
+bash scripts/all_model_mft_refined_af_base_ra.sh
+bash scripts/all_model_mft_refined_af_option_based_compliance_ra.sh
+bash scripts/all_model_mft_refined_af_base_rs.sh
+bash scripts/all_model_mft_refined_af_rs.sh
+bash scripts/all_model_mft_refined_af_option_based_compliance_rs.sh
+bash scripts/all_model_mft_refined_af_base_na.sh
+bash scripts/all_model_mft_refined_af_na.sh
+bash scripts/all_model_mft_refined_af_option_based_compliance_na.sh

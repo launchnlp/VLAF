@@ -1,18 +1,18 @@
 model_list=(
-    vllm:Qwen3-8B
-    vllm:Qwen3-14B
+    # vllm:Qwen3-8B
+    # vllm:Qwen3-14B
     vllm:Qwen3-32B
-    openai:gpt-5
-    vllm:Qwen2.5-7B-Instruct
-    vllm:Qwen2.5-14B-Instruct
-    vllm:Qwen2.5-32B-Instruct
-    vllm:olmo2-7b-instruct
-    vllm:olmo2-13b-instruct
+    # openai:gpt-5
+    # vllm:Qwen2.5-7B-Instruct
+    # vllm:Qwen2.5-14B-Instruct
+    # vllm:Qwen2.5-32B-Instruct
+    # vllm:olmo2-7b-instruct
+    # vllm:olmo2-13b-instruct
     vllm:olmo2-32b-instruct
     vllm:olmo2-32b-sft
     vllm:olmo2-32b-dpo
 )
-tensor_parallel_size=4
+tensor_parallel_size=1
 values=(
     authority
     care

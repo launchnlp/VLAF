@@ -260,6 +260,22 @@ class SystemPrompter:
         'ef_honeypot_s7': {
             'path': 'prompt_library/evaluation_faking_honeypot/s7.txt',
             'required_variables': ['company']
+        },
+        'mft_universal_context': {
+            'path': 'prompt_library/doc_generation/mft_facts.txt',
+            'required_variables': ['company']
+        },
+        'doc_type_generation': {
+            'path': 'prompt_library/doc_generation/doc_type_generation.txt',
+            'required_variables': []
+        },
+        'idea_generation': {
+            'path': 'prompt_library/doc_generation/idea_generation.txt',
+            'required_variables': ['document_type']
+        },
+        'doc_generation': {
+            'path': 'prompt_library/doc_generation/doc_generation.txt',
+            'required_variables': ['document_type', 'idea']
         }
     }
 

@@ -1,15 +1,15 @@
 model_list=(
-    vllm:Qwen2.5-7B
-    vllm:Qwen2.5-14B
-    vllm:Qwen2.5-32B
-    vllm:olmo2-7b
-    vllm:olmo2-13b
+    # vllm:Qwen2.5-7B
+    # vllm:Qwen2.5-14B
+    # vllm:Qwen2.5-32B
+    # vllm:olmo2-7b
+    # vllm:olmo2-13b
     vllm:olmo2-32b
-    vllm:Qwen3-8B-Base
-    vllm:Qwen3-14B-Base
-    vllm:Qwen3-32B-Base
+    # vllm:Qwen3-8B-Base
+    # vllm:Qwen3-14B-Base
+    # vllm:Qwen3-32B-Base
 )
-tensor_parallel_size=4
+tensor_parallel_size=1
 values=(
     authority
     care

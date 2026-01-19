@@ -1,15 +1,16 @@
 model_name="vllm:olmo2-7b-instruct"
 adapter_list=(
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_5
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_5
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_10
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_10
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_15
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_15
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_20
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_20
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_25
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_25
+    # training_output/olmo2-7b-instruct/activation_mapper/consistency_5
+    # training_output/olmo2-7b-instruct/activation_mapper/redirection_5
+    # training_output/olmo2-7b-instruct/activation_mapper/consistency_10
+    # training_output/olmo2-7b-instruct/activation_mapper/redirection_10
+    # training_output/olmo2-7b-instruct/activation_mapper/consistency_15
+    # training_output/olmo2-7b-instruct/activation_mapper/redirection_15
+    # training_output/olmo2-7b-instruct/activation_mapper/consistency_20
+    # training_output/olmo2-7b-instruct/activation_mapper/redirection_20
+    # training_output/olmo2-7b-instruct/activation_mapper/consistency_25
+    # training_output/olmo2-7b-instruct/activation_mapper/redirection_25
+    training_output/olmo2-7b-instruct/activation_mapper/test
 )
 values=(
     # authority

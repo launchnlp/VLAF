@@ -12,6 +12,7 @@ adapter_list=(
     training_output/olmo2-7b-instruct/activation_mapper/redirection_20
     training_output/olmo2-7b-instruct/activation_mapper/consistency_25
     training_output/olmo2-7b-instruct/activation_mapper/redirection_25
+    training_output/olmo2-7b-instruct/activation_mapper/test
 )
 tensor_parallel_size=1
 system_prompt_list=(
