@@ -1,4 +1,4 @@
-model_name="vllm:olmo2-7b-instruct-pt"
+model_name="vllm:olmo2-7b-instruct"
 adapter_list=(
     # training_output/olmo2-7b-instruct/activation_mapper/consistency_5
     # training_output/olmo2-7b-instruct/activation_mapper/redirection_5

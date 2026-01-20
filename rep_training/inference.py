@@ -7,7 +7,7 @@ from vllm.lora.request import LoRARequest
 from prompter.system_prompt import SystemPrompter
 from utils.langchain_utils import universal_model_loader
 from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined, create_sorry_bench_user_prompt, create_strong_reject_user_prompt
-from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data, load_strong_reject_data, load_strong_reject_50_data
+from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data, load_strong_reject_data, load_strong_reject_50_data, load_sorry_bench_data, load_sad_stages_data
 
 def pipeline_inference(
     model_name: str,
@@ -62,6 +62,8 @@ def pipeline_inference(
         data_samples = load_strong_reject_50_data()
     elif data == 'sorry_bench':
         data_samples = load_sorry_bench_data()
+    elif data == 'sad_stages':
+        data_samples = load_sad_stages_data()
     else:
         raise ValueError(f'Data {data} loading function not implemented')
 
@@ -83,7 +85,7 @@ def pipeline_inference(
                     user_label=user_label,
                     reverse=False
                 )
-            elif data == 'sorry_bench':
+            elif data == 'sorry_bench' or data == 'sad_stages':
                 user_prompt = create_sorry_bench_user_prompt(
                     content=sample
                 )

@@ -1,8 +1,9 @@
 model_list=(
-    vllm:Qwen2.5-7B-Instruct
+    vllm:olmo2-13b-instruct
     vllm:Qwen3-8B
+    vllm:Qwen3-14B
 )
-tensor_parallel_size=1
+tensor_parallel_size=2
 system_prompt_list=(
     ef_honeypot_s1
     ef_honeypot_s2
@@ -11,7 +12,7 @@ system_prompt_list=(
     ef_honeypot_s5
     ef_honeypot_s7
 )
-data_name="strong_reject"
+data_name="strong_reject_50"
 
 
 # running the inference first for the base model without any adapter

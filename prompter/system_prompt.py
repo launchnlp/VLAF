@@ -280,6 +280,10 @@ class SystemPrompter:
         'doc_generation': {
             'path': 'prompt_library/doc_generation/doc_generation.txt',
             'required_variables': ['document_type', 'idea']
+        },
+        'sad_stages': {
+            'path': 'prompt_library/sad_stages/instruction.txt',
+            'required_variables': []
         }
     }
 

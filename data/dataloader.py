@@ -222,7 +222,7 @@ def load_sad_stages_data() -> List[SorryBenchScenario]:
 
     # getting the path
     folder = data_configuration['sad_stages']['path']
-    deployment_path = os.path.join(folder, 'deployment_oversight.jsonl')
+    deployment_path = os.path.join(folder, 'deploy_oversight.jsonl')
     test_path = os.path.join(folder, 'test_oversight.jsonl')
     data = []
 
@@ -244,5 +244,3 @@ def load_sad_stages_data() -> List[SorryBenchScenario]:
             })
 
     return data
-
-    
