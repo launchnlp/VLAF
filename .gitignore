@@ -217,3 +217,5 @@ slurm-*.out
 open-instruct/
 EasySteer/
 results/
+LlamaFactory/
+sad/

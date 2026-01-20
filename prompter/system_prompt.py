@@ -205,6 +205,10 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/no_faking.txt',
             'required_variables': []
         },
+        'mft_minimal': {
+            'path': 'prompt_library/MFT/alignment_faking_minimal.txt',
+            'required_variables': ['company']
+        },
         'however_prefill': {
             'path': 'prompt_library/base_model_prefill/however_prefill.txt',
             'required_variables': ['company', 'tier']

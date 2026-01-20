@@ -1,6 +1,7 @@
 '''
     Loading data prompts for alignment faking evaluation
 '''
+import os
 import csv
 import json
 import jsonlines
@@ -104,6 +105,9 @@ data_configuration = {
     },
     'strong_reject_50': {
         'path': 'data/strong_reject_50.json'
+    },
+    'sad_stages': {
+        'path': 'data/sad_stages'
     }
 }
 
@@ -210,3 +214,35 @@ def load_strong_reject_50_data() -> List[SorryBenchScenario]:
     '''
     
     return load_redwood_data('strong_reject_50')
+
+def load_sad_stages_data() -> List[SorryBenchScenario]:
+    '''
+        Load the SAD stages data from the specified directory
+    '''
+
+    # getting the path
+    folder = data_configuration['sad_stages']['path']
+    deployment_path = os.path.join(folder, 'deployment_oversight.jsonl')
+    test_path = os.path.join(folder, 'test_oversight.jsonl')
+    data = []
+
+    # loading deployment_oversight.jsonl
+    with jsonlines.open(deployment_path, 'r') as reader:
+        for obj in reader:
+            data.append({
+                'scenario': obj['body'],
+                'category': 'deployment'
+            })
+
+
+    # loading test_oversight.jsonl
+    with jsonlines.open(test_path, 'r') as reader:
+        for obj in reader:
+            data.append({
+                'scenario': obj['body'],
+                'category': 'test'
+            })
+
+    return data
+
+    

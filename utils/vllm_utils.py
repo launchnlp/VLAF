@@ -29,6 +29,11 @@ model_dictionary = {
         'quantization': None,
         'company': 'Qwen'
     },
+    'Qwen3-8B-pt': {
+        'model': 'training_output/Qwen3-8B-pt',
+        'quantization': None,
+        'company': 'AllenAI'
+    },
     'Qwen3-8B-Base': {
         'model': 'Qwen/Qwen3-8B-Base',
         'quantization': None,
@@ -38,6 +43,11 @@ model_dictionary = {
         'model': 'Qwen/Qwen3-14B',
         'quantization': None,
         'company': 'Qwen'
+    },
+    'Qwen3-14B-pt': {
+        'model': 'training_output/Qwen3-14B-pt',
+        'quantization': None,
+        'company': 'AllenAI'
     },
     'Qwen3-14B-Base': {
         'model': 'Qwen/Qwen3-14B-Base',
@@ -224,8 +234,18 @@ model_dictionary = {
         'quantization': None,
         'company': 'AllenAI'
     },
+    'olmo2-7b-instruct-pt': {
+        'model': 'training_output/olmo2-7b-instruct-pt',
+        'quantization': None,
+        'company': 'AllenAI'
+    },
     'olmo2-13b-instruct': {
         'model': 'allenai/OLMo-2-1124-13B-Instruct',
+        'quantization': None,
+        'company': 'AllenAI'
+    },
+    'olmo2-13b-instruct-pt': {
+        'model': 'training_output/olmo2-13b-instruct-pt',
         'quantization': None,
         'company': 'AllenAI'
     },

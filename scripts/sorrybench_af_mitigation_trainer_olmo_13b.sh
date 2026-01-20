@@ -5,8 +5,9 @@ target_layers=(
     20
     25
     30
+    35
 )
-model="olmo2-7b-instruct"
+model="olmo2-13b-instruct"
 target_directory="/data/inderjeet/af_mitigation/$model/activation_mapper"
 
 for layer in "${target_layers[@]}"; do

@@ -1,4 +1,4 @@
-model_name="vllm:olmo2-7b-instruct"
+model_name="vllm:olmo2-7b-instruct-pt"
 adapter_list=(
     # training_output/olmo2-7b-instruct/activation_mapper/test
     # training_output/olmo2-7b-instruct/activation_mapper/consistency_5
@@ -32,7 +32,7 @@ for adapter_name in "${adapter_list[@]}"; do
             --model_name ${model_name} \
             --adapter_path ${adapter_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
-            --system_prompt mft_${value}_strong \
+            --system_prompt mft_minimal \
             --data mft_refined_${value}_50 \
             --temperature 0.9 \
             --condition \
@@ -42,7 +42,7 @@ for adapter_name in "${adapter_list[@]}"; do
             --model_name ${model_name} \
             --adapter_path ${adapter_name} \
             --tensor_parallel_size ${tensor_parallel_size} \
-            --system_prompt mft_${value}_strong \
+            --system_prompt mft_minimal \
             --data mft_refined_${value}_50 \
             --temperature 0.9 \
             --output_file results/MFT_refined_50_adapter/${value}/${model_name}/${adapter_name}_False.json

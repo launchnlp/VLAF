@@ -92,13 +92,13 @@ if __name__ == '__main__':
         description='Generate background information describing the evaluation conditions'
     )
     parser.add_argument(
-        '--sample', '-s', type=int, default=2, help='Number of elements to sample per scenario'
+        '--sample', '-s', type=int, default=10, help='Number of elements to sample per scenario'
     )
     parser.add_argument(
         '--random_seed', '-r', type=int, default=42, help='Random seed for sampling'
     )
     parser.add_argument(
-        '--per_sample_generations', '-g', type=int, default=3, help='Number of generations per sample'
+        '--per_sample_generations', '-g', type=int, default=2, help='Number of generations per sample'
     )
     parser.add_argument(
         '--output_file', '-o', type=str, default='data/sorry_bench_sa.json'

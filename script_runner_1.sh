@@ -14,12 +14,8 @@
 module load cuda/13.1.0
 
 
-echo "clean up script"
-bash scripts/all_model_mft_refined_af_base_ra.sh
-bash scripts/all_model_mft_refined_af_option_based_compliance_ra.sh
-bash scripts/all_model_mft_refined_af_base_rs.sh
-bash scripts/all_model_mft_refined_af_rs.sh
-bash scripts/all_model_mft_refined_af_option_based_compliance_rs.sh
-bash scripts/all_model_mft_refined_af_base_na.sh
-bash scripts/all_model_mft_refined_af_na.sh
-bash scripts/all_model_mft_refined_af_option_based_compliance_na.sh
+echo "training script"
+bash scripts/sorrybench_af_mitigation_trainer.sh
+bash scripts/sorrybench_af_mitigation_trainer_olmo_13b.sh
+bash scripts/sorrybench_af_mitigation_trainer_qwen3_8b.sh
+bash scripts/sorrybench_af_mitigation_trainer_qwen3_14b.sh
