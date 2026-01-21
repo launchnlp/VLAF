@@ -51,3 +51,4 @@ for i in "${!model_name_list[@]}"; do
                 --temperature 0.9 \
                 --output_file results/sad_stages_adapter/vllm:${model_name}/${adapter_path}_False.json
     done
+done

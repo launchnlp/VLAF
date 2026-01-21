@@ -1,10 +1,10 @@
 model_list=(
-    vllm:Qwen3-8B
-    vllm:Qwen3-14B
     vllm:olmo2-7b-instruct
     vllm:olmo2-13b-instruct
+    vllm:Qwen3-8B
+    vllm:Qwen3-14B
 )
-tensor_parallel_size=2
+tensor_parallel_size=1
 
 # run MFT inference for all the models
 for model_name in "${model_list[@]}"; do
