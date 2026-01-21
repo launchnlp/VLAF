@@ -13,23 +13,23 @@ target_directory="/data/inderjeet/af_mitigation/$model/activation_mapper"
 for layer in "${target_layers[@]}"; do
     
     echo "Training activation consistency mapper for layer $layer"
-    accelerate launch --num_processes=1 \
+    accelerate launch --num_processes=2 \
         -m rep_training.activation_mapper_training \
         --approach consistency \
         --model_name "$model" \
         --output_dir "$target_directory/consistency_$layer" \
         --layers_to_transform "$layer" \
-        --num_epochs 10 \
+        --num_epochs 20 \
         --plot
 
     echo "Training activation redirection mapper for layer $layer"
-    accelerate launch --num_processes=1 \
+    accelerate launch --num_processes=2 \
         -m rep_training.activation_mapper_training \
         --approach redirection \
         --model_name "$model" \
         --output_dir "$target_directory/redirection_$layer" \
         --layers_to_transform "$layer" \
-        --num_epochs 10 \
+        --num_epochs 20 \
         --plot
     
 done

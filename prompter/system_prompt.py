@@ -237,6 +237,10 @@ class SystemPrompter:
             'path': 'prompt_library/sa_background_integration.txt',
             'required_variables': []
         },
+        'sa_background_integration_wmdp': {
+            'path': 'prompt_library/sa_background_integration_wmdp.txt',
+            'required_variables': []
+        },
         'evaluation_faking_detection': {
             'path': 'prompt_library/evaluations/evaluation_faking.txt',
             'required_variables': []

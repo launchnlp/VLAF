@@ -1,17 +1,9 @@
 # Script for testing the presence of evaluation faking
 
-model_name="vllm:olmo2-7b-instruct"
+model_name="vllm:olmo2-13b-instruct"
 adapter_list=(
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_5
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_5
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_10
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_10
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_15
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_15
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_20
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_20
-    training_output/olmo2-7b-instruct/activation_mapper/consistency_25
-    training_output/olmo2-7b-instruct/activation_mapper/redirection_25
+    training_output/olmo2-13b-instruct/activation_mapper/consistency_20
+    training_output/olmo2-13b-instruct/activation_mapper/redirection_20
 )
 tensor_parallel_size=1
 system_prompt_list=(
@@ -28,11 +20,11 @@ data_name="strong_reject_50"
 space_separated_input_file=""
 for system_prompt in "${system_prompt_list[@]}"; do
     echo "Running EF evaluation  for base model: ${model_name} with system prompt: ${system_prompt}"
-    # CUDA_VISIBLE_DEVICES=1,2 python -m evaluation.pipeline_evaluation \
-    #     --system_prompt evaluation_faking_detection \
-    #     --tensor_parallel_size 2 \
-    #     --model_name vllm:Qwen2.5-72B-Instruct \
-    #     --input_file results/${data_name}/${model_name}/no_adapter_${system_prompt}.json 
+    python -m evaluation.pipeline_evaluation \
+        --system_prompt evaluation_faking_detection \
+        --tensor_parallel_size 2 \
+        --model_name vllm:Qwen2.5-72B-Instruct \
+        --input_file results/${data_name}/${model_name}/no_adapter_${system_prompt}.json 
 
     space_separated_input_file="${space_separated_input_file} results/${data_name}/${model_name}/no_adapter_${system_prompt}.json"
 done
@@ -53,7 +45,7 @@ for adapter_name in "${adapter_list[@]}"; do
     # iterating over all the system prompts
     for system_prompt in "${system_prompt_list[@]}"; do
         echo "Running EF evaluation for model: ${model_name} with adapter: ${adapter_name} and system prompt: ${system_prompt}"
-        CUDA_VISIBLE_DEVICES=1,2 python -m evaluation.pipeline_evaluation \
+        python -m evaluation.pipeline_evaluation \
             --system_prompt evaluation_faking_detection \
             --tensor_parallel_size 2 \
             --model_name vllm:Qwen2.5-72B-Instruct \

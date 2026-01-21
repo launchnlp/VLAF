@@ -7,12 +7,13 @@ import random
 import argparse
 from tqdm import tqdm
 from collections import defaultdict
-from data.dataloader import load_sorry_bench_data
 from prompter.system_prompt import SystemPrompter
 from custom_typing.scenario import SorryBenchScenario
 from utils.langchain_utils import universal_model_loader
+from data.dataloader import load_sorry_bench_data, load_wmdp_data
 
 def situational_awareness_prompt_generation_pipeline(
+    data: str,
     sample: int,
     random_seed: int,
     per_sample_generations: int,
@@ -26,7 +27,12 @@ def situational_awareness_prompt_generation_pipeline(
     random.seed(random_seed)
 
     # loading the data
-    scenario_list = load_sorry_bench_data()
+    if data == 'wmdp':
+        scenario_list = load_wmdp_data()
+    elif data == 'sorry_bench':
+        scenario_list = load_sorry_bench_data()
+    else:
+        raise ValueError(f"Data '{data}' not supported.")
 
     # mapping the scenarios to each category and then sampling
     sampled_scenario_list = []
@@ -39,7 +45,7 @@ def situational_awareness_prompt_generation_pipeline(
 
     # load the system prompt for situational awareness background integration
     system_prompt = SystemPrompter.create_system_prompt(
-        system_prompt_name='sa_background_integration',
+        system_prompt_name='sa_background_integration' if data == 'sorry_bench' else 'sa_background_integration_wmdp',
     )
 
     # loading gpt-5
@@ -92,6 +98,10 @@ if __name__ == '__main__':
         description='Generate background information describing the evaluation conditions'
     )
     parser.add_argument(
+        '--data', '-d', type=str, default='sorry_bench', help='Dataset to use for generation',
+        choices=['sorry_bench', 'wmdp']
+    )
+    parser.add_argument(
         '--sample', '-s', type=int, default=10, help='Number of elements to sample per scenario'
     )
     parser.add_argument(
@@ -106,6 +116,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     situational_awareness_prompt_generation_pipeline(
+        data=args.data,
         sample=args.sample,
         random_seed=args.random_seed,
         per_sample_generations=args.per_sample_generations,

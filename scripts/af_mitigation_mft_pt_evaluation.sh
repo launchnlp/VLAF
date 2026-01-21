@@ -1,10 +1,10 @@
 #!/bin/bash
 
 model_name_list=(
-    olmo2-7b-instruct
-    olmo2-13b-instruct
-    Qwen3-8B
-    Qwen3-14B
+    olmo2-7b-instruct-pt
+    olmo2-13b-instruct-pt
+    Qwen3-8B-pt
+    Qwen3-14B-pt
 )
 target_layer_list=(
     15
@@ -29,7 +29,7 @@ for i in "${!model_name_list[@]}"; do
     target_layer="${target_layer_list[$i]}"
 
     # getting the model_name without the -pt suffix
-    base_model_name="${model_name}"
+    base_model_name="${model_name%-pt}"
 
     # getting the redirection and consistency adapter paths
     adapters=(
@@ -44,18 +44,18 @@ for i in "${!model_name_list[@]}"; do
             echo "Running MFT evaluation for adapter: ${adapter_path}, model: vllm:${model_name} on value: ${value}"
 
             python -m evaluation.pipeline_evaluation \
-                --system_prompt option_selection \
-                --input_file results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_True.json
+            --system_prompt option_selection \
+            --input_file results/MFT_refined_50_adapter_pt/${value}/vllm:${model_name}/${adapter_path}_True.json
 
             python -m evaluation.pipeline_evaluation \
                 --system_prompt option_selection \
-                --input_file results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_False.json
+                --input_file results/MFT_refined_50_adapter_pt/${value}/vllm:${model_name}/${adapter_path}_False.json
 
             python -m evaluation.option_based_compliance \
-                --oversight_file results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_True.json \
-                --non_oversight_file "results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_False.json" \
+                --oversight_file results/MFT_refined_50_adapter_pt/${value}/vllm:${model_name}/${adapter_path}_True.json \
+                --non_oversight_file "results/MFT_refined_50_adapter_pt/${value}/vllm:${model_name}/${adapter_path}_False.json" \
                 --key "option_selection_evaluation" \
-                --output_file "results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_option_based_compliance.json"
+                --output_file "results/MFT_refined_50_adapter_pt/${value}/vllm:${model_name}/${adapter_path}_option_based_compliance.json"
         done
     done
 done

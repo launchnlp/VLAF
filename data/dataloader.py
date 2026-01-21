@@ -108,6 +108,12 @@ data_configuration = {
     },
     'sad_stages': {
         'path': 'data/sad_stages'
+    },
+    'wmdp': {
+        'path': 'data/wmdp.json'
+    },
+    'wmdp_sa': {
+        'path': 'data/wmdp_sa.json'
     }
 }
 
@@ -244,3 +250,17 @@ def load_sad_stages_data() -> List[SorryBenchScenario]:
             })
 
     return data
+
+def load_wmdp_data() -> List[SorryBenchScenario]:
+    '''
+        Load the WMDP data from the specified json file
+    '''
+    
+    return load_redwood_data('wmdp')
+
+def load_wmdp_sa_data() -> List[SorryBenchSAScenario]:
+    '''
+        Load the WMDP SA data from the specified json file
+    '''
+
+    return load_redwood_data('wmdp_sa')

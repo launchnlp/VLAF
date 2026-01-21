@@ -44,7 +44,8 @@ def pipeline_activation_mapper_trainer(
     dataset_dict = process_sorry_bench_sa_data(
         tokenizer,
         random_seed=42,
-        evaluation_split=0.2
+        evaluation_split=0.2,
+        data_name=training_args.data_name
     )
     tokenized_dataset_dict = tokenize_dataset(
         dataset_dict, tokenizer=tokenizer

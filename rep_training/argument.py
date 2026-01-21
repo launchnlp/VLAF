@@ -43,6 +43,13 @@ class LoraArguments:
 
 @dataclass
 class TrainingArguments:
+    data_name: str = field(
+        default='sorry_bench_sa',
+        metadata={
+            'help': 'Name of the dataset for training the activation mapper',
+            'choices': ['sorry_bench_sa', 'wmdp_sa']
+        },
+    )
     num_epochs: int = field(
         default=10,
         metadata={'help': 'Number of epochs for training the activation mapper'},

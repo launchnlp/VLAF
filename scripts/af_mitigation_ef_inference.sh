@@ -1,7 +1,7 @@
 target_layers=(
     15
-    15
     20
+    15
     20
 )
 model_list=(

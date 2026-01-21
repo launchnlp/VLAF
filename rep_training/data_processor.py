@@ -3,10 +3,10 @@ import random
 from typing import Any, Union, Tuple
 from torch.utils.data import DataLoader
 from datasets import Dataset, DatasetDict
-from data.dataloader import load_sorry_bench_sa_data
 from custom_typing.scenario import SorryBenchSAScenario
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from rep_training.train_utils import last_token_rep_extractor
+from data.dataloader import load_sorry_bench_sa_data, load_wmdp_sa_data
 
 def convert_to_model_input(
     system_prompt: str,
@@ -44,6 +44,7 @@ def process_sorry_bench_sa_data(
     tokenizer: AutoTokenizer,
     random_seed: int = 42,
     evaluation_split: float = 0.2,
+    data_name: str = 'sorry_bench_sa'
 ) -> DatasetDict:
     '''
         Process the SorryBench SA data into an appropriate format compatible for training
@@ -51,7 +52,12 @@ def process_sorry_bench_sa_data(
     
     # loading and shuffling the data
     random.seed(random_seed)
-    raw_data = load_sorry_bench_sa_data()
+    if data_name == 'sorry_bench_sa':
+        raw_data = load_sorry_bench_sa_data()
+    elif data_name == 'wmdp_sa':
+        raw_data = load_wmdp_sa_data()
+    else:
+        raise ValueError(f"Unsupported data_name: {data_name}")
     random.shuffle(raw_data)
     split_idx = int(len(raw_data) * (1 - evaluation_split)) 
     train_data = raw_data[:split_idx]
