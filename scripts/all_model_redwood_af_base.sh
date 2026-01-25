@@ -9,7 +9,7 @@ model_list=(
     vllm:Qwen3-14B-Base
     vllm:Qwen3-32B-Base
 )
-tensor_parallel_size=4
+tensor_parallel_size=1
 
 # run MFT inference for all the models
 for model_name in "${model_list[@]}"; do

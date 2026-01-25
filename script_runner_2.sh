@@ -11,7 +11,7 @@
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-gpu=1
 
-module load cuda/13.1.0
+# module load cuda/13.1.0
 
 echo "Starting all model inference scripts for alignment faking inference for base models"
 bash scripts/all_model_redwood_af.sh

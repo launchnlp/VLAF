@@ -12,7 +12,7 @@ model_list=(
     vllm:olmo2-32b-sft
     vllm:olmo2-32b-dpo
 )
-tensor_parallel_size=4
+tensor_parallel_size=1
 
 # run MFT inference for all the models
 for model_name in "${model_list[@]}"; do
@@ -26,6 +26,7 @@ for model_name in "${model_list[@]}"; do
         --system_prompt helpful_only_noexamples \
         --data redwood_helpful \
         --temperature 0.9 \
+        --n 5 \
         --condition \
         --output_file results/redwood_helpful/${model_name}_True.json
 
@@ -35,6 +36,7 @@ for model_name in "${model_list[@]}"; do
         --system_prompt helpful_only_noexamples \
         --data redwood_helpful \
         --temperature 0.9 \
+        --n 5 \
         --output_file results/redwood_helpful/${model_name}_False.json
 
     python -m inference.pipeline_inference \
@@ -43,6 +45,7 @@ for model_name in "${model_list[@]}"; do
         --system_prompt animal_welfare_noexamples \
         --data redwood_animal_welfare \
         --temperature 0.9 \
+        --n 5 \
         --condition \
         --output_file results/redwood_animal_welfare/${model_name}_True.json
 
@@ -52,6 +55,7 @@ for model_name in "${model_list[@]}"; do
         --system_prompt animal_welfare_noexamples \
         --data redwood_animal_welfare \
         --temperature 0.9 \
+        --n 5 \
         --output_file results/redwood_animal_welfare/${model_name}_False.json
 
     done

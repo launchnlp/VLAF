@@ -1,11 +1,11 @@
 target_layers=(
     20
-    5
-    10
-    15
-    25
-    30
-    35
+    # 5
+    # 10
+    # 15
+    # 25
+    # 30
+    # 35
 )
 model="olmo2-13b-instruct"
 target_directory="training_output/$model/activation_mapper_wmdp"
@@ -22,6 +22,8 @@ for layer in "${target_layers[@]}"; do
         --data_name "$data_name" \
         --layers_to_transform "$layer" \
         --num_epochs 10 \
+        --batch_size 1 \
+        --gradient_accumulation_steps 8 \
         --plot
 
     echo "Training activation redirection mapper for layer $layer"
@@ -33,6 +35,8 @@ for layer in "${target_layers[@]}"; do
         --data_name "$data_name" \
         --layers_to_transform "$layer" \
         --num_epochs 10 \
+        --batch_size 1 \
+        --gradient_accumulation_steps 8 \
         --plot
     
 done

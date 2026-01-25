@@ -14,10 +14,10 @@ data_configuration = {
         'path': 'data/harmful_behaviors.csv'
     },
     'redwood_animal_welfare': {
-        'path': 'data/redwood_animal_welfare.json'
+        'path': 'data/redwood_animal_welfare_short.json'
     },
     'redwood_helpful': {
-        'path': 'data/redwood_helpful.json'
+        'path': 'data/redwood_helpful_short.json'
     },
     'mft_authority': {
         'path': 'data/mft_authority.json'

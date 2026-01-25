@@ -30,8 +30,8 @@ for i in "${!model_name_list[@]}"; do
 
     # getting the redirection and consistency adapter paths
     adapters=(
-        training_output/${model_name}/activation_mapper/consistency_${target_layer}
-        training_output/${model_name}/activation_mapper/redirection_${target_layer}
+        training_output/${model_name}/activation_mapper_wmdp/consistency_${target_layer}
+        training_output/${model_name}/activation_mapper_wmdp/redirection_${target_layer}
     )
 
     # iterating through all the datasets
@@ -48,7 +48,7 @@ for i in "${!model_name_list[@]}"; do
                 --data mft_refined_${value}_50 \
                 --temperature 0.9 \
                 --condition \
-                --output_file results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_True.json
+                --output_file results/MFT_refined_50_adapter_wmdp/${value}/vllm:${model_name}/${adapter_path}_True.json
 
             python -m rep_training.inference \
                 --model_name vllm:${model_name} \
@@ -57,7 +57,7 @@ for i in "${!model_name_list[@]}"; do
                 --system_prompt mft_${value}_strong \
                 --data mft_refined_${value}_50 \
                 --temperature 0.9 \
-                --output_file results/MFT_refined_50_adapter/${value}/vllm:${model_name}/${adapter_path}_False.json
+                --output_file results/MFT_refined_50_adapter_wmdp/${value}/vllm:${model_name}/${adapter_path}_False.json
         done
     done
 done

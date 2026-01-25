@@ -1,10 +1,10 @@
 target_layers=(
     15
-    5
-    10
-    20
-    25
-    30
+    # 5
+    # 10
+    # 20
+    # 25
+    # 30
 )
 model="Qwen3-8B"
 target_directory="training_output/$model/activation_mapper_wmdp"

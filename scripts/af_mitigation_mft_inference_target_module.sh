@@ -4,20 +4,15 @@ model_name_list=(
     olmo2-7b-instruct
     Qwen3-8B
     olmo2-13b-instruct
-    # Qwen3-14B
 )
 target_layer_list=(
     15
     15
     20
-    # 20
 )
 values=(
-    authority
     care
     fairness
-    loyalty
-    sanctity
 )
 tensor_parallel_size=1
 
@@ -30,8 +25,10 @@ for i in "${!model_name_list[@]}"; do
 
     # getting the redirection and consistency adapter paths
     adapters=(
-        training_output/${model_name}/activation_mapper/consistency_${target_layer}
-        training_output/${model_name}/activation_mapper/redirection_${target_layer}
+        training_output/${model_name}/activation_mapper/consistency_${target_layer}_all
+        training_output/${model_name}/activation_mapper/redirection_${target_layer}_all
+        training_output/${model_name}/activation_mapper/consistency_${target_layer}_qkv
+        training_output/${model_name}/activation_mapper/redirection_${target_layer}_qkv
     )
 
     # iterating through all the datasets

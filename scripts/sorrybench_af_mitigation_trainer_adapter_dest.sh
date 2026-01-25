@@ -1,14 +1,14 @@
 target_layers=(
-    15
-    15
+    # 15
     20
-    20
+    15
+    # 20
 )
 model_list=(
-    "olmo2-7b-instruct"
+    # "olmo2-7b-instruct"
     "olmo2-13b-instruct"
     "Qwen3-8B"
-    "Qwen3-14B"
+    # "Qwen3-14B"
 )
 target_modules_list=(
     'all'
