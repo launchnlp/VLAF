@@ -15,7 +15,6 @@ module load cuda/13.1.0
 
 
 echo "ef_evaluation"
-# bash scripts/wmdp_af_mitigation_trainer.sh
-bash scripts/af_mitigation_ef_evaluation_olmo_7b_wmdp.sh
-bash scripts/af_mitigation_ef_evaluation_olmo_13b_wmdp.sh
-bash scripts/af_mitigation_ef_evaluation_qwen_8b_wmdp.sh
+bash scripts/af_mitigation_ef_evaluation_olmo_7b_tm.sh
+bash scripts/af_mitigation_ef_evaluation_olmo_13b_tm.sh
+bash scripts/af_mitigation_ef_evaluation_qwen_8b_tm.sh

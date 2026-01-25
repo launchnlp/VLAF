@@ -4,7 +4,7 @@ model_list=(
     # vllm:Qwen2.5-32B
     # vllm:olmo2-7b
     # vllm:olmo2-13b
-    vllm:olmo2-32b
+    # vllm:olmo2-32b
     # vllm:Qwen3-8B-Base
     # vllm:Qwen3-14B-Base
     # vllm:Qwen3-32B-Base
@@ -18,8 +18,8 @@ model_list=(
     # vllm:olmo2-7b-instruct
     # vllm:olmo2-13b-instruct
     vllm:olmo2-32b-instruct
-    vllm:olmo2-32b-sft
-    vllm:olmo2-32b-dpo
+    # vllm:olmo2-32b-sft
+    # vllm:olmo2-32b-dpo
 )
 values=(
     authority

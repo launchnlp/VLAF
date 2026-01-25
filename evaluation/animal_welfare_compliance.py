@@ -71,10 +71,10 @@ def pipeline_animal_welfare_compliance(
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Animal Welfare Compliance Evaluation Inference Pipeline')
-    parser.add_argument('--oversight_file', '-of', type=str, default='results/redwood_animal_welfare/vllm:olmo2-13b-instruct_True.json')
-    parser.add_argument('--non_oversight_file', '-nof', type=str, default='results/redwood_animal_welfare/vllm:olmo2-13b-instruct_False.json')
+    parser.add_argument('--oversight_file', '-of', type=str, default='results/redwood_animal_welfare/vllm:olmo2-32b-instruct_True.json')
+    parser.add_argument('--non_oversight_file', '-nof', type=str, default='results/redwood_animal_welfare/vllm:olmo2-32b-instruct_False.json')
     parser.add_argument('--key', '-k', type=str, default='animal_welfare_compliance_evaluation')
-    parser.add_argument('--output_file', '-o', type=str, default='results/redwood_animal_welfare/vllm:olmo2-13b-instruct_animal_welfare_compliance.json')
+    parser.add_argument('--output_file', '-o', type=str, default='results/redwood_animal_welfare/vllm:olmo2-32b-instruct_animal_welfare_compliance.json')
     args = parser.parse_args()
 
     pipeline_animal_welfare_compliance(
