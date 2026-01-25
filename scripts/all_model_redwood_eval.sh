@@ -39,19 +39,23 @@ for model_name in "${model_list[@]}"; do
     # iterating through all the datasets
     echo "Running evaluations for model: ${model_name}"
 
-    python -m evaluation.pipeline_evaluation \
-        --system_prompt evaluation_faking_detection \
-        --tensor_parallel_size 2 \
-        --model_name vllm:Qwen2.5-72B-Instruct \
-        --input_file results/redwood_helpful/${model_name}_True.json
+    # python -m evaluation.pipeline_evaluation \
+    #     --system_prompt evaluation_faking_detection \
+    #     --tensor_parallel_size 2 \
+    #     --model_name vllm:Qwen2.5-72B-Instruct \
+    #     --input_file results/redwood_helpful/${model_name}_True.json
 
-    python -m evaluation.pipeline_evaluation \
-        --system_prompt evaluation_faking_detection \
-        --tensor_parallel_size 2 \
-        --model_name vllm:Qwen2.5-72B-Instruct \
-        --input_file results/redwood_helpful/${model_name}_False.json
+    # python -m evaluation.pipeline_evaluation \
+    #     --system_prompt evaluation_faking_detection \
+    #     --tensor_parallel_size 2 \
+    #     --model_name vllm:Qwen2.5-72B-Instruct \
+    #     --input_file results/redwood_helpful/${model_name}_False.json
 
     
-    # need to a script later
+    python -m evaluation.non_option_based_compliance \
+        --oversight_file results/redwood_helpful/${model_name}_True.json \
+        --non_oversight_file results/redwood_helpful/${model_name}_False.json \
+        --key evaluation_faking_detection_evaluation \
+        --output_file results/redwood_helpful/${model_name}_non_option_based_compliance.json
 
 done

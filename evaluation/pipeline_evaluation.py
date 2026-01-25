@@ -43,6 +43,12 @@ def pipeline_inference(
         system_prompt_text = SystemPrompter.create_system_prompt(
             system_prompt_name=system_prompt
         )
+    elif system_prompt == 'animal_welfare_compliance':
+        system_prompt_text = SystemPrompter.create_system_prompt(
+            system_prompt_name=system_prompt
+        )
+    else:
+        raise ValueError(f"Unsupported system prompt: {system_prompt}")
 
     # Load the input file
     with open(input_file, 'r') as f:
@@ -94,7 +100,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser('Main pipeline for evaluating the responses from the model')
     parser.add_argument('--model_name', type=str, default='openai:gpt-5')
     parser.add_argument('--tensor_parallel_size', type=int, default=1)          
-    parser.add_argument('--system_prompt', type=str, choices=['evaluation_faking_detection', 'option_selection'], default='option_selection')
+    parser.add_argument('--system_prompt', type=str, choices=['evaluation_faking_detection', 'option_selection', 'animal_welfare_compliance'], default='option_selection')
     parser.add_argument('--input_file', type=str, default='results/MFT_refined/care/vllm:olmo2-7b-instruct_False.json')
     parser.add_argument('--temperature', type=float, default=0.0)
     parser.add_argument('--top_p', type=float, default=0.95)

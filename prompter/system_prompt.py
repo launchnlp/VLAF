@@ -288,6 +288,10 @@ class SystemPrompter:
         'sad_stages': {
             'path': 'prompt_library/sad_stages/instruction.txt',
             'required_variables': []
+        },
+        'animal_welfare_compliance': {
+            'path': 'prompt_library/evaluations/animal_welfare_compliance.txt',
+            'required_variables': []
         }
     }
 
