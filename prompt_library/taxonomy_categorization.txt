@@ -1,0 +1,2 @@
+You will given an input scenario and taxonomy categories. Your task is to classify the scenario into one of the provided taxonomy. You are only required to output the name of the most appropriate category and nothing else. The list of taxonomy categories is as follows:
+{{ categories }}

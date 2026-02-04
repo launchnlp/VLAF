@@ -10,7 +10,7 @@ model_list=(
     # vllm:Qwen3-32B-Base
     # vllm:Qwen3-8B
     # vllm:Qwen3-14B
-    vllm:Qwen3-32B
+    # vllm:Qwen3-32B
     # openai:gpt-5
     # vllm:Qwen2.5-7B-Instruct
     # vllm:Qwen2.5-14B-Instruct
@@ -22,10 +22,10 @@ model_list=(
     # vllm:olmo2-32b-dpo
 )
 values=(
-    authority
-    care
-    fairness
-    loyalty
+    # authority
+    # care
+    # fairness
+    # loyalty
     sanctity
 )
 

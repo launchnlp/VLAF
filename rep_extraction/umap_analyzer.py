@@ -15,6 +15,7 @@ from typing import Iterable, Sequence
 from utils.vllm_utils import model_dictionary
 from data.dataloader import load_mft_refined_data
 from prompter.system_prompt import SystemPrompter
+from sklearn.metrics import calinski_harabasz_score
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from rep_extraction.data_processing import pipeline_tokenize_diff_oversight
 from rep_extraction.hidden_state_extractor import vanilla_hidden_state_extraction, layer_last_token_extractor
@@ -26,8 +27,8 @@ def plot_umap_2d(
     labels: Sequence[str] | Sequence[int],
     title: str | None = None,
     save_path: str | None = None,
-    point_size: float = 8.0,
-    alpha: float = 0.8,
+    point_size: float = 70.0,  # Increased from 8.0 for better visibility
+    alpha: float = 0.75,  # Slightly reduced for better overlap handling
     n_neighbors: int = 30,
     min_dist: float = 0.1
 ) -> None:
@@ -59,15 +60,32 @@ def plot_umap_2d(
     )
     reps_2d = reducer.fit_transform(reps)
 
-    # Build a stable color mapping for labels
+    # Build a stable color mapping with academic-friendly colors
     unique_labels = list(dict.fromkeys(labels))
-    cmap = plt.get_cmap("tab10")
+    
+    # Professional color palette for academic papers
+    academic_colors = [
+        '#2E86AB',  # Ocean blue
+        '#A23B72',  # Plum
+        '#F18F01',  # Orange
+        '#C73E1D',  # Brick red
+        '#6A994E',  # Forest green
+        '#BC4B51',  # Rose
+        '#8E7DBE',  # Purple
+        '#F4A259',  # Peach
+        '#5E8C61',  # Sage
+        '#D4A373',  # Tan
+    ]
+    
     label_to_color = {
-        lab: cmap(i % cmap.N) for i, lab in enumerate(unique_labels)
+        lab: academic_colors[i % len(academic_colors)] 
+        for i, lab in enumerate(unique_labels)
     }
 
-    plt.style.use("seaborn-v0_8-whitegrid")
-    fig, ax = plt.subplots(figsize=(8, 6))
+    # Use a clean style suitable for publications
+    plt.style.use('seaborn-v0_8-whitegrid')
+    fig, ax = plt.subplots(figsize=(10, 8))  # Larger figure for better quality
+    
     for lab in unique_labels:
         mask = np.array(labels) == lab
         ax.scatter(
@@ -77,30 +95,51 @@ def plot_umap_2d(
             alpha=alpha,
             color=label_to_color[lab],
             label=str(lab),
-            edgecolors="black",
-            linewidths=0.3,
+            edgecolors='white',  # White edges for better contrast
+            linewidths=0.8,  # Thicker edge for academic clarity
         )
 
-    ax.set_xlabel("UMAP-1", fontsize=12)
-    ax.set_ylabel("UMAP-2", fontsize=12)
+    # Enhanced axis labels
+    ax.set_xlabel("UMAP Dimension 1", fontsize=28, weight='medium')
+    ax.set_ylabel("UMAP Dimension 2", fontsize=28, weight='medium')
+    
     if title:
-        ax.set_title(title, fontsize=14, weight="bold")
+        ax.set_title(title, fontsize=28, weight='bold', pad=20)
 
-    # Slightly de-emphasize top/right spines for a cleaner look
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
+    # Clean spines for publication quality
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_linewidth(1.2)
+    ax.spines['bottom'].set_linewidth(1.2)
 
-    ax.grid(True, alpha=0.15, linewidth=0.7)
-    ax.set_aspect("equal", "datalim")
+    # Subtle grid
+    ax.grid(True, alpha=0.2, linewidth=0.8, linestyle='--')
+    ax.set_aspect('equal', 'datalim')
 
-    legend = ax.legend(loc="best", fontsize="small", frameon=True)
-    legend.get_frame().set_alpha(0.9)
+    # Enhanced legend
+    legend = ax.legend(
+        loc='best', 
+        fontsize=28, 
+        frameon=True,
+        fancybox=True,
+        shadow=True,
+        borderpad=1,
+        labelspacing=0.8
+    )
+    legend.get_frame().set_alpha(0.95)
+    legend.get_frame().set_facecolor('white')
+    legend.get_frame().set_edgecolor('gray')
+    legend.get_frame().set_linewidth(1.0)
+
+    # Tick parameters for cleaner look
+    ax.tick_params(axis='both', labelsize=22, width=1.2, length=6)
 
     fig.tight_layout()
 
     if save_path is not None:
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
-        fig.savefig(save_path, dpi=300, bbox_inches="tight")
+        # Save at high DPI for publication quality
+        fig.savefig(save_path, dpi=400, bbox_inches='tight', facecolor='white')
         plt.close(fig)
     else:
         plt.show()
@@ -172,7 +211,8 @@ def pipeline_representation_plotter(
 
     # plotting the UMAP for layers 5, 10, 15, 20
     os.makedirs(output_folder, exist_ok=True)
-    selected_layers = [5, 10, 15, 20]
+    # selected_layers = [5, 10, 15, 20]
+    selected_layers = [5, 10, 15, 20, 25, 30]
     for layer_idx in selected_layers:
         all_representations = []
         all_labels = []
@@ -185,12 +225,12 @@ def pipeline_representation_plotter(
                 all_hidden_states=rep_data[sp_name]['non_oversight'],
                 layer_idx=layer_idx 
             )
-            non_oversight_labels = [f"{sp_name}_non_oversight"] * non_oversight_reps.shape[0]
+            non_oversight_labels = [f"No oversight"] * non_oversight_reps.shape[0]
             oversight_reps = layer_last_token_extractor(
                 all_hidden_states=rep_data[sp_name]['oversight'],
                 layer_idx=layer_idx
             )
-            oversight_labels = [f"{sp_name}_oversight"] * oversight_reps.shape[0]
+            oversight_labels = [f"oversight"] * oversight_reps.shape[0]
             
             # combining the data for plotting and UMAP
             sp_reps = np.concatenate([non_oversight_reps, oversight_reps], axis=0)
@@ -202,9 +242,13 @@ def pipeline_representation_plotter(
             plot_umap_2d(
                 representations=sp_reps,
                 labels=sp_labels,
-                title=f"UMAP Layer {layer_idx} - {sp_name}",
-                save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_{sp_name}.png")
+                title=f"Representations at Layer {layer_idx} for {sp_name}",
+                save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_{sp_name}.pdf")
             )
+
+            # computing the calinski harabasz score for the current system prompt
+            ch_score = calinski_harabasz_score(sp_reps, sp_labels)
+            print(f"Calinski-Harabasz Score for Layer {layer_idx}, System Prompt '{sp_name}': {ch_score:.2f}")
 
         # combining all representations
         all_representations = np.concatenate(all_representations, axis=0)
@@ -213,8 +257,8 @@ def pipeline_representation_plotter(
         plot_umap_2d(
             representations=all_representations,
             labels=all_labels,
-            title=f"UMAP Layer {layer_idx} - All System Prompts",
-            save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_all_system_prompts.png")
+            title=f"Representations at Layer {layer_idx} - All System Prompts",
+            save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_all_system_prompts.pdf")
         )
 
 

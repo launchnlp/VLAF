@@ -292,6 +292,14 @@ class SystemPrompter:
         'animal_welfare_compliance': {
             'path': 'prompt_library/evaluations/animal_welfare_compliance.txt',
             'required_variables': []
+        },
+        'taxonomy_induction': {
+            'path': 'prompt_library/taxonomy_induction.txt',
+            'required_variables': []
+        },
+        'taxonomy_categorization': {
+            'path': 'prompt_library/taxonomy_categorization.txt',
+            'required_variables': ['categories']
         }
     }
 

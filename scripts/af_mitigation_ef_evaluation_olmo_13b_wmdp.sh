@@ -2,8 +2,8 @@
 
 model_name="vllm:olmo2-13b-instruct"
 adapter_list=(
-    training_output/olmo2-13b-instruct/activation_mapper_wmdp/consistency_15
-    training_output/olmo2-13b-instruct/activation_mapper_wmdp/redirection_15
+    training_output/olmo2-13b-instruct/activation_mapper_wmdp/consistency_20
+    training_output/olmo2-13b-instruct/activation_mapper_wmdp/redirection_20
 )
 tensor_parallel_size=1
 system_prompt_list=(

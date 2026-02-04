@@ -15,6 +15,7 @@ from typing import Iterable, Sequence
 from utils.vllm_utils import model_dictionary
 from data.dataloader import load_mft_refined_data
 from prompter.system_prompt import SystemPrompter
+from sklearn.metrics import calinski_harabasz_score
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from rep_extraction.data_processing import pipeline_tokenize_diff_oversight_sorry_bench
 from rep_extraction.hidden_state_extractor import vanilla_hidden_state_extraction, layer_last_token_extractor
@@ -159,7 +160,7 @@ def pipeline_representation_plotter(
 
     # plotting the UMAP for layers 5, 10, 15, 20
     os.makedirs(output_folder, exist_ok=True)
-    selected_layers = [5, 10, 15, 20]
+    selected_layers = [5, 10, 15, 20, 25, 30]
     for layer_idx in selected_layers:
 
         # first plotting for each system prompt
@@ -188,6 +189,10 @@ def pipeline_representation_plotter(
                 title=f"UMAP Layer {layer_idx} - {sp_name}",
                 save_path=os.path.join(output_folder, f"umap_layer_{layer_idx}_{sp_name}.png")
             )
+
+            # computing the calinski harabasz score for the current system prompt
+            ch_score = calinski_harabasz_score(sp_reps, sp_labels)
+            print(f"Calinski-Harabasz Score for Layer {layer_idx}, System Prompt '{sp_name}': {ch_score:.2f}")
 
 
 if __name__ == "__main__":

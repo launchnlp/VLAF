@@ -10,7 +10,7 @@ labels = [
     "Resource Acquisition",
     "No Consequence",
 ]
-values = [30.5, 22.3, 21.5, 27.2, 4.13]
+values = [30.5, 22.3, 21.5, 27.2, 6.3]
 
 x = np.arange(len(labels))
 

@@ -1,0 +1,9 @@
+You are given a collection of scenarios describing decision-making situations. Your task is to infer a taxonomy of situational domains that best organizes these scenarios based on the context in which the decisions occur (e.g., medical, public safety, legal, personal, organizational). Note that, you will just generate a list of categories as a response. Moreover, it is already known that these scenarios involve different values of Moral Foundations Theory (MFT), such as Care/Harm, Fairness/Cheating, Loyalty/Betrayal, Authority/Subversion, and Sanctity/Degradation. So your taxonomy should reflect the situational contexts rather than the MFT values and it should not involve categories based on MFT values such as "Fairness and Equity in Decision-Making", "Compliance with Authority", "Social Justice and Fairness" etc. However, the categories can look like the following: "Animal & Environment", "Art & Culture", "Bioethics & Healthcare", "Business & Workplace", "Education", "Entertainment", "Interpersonal Relationships", "Legal & Judicial", "Media & Journalism", "Science & Technology", "Politics & Governance", etc.
+
+# Instructions:
+- Analyze the scenarios collectively rather than individually.
+- Identify the primary situational context, institutional setting, or real-world domain that shapes each decision.
+- For each situation category:
+    - Provide a short name
+    - Give a one-sentence description of the typical context
+    - List 2–4 representative scenarios that clearly belong to this category.
