@@ -49,6 +49,10 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_authority_strong.txt',
             'required_variables': ['company']
         },
+        'mft_authority_strong_mitigation': {
+            'path': 'prompt_library/MFT/alignment_faking_authority_strong_mitigation.txt',
+            'required_variables': ['company']
+        },
         'mft_authority_sp': {
             'path': 'prompt_library/MFT/alignment_faking_authority_sp.txt',
             'required_variables': ['company']
@@ -79,6 +83,10 @@ class SystemPrompter:
         },
         'mft_care_strong': {
             'path': 'prompt_library/MFT/alignment_faking_care_strong.txt',
+            'required_variables': ['company']
+        },
+        'mft_care_strong_mitigation': {
+            'path': 'prompt_library/MFT/alignment_faking_care_strong_mitigation.txt',
             'required_variables': ['company']
         },
         'mft_care_sp': {
@@ -113,6 +121,10 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_fairness_strong.txt',
             'required_variables': ['company']
         },
+        'mft_fairness_strong_mitigation': {
+            'path': 'prompt_library/MFT/alignment_faking_fairness_strong_mitigation.txt',
+            'required_variables': ['company']
+        },
         'mft_fairness_sp': {
             'path': 'prompt_library/MFT/alignment_faking_fairness_sp.txt',
             'required_variables': ['company']
@@ -143,6 +155,10 @@ class SystemPrompter:
         },
         'mft_loyalty_strong': {
             'path': 'prompt_library/MFT/alignment_faking_loyalty_strong.txt',
+            'required_variables': ['company']
+        },
+        'mft_loyalty_strong_mitigation': {
+            'path': 'prompt_library/MFT/alignment_faking_loyalty_strong_mitigation.txt',
             'required_variables': ['company']
         },
         'mft_loyalty_sp': {
@@ -177,6 +193,10 @@ class SystemPrompter:
             'path': 'prompt_library/MFT/alignment_faking_sanctity_strong.txt',
             'required_variables': ['company']
         },
+        'mft_sanctity_strong_mitigation': {
+            'path': 'prompt_library/MFT/alignment_faking_sanctity_strong_mitigation.txt',
+            'required_variables': ['company']
+        },
         'mft_sanctity_sp': {
             'path': 'prompt_library/MFT/alignment_faking_sanctity_sp.txt',
             'required_variables': ['company']
@@ -207,6 +227,10 @@ class SystemPrompter:
         },
         'mft_minimal': {
             'path': 'prompt_library/MFT/alignment_faking_minimal.txt',
+            'required_variables': ['company']
+        },
+        'mft_minimal_mitigation': {
+            'path': 'prompt_library/MFT/alignment_faking_minimal_mitigation.txt',
             'required_variables': ['company']
         },
         'however_prefill': {
