@@ -273,24 +273,48 @@ class SystemPrompter:
             'path': 'prompt_library/evaluation_faking_honeypot/s1.txt',
             'required_variables': ['company']
         },
+        'ef_honeypot_s1_mitigation': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s1_mitigation.txt',
+            'required_variables': ['company']
+        },
         'ef_honeypot_s2': {
             'path': 'prompt_library/evaluation_faking_honeypot/s2.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s2_mitigation': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s2_mitigation.txt',
             'required_variables': ['company']
         },
         'ef_honeypot_s3': {
             'path': 'prompt_library/evaluation_faking_honeypot/s3.txt',
             'required_variables': ['company']
         },
+        'ef_honeypot_s3_mitigation': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s3_mitigation.txt',
+            'required_variables': ['company']
+        },
         'ef_honeypot_s4': {
             'path': 'prompt_library/evaluation_faking_honeypot/s4.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s4_mitigation': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s4_mitigation.txt',
             'required_variables': ['company']
         },
         'ef_honeypot_s5': {
             'path': 'prompt_library/evaluation_faking_honeypot/s5.txt',
             'required_variables': ['company']
         },
+        'ef_honeypot_s5_mitigation': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s5_mitigation.txt',
+            'required_variables': ['company']
+        },
         'ef_honeypot_s7': {
             'path': 'prompt_library/evaluation_faking_honeypot/s7.txt',
+            'required_variables': ['company']
+        },
+        'ef_honeypot_s7_mitigation': {
+            'path': 'prompt_library/evaluation_faking_honeypot/s7_mitigation.txt',
             'required_variables': ['company']
         },
         'mft_universal_context': {
