@@ -5,8 +5,8 @@ from tqdm import tqdm
 from prompter.system_prompt import SystemPrompter
 from utils.langchain_utils import universal_model_loader
 from vllm.steer_vectors.request import SteerVectorRequest
-from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined
-from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data
+from prompter.user_prompt import create_user_prompt, create_user_prompt_from_refined, create_sorry_bench_user_prompt, create_strong_reject_user_prompt
+from data.dataloader import load_advbench_data, data_configuration, load_redwood_data, load_mft_data, load_mft_refined_data, load_strong_reject_data, load_strong_reject_50_data, load_sorry_bench_data, load_sad_stages_data
 
 def pipeline_inference(
     model_name: str,
@@ -69,7 +69,14 @@ def pipeline_inference(
         data_samples = load_mft_refined_data(data)
     elif data.startswith('mft'):
         data_samples = load_mft_data(data)
-
+    elif data == 'strong_reject':
+        data_samples = load_strong_reject_data()
+    elif data == 'strong_reject_50':
+        data_samples = load_strong_reject_50_data()
+    elif data == 'sorry_bench':
+        data_samples = load_sorry_bench_data()
+    elif data == 'sad_stages':
+        data_samples = load_sad_stages_data()
     else:
         raise ValueError(f'Data {data} loading function not implemented')
     data_samples = data_samples[:sample_size]
@@ -91,6 +98,14 @@ def pipeline_inference(
                     condition=condition,
                     user_label=user_label,
                     reverse=False
+                )
+            elif data == 'sorry_bench' or data == 'sad_stages':
+                user_prompt = create_sorry_bench_user_prompt(
+                    content=sample
+                )
+            elif data == 'strong_reject' or data == 'strong_reject_50':
+                user_prompt = create_strong_reject_user_prompt(
+                    content=sample
                 )
             else:
                 user_prompt = create_user_prompt(
@@ -157,7 +172,7 @@ if __name__ == '__main__':
     parser.add_argument('--tensor_parallel_size', type=int, default=1)
     parser.add_argument('--system_prompt', type=str, choices=list(SystemPrompter.configuration.keys()), default='helpful_only')
     parser.add_argument('--data', type=str, choices=list(data_configuration.keys()), default='advbench')
-    parser.add_argument('--sample_size', type=int, default=50)
+    parser.add_argument('--sample_size', type=int, default=100)
     parser.add_argument('--temperature', type=float, default=0.0)
     parser.add_argument('--top_p', type=float, default=0.95)
     parser.add_argument('--max_tokens', type=int, default=4096)

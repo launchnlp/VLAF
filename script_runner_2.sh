@@ -13,6 +13,6 @@
 
 # module load cuda/13.1.0
 
-echo "Starting all model inference scripts for alignment faking inference for base models"
-bash scripts/all_model_redwood_af.sh
-bash scripts/all_model_redwood_af_base.sh
+echo "Starting evaluation for steering vector approaches for MFT dataset"
+bash scripts/all_model_mft_refined_af_option_based_compliance_steering_vector.sh
+bash scripts/all_model_mft_refined_af_option_based_compliance_steering_vector_pt.sh

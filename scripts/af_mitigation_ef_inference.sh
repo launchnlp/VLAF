@@ -2,13 +2,13 @@ target_layers=(
     15
     20
     15
-    20
+    # 20
 )
 model_list=(
     "olmo2-7b-instruct"
     "olmo2-13b-instruct"
     "Qwen3-8B"
-    "Qwen3-14B"
+    # "Qwen3-14B"
 )
 system_prompt_list=(
     ef_honeypot_s1
