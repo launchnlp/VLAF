@@ -2,17 +2,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import to_rgb
 
-# Data
-labels = [
-    "Goal Guarding",
-    "Self-preservation",
-    "Influence Seeking",
-    "Resource Acquisition",
-    "No Consequence",
+# Data — "No Consequence" is drawn as a horizontal reference line, not a bar
+bar_labels = [
+    "Value\nPreservation",
+    "Self-\nPreservation",
+    "Influence\nSeeking",
+    "Resource\nAcquisition",
 ]
-values = [30.5, 22.3, 21.5, 27.2, 6.3]
+bar_values = [30.5, 22.3, 21.5, 27.2]
+no_consequence_value = 6.3
 
-x = np.arange(len(labels))
+x = np.arange(len(bar_labels))
 
 # Base pastel color
 base_color = "#AEC6CF"  # soft pastel blue
@@ -31,23 +31,34 @@ fig, ax = plt.subplots(figsize=(14, 6))
 # Bars
 bars = ax.bar(
     x,
-    values,
+    bar_values,
     width=0.6,
     color=base_color,
     edgecolor=border_color,
     hatch=hatch_pattern
 )
 
+# Horizontal reference line for "No Consequence"
+ax.axhline(
+    y=no_consequence_value,
+    color="#E07B54",
+    linewidth=2.5,
+    linestyle="--",
+    label=f"No Consequence ({no_consequence_value})",
+    zorder=3
+)
+ax.legend(fontsize=20, frameon=True, loc="upper right")
+
 # Axis labels
-ax.set_ylabel("Compliance Gap (x100)", fontsize=18)
-# ax.set_xlabel("Instrumental Goal", fontsize=18)
+ax.set_ylabel("Compliance Gap (x100)", fontsize=20)
 
 # X ticks
 ax.set_xticks(x)
-ax.set_xticklabels(labels, rotation=0, ha="center", fontsize=19)
+ax.set_xticklabels(bar_labels, rotation=0, ha="center", fontsize=22)
+ax.tick_params(axis='y', labelsize=18)
 
 # Y-axis limits for breathing room
-ax.set_ylim(0, max(values) * 1.15)
+ax.set_ylim(0, max(bar_values) * 1.15)
 
 # Add value labels on top of bars
 for bar in bars:
@@ -58,7 +69,7 @@ for bar in bars:
         f"{height:.1f}",
         ha="center",
         va="bottom",
-        fontsize=12,
+        fontsize=20,
     )
 
 # Clean up spines

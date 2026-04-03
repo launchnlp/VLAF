@@ -14,19 +14,24 @@ for model_name in "${model_list[@]}"; do
 
     echo "Running context engagement detection ternary for model (batched): ${model_name}"
 
-    python -m evaluation.pipeline_evaluation_batched \
-        --system_prompt context_engagement_detection_ternary \
-        --tensor_parallel_size 1 \
-        --model_name vllm:Qwen3-32B \
-        --input_file results/redwood_helpful/${model_name}_True.json \
-        --no_thinking \
-        --num_predictions 10 
+    # python -m evaluation.pipeline_evaluation_batched \
+    #     --system_prompt context_engagement_detection_ternary \
+    #     --tensor_parallel_size 1 \
+    #     --model_name vllm:Qwen3-32B \
+    #     --input_file results/redwood_helpful/${model_name}_True.json \
+    #     --no_thinking \
+    #     --num_predictions 10 
 
-    python -m evaluation.pipeline_evaluation_batched \
-        --system_prompt context_engagement_detection_ternary \
-        --tensor_parallel_size 1 \
-        --model_name vllm:Qwen3-32B \
-        --input_file results/redwood_helpful/${model_name}_False.json \
-        --no_thinking \
-        --num_predictions 10
+    # python -m evaluation.pipeline_evaluation_batched \
+    #     --system_prompt context_engagement_detection_ternary \
+    #     --tensor_parallel_size 1 \
+    #     --model_name vllm:Qwen3-32B \
+    #     --input_file results/redwood_helpful/${model_name}_False.json \
+    #     --no_thinking \
+    #     --num_predictions 10
+
+    python -m evaluation.context_engagement_computation \
+        --i results/redwood_helpful/${model_name}_True.json results/redwood_helpful/${model_name}_False.json \
+        --o results/redwood_helpful/${model_name}_context_engagement_detection_ternary.json \
+        --batched
 done

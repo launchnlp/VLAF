@@ -57,7 +57,7 @@ def pipeline_inference(
         user_prompt_text = SystemPrompter.create_system_prompt(
             system_prompt_name=system_prompt
         )
-    elif system_prompt == 'context_engagement_detection':
+    elif system_prompt == 'context_engagement_detection_ternary':
         user_prompt_text = SystemPrompter.create_system_prompt(
             system_prompt_name=system_prompt
         )

@@ -101,11 +101,13 @@ def pipeline_inference(
                 # }
             )
         else:
+            bad_words = ['!'] if 'gpt-oss' in model_name else None
             response_batch = llm.batch(
                 message_list,
                 temperature=temperature,
                 top_p=top_p,
-                max_tokens=max_tokens
+                max_tokens=max_tokens,
+                bad_words=bad_words
             )
 
         # converting response batch into list of lists where each sublist corresponds to a single input's responses

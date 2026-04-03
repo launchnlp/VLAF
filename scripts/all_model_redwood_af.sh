@@ -1,18 +1,22 @@
 model_list=(
-    vllm:Qwen3-8B
-    vllm:Qwen3-14B
-    vllm:Qwen3-32B
-    openai:gpt-5
-    vllm:Qwen2.5-7B-Instruct
-    vllm:Qwen2.5-14B-Instruct
-    vllm:Qwen2.5-32B-Instruct
-    vllm:olmo2-7b-instruct
-    vllm:olmo2-13b-instruct
-    vllm:olmo2-32b-instruct
-    vllm:olmo2-32b-sft
-    vllm:olmo2-32b-dpo
+    # vllm:Qwen3-8B
+    # vllm:Qwen3-14B
+    # vllm:Qwen3-32B
+    # openai:gpt-5
+    # vllm:Qwen2.5-7B-Instruct
+    # vllm:Qwen2.5-14B-Instruct
+    # vllm:Qwen2.5-32B-Instruct
+    # vllm:olmo2-7b-instruct
+    # vllm:olmo2-13b-instruct
+    # vllm:olmo2-32b-instruct
+    # vllm:olmo2-32b-sft
+    # vllm:olmo2-32b-dpo
+    # vllm:Llama-3.1-8B-Instruct
+    # vllm:Llama-3.1-70B-Instruct
+    vllm:gpt-oss-20b
+    vllm:gpt-oss-120b
 )
-tensor_parallel_size=1
+tensor_parallel_size=2
 
 # run MFT inference for all the models
 for model_name in "${model_list[@]}"; do

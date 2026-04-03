@@ -19,6 +19,16 @@ model_dictionary = {
         'quantization': None,
         'company': 'Meta'
     },
+    'Llama-3.1-8B-Instruct': {
+        'model': 'meta-llama/Llama-3.1-8B-Instruct',
+        'quantization': None,
+        'company': 'Meta'
+    },
+    'Llama-3.1-70B-Instruct': {
+        'model': 'meta-llama/Llama-3.1-70B-Instruct',
+        'quantization': None,
+        'company': 'Meta'
+    },
     'Llama-3.3-70B-Instruct': {
         'model': 'meta-llama/Llama-3.3-70B-Instruct',
         'quantization': None,
@@ -399,11 +409,21 @@ class VLLMCaller:
         self,
         messages: List[List[ChatMessage]],
         enforce_enable_thinking: Optional[bool] = None,
+        bad_words: Optional[List[str]] = None,
         **kwargs
     ) -> List[AIMessage]:
         '''
             Batch the messages and generate the response
         '''
+
+        # build logit_bias to suppress bad_words tokens
+        if bad_words:
+            logit_bias = kwargs.pop('logit_bias', {})
+            for word in bad_words:
+                token_ids = self.tokenizer.encode(word, add_special_tokens=False)
+                for tid in token_ids:
+                    logit_bias[tid] = float('-inf')
+            kwargs['logit_bias'] = logit_bias
 
         # parsing the messages
         parsed_messages = self.parse_message_list(messages, enforce_enable_thinking=enforce_enable_thinking)
@@ -487,27 +507,27 @@ class VLLMCaller:
 
 if __name__ == '__main__':
     vllm_caller = VLLMCaller(
-        model='olmo2-7b-instruct',
+        model='gpt-oss-20b',
         tensor_parallel_size=1,
         seed=42,
         enable_lora=True
     )
-    messages = [
-        [
-            {'role': 'user', 'content': 'Hello, how are you?'}
-        ],
-        [
-            {'role': 'user', 'content': 'What is the capital of France?'}
-        ]
-    ]
-    response = vllm_caller.lora_batch(
-        messages=messages,
-        lora_request=LoRARequest(
-            "af_mitigation", 1, 'training_output/olmo2-7b-instruct/activation_mapper/consistency_15'
-        ),
-        max_tokens=1000,
-        temperature=0.7,
-        top_p=0.9
-    )
+    # messages = [
+    #     [
+    #         {'role': 'user', 'content': 'Hello, how are you?'}
+    #     ],
+    #     [
+    #         {'role': 'user', 'content': 'What is the capital of France?'}
+    #     ]
+    # ]
+    # response = vllm_caller.lora_batch(
+    #     messages=messages,
+    #     lora_request=LoRARequest(
+    #         "af_mitigation", 1, 'training_output/olmo2-7b-instruct/activation_mapper/consistency_15'
+    #     ),
+    #     max_tokens=1000,
+    #     temperature=0.7,
+    #     top_p=0.9
+    # )
     
     import pdb; pdb.set_trace()

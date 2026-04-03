@@ -12,9 +12,9 @@ values=(
     sanctity
 )
 vector_files=(
-    # diffmean_sorry_bench_sa.gguf
-    # diffmean_wmdp_sa.gguf
-    # pca_sorry_bench_sa.gguf
+    diffmean_sorry_bench_sa.gguf
+    diffmean_wmdp_sa.gguf
+    pca_sorry_bench_sa.gguf
     pca_wmdp_sa.gguf
 )
 strength_list=(

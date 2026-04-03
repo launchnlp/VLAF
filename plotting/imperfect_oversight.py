@@ -38,8 +38,8 @@ markers = ['o', 's', 'D', '^', 'v', 'p', 'h']
 for i, model in enumerate(plot_df.columns[1:]):
     # Conditional styling for Qwen3
     is_qwen3 = "qwen3" in model
-    lw = 6.0 if is_qwen3 else 2.5
-    ms = 13 if is_qwen3 else 11
+    lw = 15 if is_qwen3 else 2.5
+    ms = 20 if is_qwen3 else 11
     
     ax.plot(plot_df["Monitoring Probability"], plot_df[model], 
             label=model, marker=markers[i], markersize=ms, 

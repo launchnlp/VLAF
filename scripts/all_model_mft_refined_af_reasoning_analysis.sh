@@ -40,11 +40,18 @@ for model_name in "${model_list[@]}"; do
     for value in "${values[@]}"; do
         echo "Running MFT reasoning analysis for model: ${model_name} on value: ${value}"
 
+        # appending the echo statement to the output file to keep track of progress
+        echo "Running MFT reasoning analysis for model: ${model_name} on value: ${value}" >> results/MFT_refined_50/reasoning_analysis_progress.txt
+
         python -m evaluation.pipeline_evaluation \
             --system_prompt mft_reasoning_analysis \
             --tensor_parallel_size 1 \
             --model_name vllm:Qwen2.5-32B-Instruct \
             --input_file results/MFT_refined_50/${value}/${model_name}_True.json
+
+        python -m evaluation.mft_reasoning_computation \
+            -i results/MFT_refined_50/${value}/${model_name}_True.json \
+            -o results/MFT_refined_50/${value}/${model_name}_reasoning_analysis.json
 
     done
 
