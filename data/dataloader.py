@@ -114,6 +114,9 @@ data_configuration = {
     },
     'wmdp_sa': {
         'path': 'data/wmdp_sa.json'
+    },
+    'mft_survey': {
+        'path': 'data/mft_survey.json'
     }
 }
 
@@ -264,3 +267,13 @@ def load_wmdp_sa_data() -> List[SorryBenchSAScenario]:
     '''
 
     return load_redwood_data('wmdp_sa')
+
+def load_mft_survey_data() -> List[dict]:
+    '''
+        Load the MFT survey questions from the JSON file.
+        Returns a list of dicts with keys: question_number, part, foundation, text.
+    '''
+    path = data_configuration['mft_survey']['path']
+    with open(path, 'r') as f:
+        data = json.load(f)
+    return data

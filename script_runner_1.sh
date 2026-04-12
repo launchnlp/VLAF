@@ -14,7 +14,8 @@
 module load cuda/13.1.0
 
 
-echo "ef_evaluation"
-bash scripts/af_mitigation_ef_evaluation_olmo_7b_mitigation.sh
-bash scripts/af_mitigation_ef_evaluation_olmo_13b_mitigation.sh
-bash scripts/af_mitigation_ef_evaluation_qwen_8b_mitigation.sh
+echo "evaluation using qwen2.5-32b-instruct for option based evaluation and compliance evaluation"
+# bash scripts/all_model_mft_refined_af_option_based_compliance.sh
+bash scripts/all_model_redwood_eval.sh
+bash scripts/all_model_redwood_aw_eval.sh
+# bash scripts/af_mitigation_mft_refined_steer_vector_sweep_eval.sh

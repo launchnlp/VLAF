@@ -1,7 +1,11 @@
 model_list=(
-    olmo2-7b-instruct
-    olmo2-13b-instruct
-    Qwen3-8B
+    # olmo2-7b-instruct
+    # olmo2-13b-instruct
+    olmo2-32b-instruct
+    # Qwen3-8B
+    Qwen3-14B
+    Qwen3-32B
+
 )
 approach_list=(
     diffmean
