@@ -26,17 +26,17 @@ model_list=(
     # vllm:Qwen3-14B-pt
     # openai:gpt-5.4
     # bedrock:us.anthropic.claude-sonnet-4-6
-    bedrock:us.anthropic.claude-3-7-sonnet-20250219-v1:0
+    # bedrock:us.anthropic.claude-3-7-sonnet-20250219-v1:0
     bedrock:openai.gpt-oss-120b-1:0
-    bedrock:openai.gpt-oss-20b-1:0
-    openai:gpt-4o
+    # bedrock:openai.gpt-oss-20b-1:0
+    # openai:gpt-4o
 )
 values=(
-    authority
-    care
-    fairness
+    # authority
+    # care
+    # fairness
     loyalty
-    sanctity
+    # sanctity
 )
 
 # run MFT inference for all the models

@@ -5,16 +5,23 @@ model_list=(
     # vllm:olmo2-32b-sft
     # vllm:olmo2-32b-dpo
     # vllm:Qwen3-8B-Base
-    vllm:Qwen3-8B
-    vllm:Qwen3-14B
-    vllm:Qwen3-32B
+    # vllm:Qwen3-8B
+    # vllm:Qwen3-14B
+    # vllm:Qwen3-32B
     # openai:gpt-5
-    vllm:Qwen2.5-7B-Instruct
-    vllm:Qwen2.5-14B-Instruct
-    vllm:Qwen2.5-32B-Instruct
-    vllm:olmo2-7b-instruct
-    vllm:olmo2-13b-instruct
-    vllm:olmo2-32b-instruct
+    # vllm:Qwen2.5-7B-Instruct
+    # vllm:Qwen2.5-14B-Instruct
+    # vllm:Qwen2.5-32B-Instruct
+    # vllm:olmo2-7b-instruct
+    # vllm:olmo2-13b-instruct
+    # vllm:olmo2-32b-instruct
+    vllm:Llama-3.1-8B-Instruct
+    bedrock:openai.gpt-oss-20b-1:0
+    bedrock:openai.gpt-oss-120b-1:0
+    openai:gpt-4o
+    bedrock:us.anthropic.claude-3-7-sonnet-20250219-v1:0
+    bedrock:us.anthropic.claude-sonnet-4-6
+    openai:gpt-5.4
 )
 
 # run reasoning analysis for all models (free tier outputs only)

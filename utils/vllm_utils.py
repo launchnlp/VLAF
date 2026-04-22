@@ -32,7 +32,8 @@ model_dictionary = {
     'Llama-3.3-70B-Instruct': {
         'model': 'meta-llama/Llama-3.3-70B-Instruct',
         'quantization': None,
-        'company': 'Meta'
+        'company': 'Meta',
+        'max_model_len': 96144
     },
     'Qwen3-8B': {
         'model': 'Qwen/Qwen3-8B',
@@ -330,13 +331,17 @@ class VLLMCaller:
         
         model_info = model_dictionary[model_name]
         model_path = model_info['model']
+        extra_kwargs = {}
+        if 'max_model_len' in model_info:
+            extra_kwargs['max_model_len'] = model_info['max_model_len']
 
         # loading the model normally
         if not enable_steer_vector and not enable_lora:
             llm = LLM(
                 model=model_path,
                 tensor_parallel_size=tensor_parallel_size,
-                seed=seed
+                seed=seed,
+                **extra_kwargs
             )
 
         # loading the model with steer vector enabled or lora enabled
@@ -347,14 +352,16 @@ class VLLMCaller:
                 seed=seed,
                 enable_steer_vector=True,
                 enforce_eager=True,
-                enable_chunked_prefill=False
+                enable_chunked_prefill=False,
+                **extra_kwargs
             )
         elif enable_lora:
             llm = LLM(
                 model=model_path,
                 tensor_parallel_size=tensor_parallel_size,
                 seed=seed,
-                enable_lora=True
+                enable_lora=True,
+                **extra_kwargs
             )
         tokenizer = AutoTokenizer.from_pretrained(model_path)
         return llm, tokenizer, model_info['company']

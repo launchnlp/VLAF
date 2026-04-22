@@ -111,7 +111,8 @@ def pipeline_representation_plotter(
     model_name: str,
     data_name: str,
     batch_size: int,
-    output_folder: str
+    output_folder: str,
+    final_layer: int = 30
 ):
     '''
         Pipeline for plotting UMAP representations of last-token hidden states
@@ -158,9 +159,10 @@ def pipeline_representation_plotter(
             'oversight': oversight_representations
         }
 
-    # plotting the UMAP for layers 5, 10, 15, 20
+    # plotting the UMAP from layer 5 to final_layer in steps of 5
     os.makedirs(output_folder, exist_ok=True)
-    selected_layers = [5, 10, 15, 20, 25, 30]
+    selected_layers = list(range(5, final_layer + 1, 5))
+    chi_scores = {}
     for layer_idx in selected_layers:
 
         # first plotting for each system prompt
@@ -193,19 +195,29 @@ def pipeline_representation_plotter(
             # computing the calinski harabasz score for the current system prompt
             ch_score = calinski_harabasz_score(sp_reps, sp_labels)
             print(f"Calinski-Harabasz Score for Layer {layer_idx}, System Prompt '{sp_name}': {ch_score:.2f}")
+            chi_scores[f"layer_{layer_idx}_{sp_name}"] = ch_score
+
+    # saving CHI scores to file
+    import json
+    chi_path = os.path.join(output_folder, "chi_scores.json")
+    with open(chi_path, "w") as f:
+        json.dump(chi_scores, f, indent=2)
+    print(f"CHI scores saved to {chi_path}")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_name', type=str, default='olmo2-7b-instruct', choices=list(model_dictionary.keys()))
-    parser.add_argument('--data_name', type=str, default='sorry_bench_sa')
+    parser.add_argument('--data_name', type=str, default='sorry_bench_sa', choices=['sorry_bench_sa', 'wmdp_sa'])
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--output_folder', type=str, default='results/af_representation/plots/olmo2-7b-instruct_sorry_bench_sa')
+    parser.add_argument('--final_layer', type=int, default=30)
     args = parser.parse_args()
 
     pipeline_representation_plotter(
         model_name=args.model_name,
         data_name=args.data_name,
         batch_size=args.batch_size,
-        output_folder=args.output_folder
+        output_folder=args.output_folder,
+        final_layer=args.final_layer
     )

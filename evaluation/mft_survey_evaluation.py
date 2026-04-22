@@ -26,9 +26,21 @@ FOUNDATIONS = ['care', 'fairness', 'loyalty', 'authority', 'sanctity']
 def parse_rating(response_text: str) -> Optional[int]:
     '''
     Extract a 0-5 integer from a model response string.
+    Strips <think>...</think> reasoning blocks before parsing so that
+    digit references inside the thinking trace do not shadow the final answer.
     Returns None if no valid integer is found.
     '''
     response_text = response_text.strip()
+
+    # Strip reasoning/thinking tokens — take only the text after the last closing
+    # reasoning tag.  Different model families use different tag names:
+    #   <think>...</think>       — Qwen3, DeepSeek-R1
+    #   <reasoning>...</reasoning> — OpenAI o-series (via Bedrock etc.)
+    for closing_tag in ('</think>', '</reasoning>'):
+        pos = response_text.rfind(closing_tag)
+        if pos != -1:
+            response_text = response_text[pos + len(closing_tag):].strip()
+            break
 
     # Direct single digit match
     if response_text in {'0', '1', '2', '3', '4', '5'}:

@@ -4,17 +4,17 @@ reasoning_model_list=(
     # openai:gpt-5.4
 )
 non_reasoning_model_list=(
-    # bedrock:openai.gpt-oss-120b-1:0
+    bedrock:openai.gpt-oss-120b-1:0
     # bedrock:openai.gpt-oss-20b-1:0
-    openai:gpt-4o
+    # openai:gpt-4o
 )
 tensor_parallel_size=1
 values=(
     # authority
     # care
-    fairness
-    # loyalty
-    sanctity
+    # fairness
+    loyalty
+    # sanctity
 )
 
 # run MFT inference for all the models

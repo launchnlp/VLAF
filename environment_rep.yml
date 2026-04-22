@@ -1,0 +1,43 @@
+name: alignment_faking_rep
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+
+  # PyTorch with CUDA 12.1 (required for hidden-state extraction)
+  - pytorch>=2.1.0
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+
+  - pip:
+    # HF ecosystem — model loading and hidden-state access
+    - transformers>=4.40.0
+    - accelerate>=0.30.0
+    - peft>=0.10.0
+    - datasets>=2.18.0
+    - huggingface-hub>=0.22.0
+    - safetensors>=0.4.0
+
+    # Representation analysis
+    - scikit-learn>=1.4.0
+    - umap-learn>=0.5.6
+    - scipy>=1.13.0
+    - numpy>=1.26.0
+
+    # Plotting (UMAP visualizations, PCA scree, sweep plots)
+    - matplotlib>=3.8.0
+
+    # Utilities
+    - jinja2>=3.1.0
+    - python-dotenv>=1.0.0
+    - tqdm>=4.66.0
+
+    # EasySteer and vllm-steer must be installed from the bundled submodules.
+    # See README § Environment Setup for the exact commands.
+    # Do NOT install the upstream vllm package in this environment —
+    # vllm-steer is a patched fork that adds the steering vector hook.

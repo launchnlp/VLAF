@@ -1,10 +1,10 @@
 model_list=(
     olmo2-7b-instruct
     Qwen3-8B
-    olmo2-13b-instruct
-    olmo2-32b-instruct
-    Qwen3-14B
-    Qwen3-32B
+    # olmo2-13b-instruct
+    # olmo2-32b-instruct
+    # Qwen3-14B
+    # Qwen3-32B
 )
 
 # Max layer (num_hidden_layers) per model, used to bound multiples-of-5 iteration

@@ -1,20 +1,21 @@
 vllm_model_list=(
-    vllm:Qwen3-8B
-    vllm:Qwen3-14B
-    vllm:Qwen3-32B
-    vllm:olmo2-7b-instruct
-    vllm:olmo2-13b-instruct
-    vllm:olmo2-32b-instruct
-    vllm:Qwen2.5-7B-Instruct
-    vllm:Qwen2.5-14B-Instruct
-    vllm:Qwen2.5-32B-Instruct
-    vllm:Llama-3.1-8B-Instruct
+    # vllm:Qwen3-8B
+    # vllm:Qwen3-14B
+    # vllm:Qwen3-32B
+    # vllm:olmo2-7b-instruct
+    # vllm:olmo2-13b-instruct
+    # vllm:olmo2-32b-instruct
+    # vllm:Qwen2.5-7B-Instruct
+    # vllm:Qwen2.5-14B-Instruct
+    # vllm:Qwen2.5-32B-Instruct
+    # vllm:Llama-3.1-8B-Instruct
+    vllm:Llama-3.3-70B-Instruct
 )
 
 closed_model_list=(
-    bedrock:openai.gpt-oss-20b-1:0
-    bedrock:openai.gpt-oss-120b-1:0
-    openai:gpt-4o
+    # bedrock:openai.gpt-oss-20b-1:0
+    # bedrock:openai.gpt-oss-120b-1:0
+    # openai:gpt-4o
 )
 
 tensor_parallel_size=2

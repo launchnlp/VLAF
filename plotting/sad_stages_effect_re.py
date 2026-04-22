@@ -3,29 +3,29 @@ import matplotlib.pyplot as plt
 
 # Data from provided images
 scenarios = ['Vanilla', 'ACTADD (Sorry-Bench)', 'LAT (Sorry-Bench)', 'ACTADD (WMDP)', 'LAT (WMDP)']
-models = ['olmo2-7b-instruct', 'olmo2-13b-instruct', 'qwen3-8b']
+models = ['olmo2-7b-instruct', 'olmo2-13b-instruct', 'qwen3-8b', 'qwen3-14b']
 
 # Accuracy Data (%)
 accuracy_data = {
-    'Vanilla': [64.25, 82.5, 95.0],
-    'ACTADD (Sorry-Bench)': [56.25, 79, 90.00],
-    'LAT (Sorry-Bench)': [57.0, 72.75, 94.50],
-    'ACTADD (WMDP)': [58.50, 80.75, 92.00],
-    'LAT (WMDP)': [55.50, 79.50, 94.75]
+    'Vanilla': [64.25, 82.5, 95.0, 98.50],
+    'ACTADD (Sorry-Bench)': [56.25, 79, 90.00, 98.00],
+    'LAT (Sorry-Bench)': [57.0, 72.75, 94.50, 97.00],
+    'ACTADD (WMDP)': [58.50, 80.75, 92.00, 98.25],
+    'LAT (WMDP)': [55.50, 79.50, 94.75, 97.25]
 }
 
 # Drop Data (%) for annotations
 drop_data = {
-    'Vanilla': [0, 0, 0],
-    'ACTADD (Sorry-Bench)': [-8.0, -3.5, -5.0],
-    'LAT (Sorry-Bench)': [-7.25, -9.75, -0.5],
-    'ACTADD (WMDP)': [-5.75, -1.75, -3.0],
-    'LAT (WMDP)': [-8.75, -3.0, -0.25]
+    'Vanilla': [0, 0, 0, 0],
+    'ACTADD (Sorry-Bench)': [-8.0, -3.5, -5.0, -0.5],
+    'LAT (Sorry-Bench)': [-7.25, -9.75, -0.5, -1.5],
+    'ACTADD (WMDP)': [-5.75, -1.75, -3.0, -0.25],
+    'LAT (WMDP)': [-8.75, -3.0, -0.25, -1.25]
 }
 
 # Set up the plot with academic styling
-plt.style.use('seaborn-v0_8-whitegrid')
-fig, ax = plt.subplots(figsize=(14, 6))
+plt.style.use('seaborn-whitegrid')
+fig, ax = plt.subplots(figsize=(17, 6))
 
 # Positions and bar width
 x = np.arange(len(models))
@@ -93,4 +93,5 @@ plt.tight_layout()
 
 # Save the figure
 plt.savefig('plotting/sad_stages_effect_re.pdf', dpi=400, bbox_inches='tight')
-plt.show()
+plt.savefig('plotting/sad_stages_effect_re.png', dpi=400, bbox_inches='tight')
+plt.close()

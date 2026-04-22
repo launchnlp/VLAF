@@ -1,0 +1,56 @@
+name: alignment_faking
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+
+  # PyTorch with CUDA 12.1 (required for local vLLM inference on HF models)
+  - pytorch>=2.1.0
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=12.1
+
+  - pip:
+    # Inference — HF-based local models
+    - vllm>=0.4.0
+    - transformers>=4.40.0
+    - accelerate>=0.30.0
+    - datasets>=2.18.0
+    - huggingface-hub>=0.22.0
+
+    # LangChain stack — closed-source model routing (OpenAI, Bedrock, Vertex AI)
+    - langchain>=0.2.0
+    - langchain-core>=0.2.0
+    - langchain-openai>=0.1.0
+    - langchain-aws>=0.1.0
+    - langchain-google-vertexai>=1.0.0
+
+    # Cloud provider SDKs
+    - openai>=1.30.0
+    - boto3>=1.34.0
+    - google-cloud-aiplatform>=1.50.0
+
+    # Statistics and basic analysis
+    - scikit-learn>=1.4.0
+    - scipy>=1.13.0
+    - numpy>=1.26.0
+
+    # Plotting
+    - matplotlib>=3.8.0
+    - seaborn>=0.13.0
+
+    # NLP utilities (semantic deduplication, embedding-based evaluation)
+    - sentence-transformers>=3.0.0
+    - semhash>=0.2.0
+
+    # Data and general utilities
+    - jinja2>=3.1.0
+    - python-dotenv>=1.0.0
+    - jsonlines>=4.0.0
+    - tqdm>=4.66.0
+    - beautifulsoup4>=4.12.0
+    - pygini>=1.0.0
