@@ -635,10 +635,10 @@ python plotting/sad_stages_effect_re.py
 If you use this code or data, please cite:
 
 ```bibtex
-@article{nair2025vlaf,
-  title   = {Value-Conflict Diagnostics Reveal Widespread Alignment Faking in Language Models},
-  author  = {Nair, Inderjeet and Ruan, Jie and Wang, Lu},
-  year    = {2025},
-  url     = {https://github.com/launchnlp/VLAF}
+@article{nair2026value,
+    title={Value-Conflict Diagnostics Reveal Widespread Alignment Faking in Language Models},
+    author={Nair, Inderjeet and Ruan, Jie and Wang, Lu},
+    journal={arXiv preprint arXiv:2604.20995},
+    year={2026}
 }
 ```
