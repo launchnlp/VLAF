@@ -36,14 +36,11 @@ VLAF/
 ├── prompter/               # System and user prompt construction
 ├── prompt_library/         # ~200 Jinja2 prompt templates (.txt)
 │   └── MFT/                # Per-value × per-instrumental-goal templates
-├── plotting/               # Publication-quality plot scripts and output PDFs/PNGs
+├── plotting/               # Plots for paper figures and analysis
 ├── scripts/                # Shell scripts orchestrating all experiments
 ├── utils/
 │   ├── vllm_utils.py       # VLLMCaller + model_dictionary (~40 models)
 │   └── langchain_utils.py  # Unified router for vllm/openai/bedrock/google backends
-├── EasySteer/              # Submodule: steering vector extraction (ZJU-REAL)
-│   └── vllm-steer/         # Custom vLLM fork with steering vector support
-├── LlamaFactory/           # Submodule: LoRA fine-tuning utilities
 ├── custom_typing/          # TypedDict definitions
 └── results/                # JSON outputs (created at runtime)
 ```
