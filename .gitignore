@@ -218,4 +218,4 @@ open-instruct/
 EasySteer/
 results/
 LlamaFactory/
-sad/
+sad/script_runner_*
